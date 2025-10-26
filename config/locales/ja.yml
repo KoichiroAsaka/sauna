@@ -1,0 +1,18 @@
+ja:
+  enums:
+    post:
+      congestion_level:
+        one_star: "★1（空いている）"
+        two_stars: "★2"
+        three_stars: "★3（普通）"
+        four_stars: "★4"
+        five_stars: "★5（とても混雑）"
+      time_zone:
+        morning_7_9: "7時〜9時"
+        morning_9_11: "9時〜11時"
+        noon_11_13: "11時〜13時"
+        afternoon_13_15: "13時〜15時"
+        afternoon_15_17: "15時〜17時"
+        evening_17_19: "17時〜19時"
+        evening_19_21: "19時〜21時"
+        night_21_23: "21時〜23時"

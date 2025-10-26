@@ -1,0 +1,16 @@
+<%= form_with(model: @post, local: true) do |f| %>
+    <!-- 混雑度 -->
+    <div class="form-group">
+      <%= f.label :congestion_level, "混雑度（★）" %><br>
+      <%= f.select :congestion_level, Post.congestion_levels.keys.map { |k| [I18n.t("enums.post.congestion_level.#{k}", default: k.humanize), k] }, {}, class: "form-control" %>
+    </div>
+  
+    <!-- 時間帯 -->
+    <div class="form-group mt-3">
+      <%= f.label :time_zone, "時間帯" %><br>
+      <%= f.select :time_zone, Post.time_zones.keys.map { |k| [I18n.t("enums.post.time_zone.#{k}", default: k.humanize), k] }, {}, class: "form-control" %>
+    </div>
+  
+    <%= f.submit "投稿する", class: "btn btn-primary mt-3" %>
+  <% end %>
+  

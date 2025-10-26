@@ -41,13 +41,15 @@ gem "nokogiri", "~> 1.18.10", platforms: [:ruby, :x64_mingw, :windows]
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 # Gemfileの一番下あたりに追加
-gem 'tzinfo-data', platforms: %i[ mingw mswin x64_mingw jruby ]
 
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
-gem 'tzinfo-data'
+
+
+
+
 
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
@@ -74,3 +76,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem "tzinfo-data"

@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  sauna: one
+  post: MyText
+  status: 1
+  congestion_level: 1
+  day_of_week: 1
+  time_zone: MyString
+
+two:
+  user: two
+  sauna: two
+  post: MyText
+  status: 1
+  congestion_level: 1
+  day_of_week: 1
+  time_zone: MyString
