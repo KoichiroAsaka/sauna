@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sauna</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SaunaApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="<%= controller.controller_name %> <%= controller.action_name %>">
+    <!-- ✅ ヘッダー部分 -->
+    <header class="app-header">
+      <div class="header-left">
+        <%= link_to root_path do %>
+          <%= image_tag "app_logo.png", alt: "SaunaApp ロゴ", class: "header-logo" %>
+        <% end %>
+      </div>
+
+      <div class="header-right">
+        <%= link_to "#", class: "user-icon-link" do %>
+          <%= image_tag "user-icon", alt: "ユーザーアイコン", class: "user-icon" %>
+        <% end %>
+      </div>
+    </header>
+
+    <!-- ✅ 各ページの中身をここに表示 -->
     <%= yield %>
   </body>
 </html>

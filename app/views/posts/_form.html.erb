@@ -1,0 +1,4 @@
+<div class="field">
+  <%= form.label :sauna_id, "対象サウナ" %>
+  <%= form.collection_select :sauna_id, Sauna.all, :id, :name, prompt: "サウナを選択" %>
+</div>

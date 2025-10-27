@@ -1,0 +1,19 @@
+<h2><%= @sauna.name %></h2>
+<p>住所：<%= @sauna.address %></p>
+
+<hr>
+
+<h3>このサウナの投稿一覧</h3>
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
+      <p><strong><%= post.user.name %></strong></p>
+      <p><%= post.post %></p>
+      <% if post.image.attached? %>
+        <%= image_tag post.image, width: 200 %>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <p>まだ投稿はありません。</p>
+<% end %>

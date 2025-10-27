@@ -1,0 +1,18 @@
+<h1>サウナ一覧</h1>
+
+<!-- 都道府県で絞り込み検索（任意） -->
+<%= form_with url: saunas_path, method: :get, local: true do %>
+  <%= select_tag :prefecture, options_for_select(Sauna.distinct.pluck(:prefecture), params[:prefecture]), include_blank: "都道府県を選択" %>
+  <%= submit_tag "絞り込み" %>
+<% end %>
+
+<hr>
+
+<ul>
+  <% @saunas.each do |sauna| %>
+    <li>
+      <%= link_to sauna.name, sauna_path(sauna) %>
+      （<%= sauna.prefecture %>）
+    </li>
+  <% end %>
+</ul>
