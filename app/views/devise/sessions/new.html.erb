@@ -1,0 +1,25 @@
+<div class="auth-container">
+  <div class="auth-box">
+    <h2 class="text-center mb-4">ログイン</h2>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="mb-3">
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :password, "パスワード" %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+      </div>
+
+      <div class="text-center">
+        <%= f.submit "ログイン", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
+    <div class="text-center mt-3">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

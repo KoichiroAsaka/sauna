@@ -27,6 +27,9 @@ gem "nokogiri", "~> 1.18.10", platforms: [:ruby, :x64_mingw, :windows]
 gem "sassc-rails"
 gem "tzinfo-data"
 
+#ユーザー登録機能
+gem 'devise'
+
 # 起動高速化
 gem "bootsnap", require: false
 

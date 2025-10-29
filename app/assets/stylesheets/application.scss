@@ -1,40 +1,56 @@
-/* トップページ背景（homes#top専用） */
-body.homes.top {
-  background-image: url("top_background.jpg");
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background-image: image-url("background.jpg");
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   background-attachment: fixed;
-  height: 100vh;
-  width: 100%;
-  margin: 0;
-  color: #fff;
+  color: white;
+  font-family: "Helvetica", "Arial", sans-serif;
 }
 
 /* ヘッダー */
-.app-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 24px;
-  background-color: transparent; /* ← 背景色を透明に */
-  position: fixed;
-  top: 0;
+.header {
+  position: absolute;
+  top: 5px; /* ← 単位追加＆上に寄せた */
+  left: 0;
   width: 100%;
-  z-index: 100;
+  display: flex;
+  justify-content: space-between; /* ロゴとボタンを左右に配置 */
+  align-items: center;
+  padding: 0 30px;
+  box-sizing: border-box;
 }
 
-/* ロゴ（全ページ共通） */
-.header-logo {
-  height: 80px; /* ← 少し大きく */
+.logo {
+  width: 90px;
 }
 
-/* ユーザーアイコン */
-.user-icon {
-  height: 40px;
-  border-radius: 50%;
+/* デバイスのカスタマイズ */
+@import "devise_custom";
+
+/* ボタン配置とデザイン */
+.nav-buttons {
+  display: flex;
+  gap: 15px;
 }
 
-/* 本文がロゴにかぶらないように調整 */
-body {
-  margin-top: 120px;
+.nav-buttons a {
+  color: white;
+  border: 2px solid white;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background-color: transparent;
+}
+
+.nav-buttons a:hover {
+  background-color: white; /* 白背景 */
+  color: black; /* 黒文字 */
 }
