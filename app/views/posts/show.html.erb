@@ -1,2 +1,62 @@
-<p><strong>混雑度:</strong> <%= @post.congestion_level_i18n %></p>
-<p><strong>時間帯:</strong> <%= @post.time_zone_i18n %></p>
+<div class="container mt-5">
+  <div class="card shadow-lg border-0">
+    <div class="card-header text-center bg-primary text-white">
+      <h2 class="mb-0">投稿詳細</h2>
+    </div>
+
+    <div class="card-body p-4">
+      <!-- 対象サウナ -->
+      <p><strong>サウナ名：</strong> <%= @post.sauna&.name || "未登録" %></p>
+
+      <!-- 投稿者 -->
+      <p><strong>投稿者：</strong> <%= @post.user&.name || "不明" %></p>
+
+      <!-- 投稿内容 -->
+      <div class="mb-3">
+        <strong>内容：</strong>
+        <p class="mt-1 border rounded p-3 bg-light"><%= simple_format(@post.post) %></p>
+      </div>
+
+      <!-- 混雑度 -->
+      <p>
+        <strong>混雑度：</strong>
+        <%= I18n.t("enums.post.congestion_level.#{@post.congestion_level}") rescue "未設定" %>
+      </p>
+
+      <!-- 曜日 -->
+      <p>
+        <strong>曜日：</strong>
+        <%= I18n.t("enums.post.day_of_week.#{@post.day_of_week}") rescue "未設定" %>
+      </p>
+
+      <!-- 時間帯 -->
+      <p>
+        <strong>時間帯：</strong>
+        <%= I18n.t("enums.post.time_zone.#{@post.time_zone}") rescue "未設定" %>
+      </p>
+
+      <!-- 画像 -->
+      <% if @post.image.attached? %>
+        <div class="mt-4 text-center">
+          <strong>画像：</strong><br>
+          <%= image_tag @post.image, class: "img-fluid rounded shadow-sm mt-2", style: "max-height: 400px;" %>
+        </div>
+      <% end %>
+
+      <!-- 編集・削除ボタン -->
+      <% if @post.user == current_user %>
+        <div class="mt-4 d-flex justify-content-center gap-3">
+          <%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-primary" %>
+          <%= link_to "削除", post_path(@post),
+                data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
+                class: "btn btn-outline-danger" %>
+        </div>
+      <% end %>
+
+      <!-- 一覧に戻る -->
+      <div class="mt-4 text-center">
+        <%= link_to "投稿一覧に戻る", posts_path, class: "btn btn-secondary" %>
+      </div>
+    </div>
+  </div>
+</div>

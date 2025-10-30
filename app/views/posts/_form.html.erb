@@ -1,4 +1,40 @@
-<div class="field">
-  <%= form.label :sauna_id, "対象サウナ" %>
-  <%= form.collection_select :sauna_id, Sauna.all, :id, :name, prompt: "サウナを選択" %>
-</div>
+<%= form_with model: post, local: true do |form| %>
+  <div class="mb-3">
+    <%= form.label :sauna_id, "対象サウナ" %>
+    <%= form.collection_select :sauna_id, Sauna.all, :id, :name, prompt: "サウナを選択" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :post, "投稿内容" %>
+    <%= form.text_area :post, rows: 4, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :congestion_level, "混雑度（★）" %>
+    <%= form.select :congestion_level,
+          Post.congestion_levels.keys.map { |k| [I18n.t("enums.post.congestion_level.#{k}"), k] },
+          prompt: "選択してください" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :day_of_week, "曜日" %>
+    <%= form.select :day_of_week,
+          Post.day_of_weeks.keys.map { |k| [I18n.t("enums.post.day_of_week.#{k}"), k] },
+          prompt: "選択してください" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :time_zone, "時間帯" %>
+    <%= form.select :time_zone,
+          Post.time_zones.keys.map { |k| [I18n.t("enums.post.time_zone.#{k}"), k] },
+          prompt: "選択してください" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :image, "画像アップロード" %>
+    <%= form.file_field :image, accept: "image/*" %>
+  </div>
+
+  <%= form.submit (post.persisted? ? "更新する" : "投稿する"), class: "btn btn-primary w-100" %>
+
+<% end %>

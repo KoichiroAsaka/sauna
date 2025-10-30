@@ -1,29 +1,13 @@
 class Post < ApplicationRecord
-  belongs_to :sauna
   belongs_to :user
+  belongs_to :sauna
 
-  # 混雑度（★1〜★5）
-  enum congestion_level: {
-    one_star: 1,
-    two_stars: 2,
-    three_stars: 3,
-    four_stars: 4,
-    five_stars: 5
-  }
+  has_one_attached :image
 
-  # 時間帯（7時〜23時を区分）
+  enum congestion_level: { level1: 1, level2: 2, level3: 3, level4: 4, level5: 5 }
+  enum day_of_week: { sunday: 0, monday: 1, tuesday: 2, wednesday: 3, thursday: 4, friday: 5, saturday: 6 }
   enum time_zone: {
-    morning_7_9: 1,
-    morning_9_11: 2,
-    noon_11_13: 3,
-    afternoon_13_15: 4,
-    afternoon_15_17: 5,
-    evening_17_19: 6,
-    evening_19_21: 7,
-    night_21_23: 8
+    morning1: 0, morning2: 1, noon: 2, afternoon1: 3,
+    afternoon2: 4, evening1: 5, evening2: 6, night: 7
   }
-
-  # バリデーション
-  validates :congestion_level, presence: true
-  validates :time_zone, presence: true
 end
