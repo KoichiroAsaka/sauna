@@ -30,6 +30,9 @@ gem "tzinfo-data"
 #ユーザー登録機能
 gem 'devise'
 
+#ページネーション
+gem 'kaminari'
+
 # 起動高速化
 gem "bootsnap", require: false
 

@@ -1,4 +1,4 @@
-<%= form_with model: post, local: true do |form| %>
+<%= form_with model: [post.sauna, post], local: true do |form| %>
   <div class="mb-3">
     <%= form.label :sauna_id, "対象サウナ" %>
     <%= form.collection_select :sauna_id, Sauna.all, :id, :name, prompt: "サウナを選択" %>
@@ -36,5 +36,4 @@
   </div>
 
   <%= form.submit (post.persisted? ? "更新する" : "投稿する"), class: "btn btn-primary w-100" %>
-
 <% end %>

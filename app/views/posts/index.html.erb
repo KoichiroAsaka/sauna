@@ -1,27 +1,36 @@
 <div class="container mt-5">
   <h2 class="text-center mb-4">投稿一覧</h2>
 
-  <% @posts.each do |post| %>
-    <div class="card shadow-sm mb-4 p-3">
-      <h4><%= post.sauna.name %></h4>
-      <p class="text-muted mb-1">投稿者：<%= post.user.name %></p>
-      <p><%= post.post %></p>
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-md-4 mb-4"> <!-- 👈 1行3列（12 ÷ 4 = 3） -->
+        <div class="card shadow-sm p-3 h-100">
+          <h4><%= post.sauna.name %></h4>
+          <p class="text-muted mb-1">投稿者：<%= post.user.name %></p>
+          <p><%= post.post %></p>
 
-      <ul class="list-unstyled">
-        <li>混雑度：<%= I18n.t("enums.post.congestion_level.#{post.congestion_level}") %></li>
-        <li>曜日：<%= I18n.t("enums.post.day_of_week.#{post.day_of_week}") %></li>
-        <li>時間帯：<%= I18n.t("enums.post.time_zone.#{post.time_zone}") %></li>
-      </ul>
+          <ul class="list-unstyled">
+            <li>混雑度：<%= I18n.t("enums.post.congestion_level.#{post.congestion_level}") %></li>
+            <li>曜日：<%= I18n.t("enums.post.day_of_week.#{post.day_of_week}") %></li>
+            <li>時間帯：<%= I18n.t("enums.post.time_zone.#{post.time_zone}") %></li>
+          </ul>
 
-      <% if post.image.attached? %>
-        <div class="mt-2">
-          <%= image_tag post.image, class: "img-fluid rounded" %>
+          <% if post.image.attached? %>
+            <div class="mt-2">
+              <%= image_tag post.image, class: "img-fluid rounded" %>
+            </div>
+          <% end %>
+
+          <div class="text-end mt-2">
+            <%= link_to "詳細", sauna_post_path(post.sauna, post) %>
+          </div>
         </div>
-      <% end %>
-
-      <div class="text-end mt-2">
-        <%= link_to "詳細を見る", post_path(post), class: "btn btn-outline-primary btn-sm" %>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+
+  <!-- ページネーション -->
+  <div class="d-flex justify-content-center mt-4">
+    <%= paginate @posts %>
+  </div>
 </div>

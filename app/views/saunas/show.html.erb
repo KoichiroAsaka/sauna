@@ -1,16 +1,29 @@
 <h2><%= @sauna.name %></h2>
 <p>住所：<%= @sauna.address %></p>
 
+<!-- 新規投稿リンク -->
+<p>
+  <%= link_to "このサウナに投稿する", new_sauna_post_path(@sauna), class: "btn btn-primary" %>
+</p>
+
 <hr>
 
 <h3>このサウナの投稿一覧</h3>
 <% if @posts.any? %>
   <% @posts.each do |post| %>
     <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
-      <p><strong><%= post.user.name %></strong></p>
-      <p><%= post.post %></p>
+      <!-- ✅ 投稿詳細ページへのリンク -->
+      <p>
+        <strong>
+          <%= link_to post.user.name, user_path(post.user) %>
+        </strong>
+      </p>
+
+      <!-- ✅ 画像クリックで投稿詳細へ遷移 -->
       <% if post.image.attached? %>
-        <%= image_tag post.image, width: 200 %>
+        <%= link_to image_tag(post.image, width: 200), sauna_post_path(post.sauna, post) %>
+      <% else %>
+        <%= link_to "投稿詳細を見る", sauna_post_path(post.sauna, post), class: "btn btn-outline-secondary btn-sm" %>
       <% end %>
     </div>
   <% end %>
