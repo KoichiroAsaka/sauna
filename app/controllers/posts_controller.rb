@@ -4,18 +4,22 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authorize_user!, only: [:edit, :update, :destroy]
 
-  # サウナごとの投稿一覧
+  # 投稿一覧（サウナ別 or ユーザー別）
   def index
     if @sauna
-      @posts = @sauna.posts.includes(:user)
+      # 🔹 サウナ別投稿一覧（例: /saunas/1/posts）
+      @posts = @sauna.posts
+                     .includes(:user)
                      .order(created_at: :desc)
                      .page(params[:page])
                      .per(6)
     else
-      @posts = Post.includes(:user, :sauna)
-                   .order(created_at: :desc)
-                   .page(params[:page])
-                   .per(6)
+      # 🔹 ログイン中ユーザーの投稿一覧（例: /posts）
+      @posts = current_user.posts
+                           .includes(:sauna)
+                           .order(created_at: :desc)
+                           .page(params[:page])
+                           .per(6)
     end
   end
 

@@ -16,18 +16,28 @@ body {
 /* ヘッダー */
 .header {
   position: absolute;
-  top: 5px; /* ← 単位追加＆上に寄せた */
+  top: 5px;
   left: 0;
   width: 100%;
   display: flex;
-  justify-content: space-between; /* ロゴとボタンを左右に配置 */
+  justify-content: space-between;
   align-items: center;
   padding: 0 30px;
   box-sizing: border-box;
 }
 
+/* 🔹 ロゴの透過＆馴染み効果 */
 .logo {
-  width: 90px;
+  width: 100px;
+  opacity: 0.85; /* ← ロゴ全体を少し透過（0〜1で調整可能） */
+  mix-blend-mode: lighten; /* ← 背景と自然に馴染ませる効果 */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* ホバー時に少し明るく＆拡大 */
+.logo:hover {
+  opacity: 1;
+  transform: scale(1.05);
 }
 
 /* デバイスのカスタマイズ */
@@ -51,6 +61,43 @@ body {
 }
 
 .nav-buttons a:hover {
-  background-color: white; /* 白背景 */
-  color: black; /* 黒文字 */
+  background-color: white;
+  color: black;
+}
+
+/* === フローティングメニュー === */
+.floating-nav {
+  position: fixed;
+  bottom: 30px;              /* 画面下からの距離 */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 20px;                 /* アイコン間の距離 */
+  z-index: 1000;             /* 常に最前面に表示 */
+}
+
+/* 各アイコンボタン */
+.floating-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;        /* 丸型 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 影 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* アイコン自体のスタイル */
+.floating-btn i {
+  font-size: 28px;
+  color: #000;               /* ブラックアイコン */
+}
+
+/* ホバー時の軽いエフェクト */
+.floating-btn:hover {
+  transform: scale(1.1);
+  background-color: #f5f5f5;
 }

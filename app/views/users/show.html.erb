@@ -2,3 +2,18 @@
   <h2 class="mb-4"><%= @user.email %> さんのマイページ</h2>
 
 </div>
+
+<!-- ✅ フローティングボトムメニュー -->
+<div class="floating-nav">
+  <%= link_to "#", class: "floating-btn" do %>
+    <i class="bi bi-heart-fill"></i> <!-- ♡ お気に入り -->
+  <% end %>
+
+  <%= link_to saunas_path, class: "floating-btn" do %>
+    <i class="bi bi-search"></i> <!-- 🔍 サウナ検索 -->
+  <% end %>
+
+  <%= link_to new_sauna_post_path(Sauna.first), class: "floating-btn" do %>
+    <i class="bi bi-plus-circle-fill"></i> <!-- ＋ 投稿 -->
+  <% end %>
+</div>

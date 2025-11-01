@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   # 編集・更新・削除は単体でOK（ネスト外）
-  resources :posts, only: [:edit, :update, :destroy]
+  resources :posts, only: [:index, :edit, :update, :destroy]
 
   resources :users, only: [:show]
 end
