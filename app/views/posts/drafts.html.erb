@@ -1,0 +1,17 @@
+<h2 class="text-center mb-4">下書き一覧</h2>
+
+<% if @posts.any? %>
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-md-4 mb-3">
+        <div class="card shadow-sm p-3">
+          <h5><%= post.sauna.name %></h5>
+          <p><%= truncate(post.post, length: 80) %></p>
+          <%= link_to "編集", edit_sauna_post_path(post.sauna, post), class: "btn btn-outline-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p class="text-center text-muted">下書きはまだありません。</p>
+<% end %>

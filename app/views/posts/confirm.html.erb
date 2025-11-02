@@ -1,0 +1,32 @@
+<!-- app/views/posts/confirm.html.erb -->
+
+<div class="container mt-5">
+  <h2>投稿内容の確認</h2>
+
+  <div class="card p-4 shadow">
+    <p><strong>対象サウナ：</strong><%= @post.sauna.name %></p>
+    <p><strong>内容：</strong><%= @post.post %></p>
+    <p><strong>混雑度：</strong><%= @post.congestion_level %></p>
+    <p><strong>曜日：</strong><%= @post.day_of_week %></p>
+    <p><strong>時間帯：</strong><%= @post.time_zone %></p>
+
+    <% if @post.image.attached? %>
+      <div class="mb-3">
+        <%= image_tag @post.image, class: "img-fluid rounded" %>
+      </div>
+    <% end %>
+
+    <%= form_with model: [@post.sauna, @post], url: sauna_posts_path(@post.sauna), local: true do |form| %>
+      <%= form.hidden_field :post %>
+      <%= form.hidden_field :sauna_id %>
+      <%= form.hidden_field :congestion_level %>
+      <%= form.hidden_field :day_of_week %>
+      <%= form.hidden_field :time_zone %>
+
+      <div class="d-flex justify-content-between mt-4">
+        <%= form.submit "投稿する", class: "btn btn-primary w-50 me-2" %>
+        <%= form.submit "下書き保存", name: "draft", class: "btn btn-secondary w-50" %>
+      </div>
+    <% end %>
+  </div>
+</div>

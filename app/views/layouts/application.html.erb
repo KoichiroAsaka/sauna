@@ -21,14 +21,24 @@
       <nav class="navbar navbar-dark bg-dark px-3">
         <div class="container-fluid d-flex align-items-center justify-content-between">
 
-          <!-- ✅ 左上：プロフィールアイコン（仮） -->
-          <div class="d-flex align-items-center">
-            <div class="rounded-circle bg-secondary text-white d-flex justify-content-center align-items-center"
-                 style="width:40px; height:40px; font-size:12px;">
-              <%= link_to "P", user_path(current_user), class: "text-white text-decoration-none" %>
-            </div>
-            <span class="ms-2 text-white">プロフィール</span>
-          </div>
+        <!-- ✅ 左上：プロフィールアイコン -->
+        <div class="d-flex align-items-center">
+          <% if current_user.profile_image.attached? %>
+            <%= link_to user_path(current_user), class: "text-decoration-none" do %>
+              <%= image_tag url_for(current_user.profile_image),
+                            class: "rounded-circle",
+                            style: "width:40px; height:40px; object-fit:cover;" %>
+            <% end %>
+          <% else %>
+            <%= link_to user_path(current_user), class: "text-decoration-none" do %>
+              <div class="rounded-circle bg-secondary text-white d-flex justify-content-center align-items-center"
+                   style="width:40px; height:40px; font-size:12px;">
+                P
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        
 
           <!-- ✅ 右側 -->
           <div class="d-flex align-items-center">
@@ -61,13 +71,11 @@
               <span class="nav-link text-white">フォロワー</span>
             </li>
             <li class="nav-item">
-              <span class="nav-link text-white">プロフィール</span>
+              <%= link_to "プロフィール", profile_user_path(current_user), class: "nav-link text-white" %>
             </li>
             <li class="nav-item">
-              <%= link_to "投稿一覧", posts_path, class: "nav-link text-white" %>
+              <%= link_to "下書き一覧", drafts_posts_path, class: "nav-link text-white" %>
             </li>
-            <li class="nav-item">
-              <span class="nav-link text-white">下書き</span>
             </li>
             <li class="nav-item">
               <span class="nav-link text-white">How to Sauna</span>

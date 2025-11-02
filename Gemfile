@@ -33,6 +33,12 @@ gem 'devise'
 #ページネーション
 gem 'kaminari'
 
+#プロフィール画像サイズ変更
+# gem 'mini_magick'
+# gem 'image_processing', '~> 1.2'
+
+
+
 # 起動高速化
 gem "bootsnap", require: false
 

@@ -154,6 +154,8 @@ GEM
       net-smtp
     marcel (1.1.0)
     matrix (0.4.3)
+    mini_magick (5.3.1)
+      logger
     mini_mime (1.1.5)
     minitest (5.26.0)
     msgpack (1.8.0)
@@ -296,6 +298,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kaminari
+  mini_magick
   nokogiri (~> 1.18.10)
   puma (>= 5.0)
   rails (~> 7.1.5, >= 7.1.5.2)

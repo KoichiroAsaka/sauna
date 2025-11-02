@@ -79,10 +79,11 @@ body {
 
 /* 各アイコンボタン */
 .floating-btn {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;        /* 丸型 */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 影 */
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;        
+  background-color: rgba(200, 200, 200, 0.7); /* 🔹 薄い半透明グレー背景 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,12 +93,15 @@ body {
 
 /* アイコン自体のスタイル */
 .floating-btn i {
-  font-size: 28px;
-  color: #000;               /* ブラックアイコン */
+  font-size: 40px;
+  color: #000; /* ブラックアイコン */
 }
 
 /* ホバー時の軽いエフェクト */
 .floating-btn:hover {
   transform: scale(1.1);
-  background-color: #f5f5f5;
+  background-color: rgba(230, 230, 230, 0.9); /* 🔹 ホバー時はやや明るいグレー */
 }
+
+/* 投稿画面のカスタマイズ */
+@import "posts";
