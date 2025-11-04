@@ -5,6 +5,11 @@ class SaunasController < ApplicationController
 
   def show
     @sauna = Sauna.find(params[:id])
-    @posts = @sauna.posts.includes(:user)
+    @posts = @sauna.posts
+                   .includes(:user)
+                   .where(status: :published)
+                   .order(created_at: :desc)
+                   .page(params[:page])
+                   .per(6)
   end
 end

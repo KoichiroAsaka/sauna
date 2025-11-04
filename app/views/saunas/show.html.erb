@@ -1,32 +1,63 @@
-<h2><%= @sauna.name %></h2>
-<p>住所：<%= @sauna.address %></p>
+<div class="container mt-5">
+  <!-- サウナ情報 -->
+  <h2><%= @sauna.name %></h2>
+  <p>住所：<%= @sauna.address %></p>
 
-<!-- 新規投稿リンク -->
-<p>
-  <%= link_to "このサウナに投稿する", new_sauna_post_path(@sauna), class: "btn btn-primary" %>
-</p>
+  <!-- 新規投稿リンク -->
+  <p>
+    <%= link_to "このサウナに投稿する", new_sauna_post_path(@sauna), class: "btn btn-primary" %>
+  </p>
 
-<hr>
+  <hr>
 
-<h3>このサウナの投稿一覧</h3>
-<% if @posts.any? %>
-  <% @posts.each do |post| %>
-    <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
-      <!-- ✅ 投稿詳細ページへのリンク -->
-      <p>
-        <strong>
-          <%= link_to post.user.name, user_path(post.user) %>
-        </strong>
-      </p>
+  <!-- 投稿一覧 -->
+  <h3 class="mt-4">このサウナの投稿一覧</h3>
 
-      <!-- ✅ 画像クリックで投稿詳細へ遷移 -->
-      <% if post.image.attached? %>
-        <%= link_to image_tag(post.image, width: 200), sauna_post_path(post.sauna, post) %>
-      <% else %>
-        <%= link_to "投稿詳細を見る", sauna_post_path(post.sauna, post), class: "btn btn-outline-secondary btn-sm" %>
+  <% if @posts.any? %>
+    <div class="row">
+      <% @posts.each do |post| %>
+        <div class="col-md-4 mb-4">
+          <div class="card shadow-sm h-100">
+            <% if post.image.attached? %>
+              <%= link_to image_tag(post.image, class: "card-img-top", style: "height: 180px; object-fit: cover;"), sauna_post_path(post.sauna, post) %>
+            <% end %>
+
+            <div class="card-body">
+              <!-- 投稿者 -->
+              <p class="text-muted mb-1">
+                投稿者：
+                <% if defined?(user_path) %>
+                  <%= link_to(post.user.name.presence || post.user.email, user_path(post.user)) %>
+                <% else %>
+                  <%= post.user.name.presence || post.user.email %>
+                <% end %>
+                <% if post.user == current_user %>（あなた）<% end %>
+              </p>
+
+              <!-- 投稿内容 -->
+              <p><%= truncate(post.post.presence || "（本文なし）", length: 60) %></p>
+
+              <!-- 混雑情報など -->
+              <ul class="list-unstyled small mb-2">
+                <li>混雑度：<%= I18n.t("enums.post.congestion_level.#{post.congestion_level}") if post.congestion_level.present? %></li>
+                <li>曜日：<%= I18n.t("enums.post.day_of_week.#{post.day_of_week}") if post.day_of_week.present? %></li>
+                <li>時間帯：<%= I18n.t("enums.post.time_zone.#{post.time_zone}") if post.time_zone.present? %></li>
+              </ul>
+
+              <!-- 詳細ボタン -->
+              <%= link_to "詳細を見る", sauna_post_path(post.sauna, post), class: "btn btn-outline-primary btn-sm w-100" %>
+            </div>
+          </div>
+        </div>
       <% end %>
     </div>
+
+    <!-- ページネーション -->
+    <div class="d-flex justify-content-center mt-4 mb-5">
+      <%= paginate @posts %>
+    </div>
+
+  <% else %>
+    <p>まだ投稿はありません。</p>
   <% end %>
-<% else %>
-  <p>まだ投稿はありません。</p>
-<% end %>
+</div>

@@ -18,13 +18,21 @@ class UsersController < ApplicationController
 
   # プロフィール更新処理
   def update_profile
-    redirect_to root_path, alert: "アクセスできません" unless @user == current_user
+    redirect_to root_path, alert: "アクセスできません" and return unless @user == current_user
 
     if @user.update(user_params)
       redirect_to profile_user_path(@user), notice: "プロフィールを更新しました。"
     else
       render :edit_profile, status: :unprocessable_entity
     end
+  end
+
+  # ✅ プロフィール削除
+  def destroy_profile
+    redirect_to root_path, alert: "アクセスできません" and return unless @user == current_user
+
+    @user.update(profile: nil, profile_image: nil)
+    redirect_to root_path, notice: "プロフィールを削除しました。"
   end
 
   private

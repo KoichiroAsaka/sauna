@@ -8,16 +8,25 @@
       <p><strong>投稿者：</strong> <%= @post.user.name %></p>
       <p><strong>内容：</strong> <%= @post.post %></p>
 
+      <!-- ✅ 画像がある場合のみ表示 -->
+      <% if @post.image.attached? %>
+        <div class="text-center mt-3">
+          <%= image_tag @post.image, class: "img-fluid rounded shadow-sm", style: "max-width: 80%; height: auto;" %>
+        </div>
+      <% end %>
+
       <hr>
 
-      <!-- 新規投稿ボタン -->
-      <p>
-        <%= link_to "このサウナに投稿する", new_sauna_post_path(@sauna), class: "btn btn-primary" %>
-      </p>
+      <!-- 編集＆削除ボタン -->
+      <% if @post.user == current_user %>
+        <div class="d-flex gap-2 mt-3">
+          <%= link_to "編集する", edit_sauna_post_path(@sauna, @post), class: "btn btn-outline-primary" %>
+
+          <%= link_to "削除する",
+                      sauna_post_path(@sauna, @post),
+                      data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
+                      class: "btn btn-outline-danger" %>
+        </div>
+      <% end %>
 
       <div class="mt-3 text-center">
-        <%= link_to "サウナ詳細に戻る", sauna_path(@sauna), class: "btn btn-secondary" %>
-      </div>
-    </div>
-  </div>
-</div>

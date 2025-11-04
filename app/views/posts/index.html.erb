@@ -1,13 +1,21 @@
 <div class="container mt-5">
   <h2 class="text-center mb-4">投稿一覧</h2>
-
+  <pre><%= @posts.inspect %></pre>    
   <div class="row">
     <% @posts.each do |post| %>
-      <div class="col-md-4 mb-4"> <!-- 👈 1行3列（12 ÷ 4 = 3） -->
+      <div class="col-md-4 mb-4">
         <div class="card shadow-sm p-3 h-100">
           <h4><%= post.sauna.name %></h4>
-          <p class="text-muted mb-1">投稿者：<%= post.user.name %></p>
-          <p><%= post.post %></p>
+
+          <!-- 投稿者情報 -->
+          <p class="text-muted mb-1">
+            投稿者：<%= post.user.name %>
+            <% if post.user == current_user %>
+              （あなた / <%= current_user.email %>）
+            <% end %>
+          </p>
+
+          <p><%= post[:post] %></p>   
 
           <ul class="list-unstyled">
             <li>混雑度：<%= I18n.t("enums.post.congestion_level.#{post.congestion_level}") %></li>
@@ -29,7 +37,6 @@
     <% end %>
   </div>
 
-  <!-- ページネーション -->
   <div class="d-flex justify-content-center mt-4">
     <%= paginate @posts %>
   </div>

@@ -1,0 +1,21 @@
+<div class="container mt-5">
+  <div class="card shadow-lg border-0">
+    <div class="card-header text-center bg-primary text-white">
+      <h2 class="mb-0">あなたの投稿一覧</h2>
+    </div>
+
+    <div class="card-body p-4">
+      <% if @posts.any? %>
+        <% @posts.each do |post| %>
+          <div class="mb-4 p-3 border rounded">
+            <p><strong>サウナ：</strong> <%= post.sauna.name %></p>
+            <p><strong>内容：</strong> <%= truncate(post.post, length: 100) %></p>
+            <p><%= link_to "詳細を見る", sauna_post_path(post.sauna, post), class: "btn btn-sm btn-outline-primary" %></p>
+          </div>
+        <% end %>
+      <% else %>
+        <p class="text-center text-muted">まだ投稿がありません。</p>
+      <% end %>
+    </div>
+  </div>
+</div>

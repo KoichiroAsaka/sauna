@@ -7,10 +7,11 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   end
 
-  # ✅ 下書き一覧（ネスト外）
+  # ✅ 下書き一覧、自分の投稿一覧（ネスト外）
   resources :posts, only: [] do
     collection do
       get :drafts
+      get :my_posts
     end
   end
 
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
       get 'profile'
       get 'profile/edit', to: 'users#edit_profile', as: 'edit_profile'
       patch 'profile', to: 'users#update_profile'
+      delete 'profile', to: 'users#destroy_profile'
     end
-  end
+  end  
 end
