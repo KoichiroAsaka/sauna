@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # ✅ 自分のお気に入り一覧（ネスト外）
+  resources :favorites, only: [:index, :create, :destroy]
+
   # ✅ マイページ／プロフィール
   resources :users, only: [:show] do
     member do
@@ -23,5 +26,5 @@ Rails.application.routes.draw do
       patch 'profile', to: 'users#update_profile'
       delete 'profile', to: 'users#destroy_profile'
     end
-  end  
+  end
 end

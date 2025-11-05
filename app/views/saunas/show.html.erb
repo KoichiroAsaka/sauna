@@ -3,6 +3,21 @@
   <h2><%= @sauna.name %></h2>
   <p>住所：<%= @sauna.address %></p>
 
+  <!-- ⭐ お気に入り登録／解除ボタン -->
+  <div class="mb-3">
+    <% if current_user.favorites.exists?(sauna_id: @sauna.id) %>
+      <%= button_to "★ お気に入り解除",
+                    favorite_path(sauna_id: @sauna.id),
+                    method: :delete,
+                    class: "btn btn-warning" %>
+    <% else %>
+      <%= button_to "☆ お気に入り登録",
+                    favorites_path(sauna_id: @sauna.id),
+                    method: :post,
+                    class: "btn btn-outline-warning" %>
+    <% end %>
+  </div>
+
   <!-- 新規投稿リンク -->
   <p>
     <%= link_to "このサウナに投稿する", new_sauna_post_path(@sauna), class: "btn btn-primary" %>
@@ -56,7 +71,6 @@
     <div class="d-flex justify-content-center mt-4 mb-5">
       <%= paginate @posts %>
     </div>
-
   <% else %>
     <p>まだ投稿はありません。</p>
   <% end %>

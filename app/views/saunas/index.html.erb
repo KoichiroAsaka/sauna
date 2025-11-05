@@ -1,18 +1,47 @@
-<h1>サウナ一覧</h1>
+<div class="sauna-list-section text-white py-5">
+  <div class="container bg-dark bg-opacity-50 rounded-4 p-4 shadow-lg">
+    <h1 class="text-center mb-4 fw-bold">サウナ一覧</h1>
 
-<!-- 都道府県で絞り込み検索（任意） -->
-<%= form_with url: saunas_path, method: :get, local: true do %>
-  <%= select_tag :prefecture, options_for_select(Sauna.distinct.pluck(:prefecture), params[:prefecture]), include_blank: "都道府県を選択" %>
-  <%= submit_tag "絞り込み" %>
-<% end %>
+    <!-- 🔍 検索フォーム -->
+    <%= form_with url: saunas_path, method: :get, local: true do %>
+      <div class="row g-3 align-items-end justify-content-center">
+        <!-- 都道府県 -->
+        <div class="col-md-3">
+          <%= label_tag :prefecture, "都道府県" %>
+          <%= select_tag :prefecture,
+                options_for_select(
+                  Sauna.prefectures.map { |key, _| [Sauna.new(prefecture: key).prefecture_name, key] },
+                  params[:prefecture]
+                ),
+                include_blank: "すべて",
+                class: "form-select" %>
+        </div>
 
-<hr>
+        <!-- サウナ名 -->
+        <div class="col-md-5">
+          <%= label_tag :keyword, "サウナ名で検索" %>
+          <%= text_field_tag :keyword, params[:keyword], placeholder: "例：スカイスパ横浜", class: "form-control" %>
+        </div>
 
-<ul>
-  <% @saunas.each do |sauna| %>
-    <li>
-      <%= link_to sauna.name, sauna_path(sauna) %>
-      （<%= sauna.prefecture %>）
-    </li>
-  <% end %>
-</ul>
+        <div class="col-md-2">
+          <%= submit_tag "検索", class: "btn btn-primary w-100" %>
+        </div>
+      </div>
+    <% end %>
+
+    <hr class="border-light">
+
+    <% if @saunas.any? %>
+      <ul class="list-group list-group-flush bg-transparent">
+        <% @saunas.each do |sauna| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center bg-light rounded mb-2 shadow-sm">
+            <%= link_to sauna.name, sauna_path(sauna), class: "text-decoration-none fw-bold" %>
+            <span class="badge bg-secondary"><%= sauna.prefecture_name %></span>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="mt-3 text-center text-light">該当するサウナは見つかりませんでした。</p>
+    <% end %>
+  </div>
+</div>
