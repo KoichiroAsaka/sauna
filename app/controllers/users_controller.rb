@@ -2,9 +2,10 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user
 
-  # マイページ（自分のみ閲覧可）
+  # /users/:id → 自分のマイページ（非公開）
+  # /users/:id/profile → 他人も閲覧OK
   def show
-    redirect_to root_path, alert: "アクセスできません" unless @user == current_user
+   redirect_to profile_user_path(@user) unless @user == current_user
   end
 
   # プロフィールページ（他人も閲覧可）
@@ -33,6 +34,18 @@ class UsersController < ApplicationController
 
     @user.update(profile: nil, profile_image: nil)
     redirect_to root_path, notice: "プロフィールを削除しました。"
+  end
+
+  # フォロー一覧
+  def followings
+    user = User.find(params[:id])
+    @users = user.followings
+  end
+
+  # フォロワー一覧
+  def followers
+    user = User.find(params[:id])
+    @users = user.followers
   end
 
   private

@@ -1,3 +1,4 @@
+/* === 全体設定 === */
 html, body {
   height: 100%;
   margin: 0;
@@ -11,9 +12,11 @@ body {
   background-attachment: fixed;
   color: white;
   font-family: "Helvetica", "Arial", sans-serif;
+  min-height: 100vh;
+  padding-bottom: 150px; /* ✅ フッターとの余白確保（固定でOK） */
 }
 
-/* ヘッダー */
+/* === ヘッダー === */
 .header {
   position: absolute;
   top: 5px;
@@ -26,24 +29,19 @@ body {
   box-sizing: border-box;
 }
 
-/* 🔹 ロゴの透過＆馴染み効果 */
+/* === ロゴ === */
 .logo {
   width: 100px;
-  opacity: 0.85; /* ← ロゴ全体を少し透過（0〜1で調整可能） */
-  mix-blend-mode: lighten; /* ← 背景と自然に馴染ませる効果 */
+  opacity: 0.85;
+  mix-blend-mode: lighten;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
-
-/* ホバー時に少し明るく＆拡大 */
 .logo:hover {
   opacity: 1;
   transform: scale(1.05);
 }
 
-/* デバイスのカスタマイズ */
-@import "devise_custom";
-
-/* ボタン配置とデザイン */
+/* === ナビボタン === */
 .nav-buttons {
   display: flex;
   gap: 15px;
@@ -59,7 +57,6 @@ body {
   transition: all 0.3s ease;
   background-color: transparent;
 }
-
 .nav-buttons a:hover {
   background-color: white;
   color: black;
@@ -68,22 +65,21 @@ body {
 /* === フローティングメニュー === */
 .floating-nav {
   position: fixed;
-  bottom: 30px;              /* 画面下からの距離 */
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   justify-content: center;
-  gap: 20px;                 /* アイコン間の距離 */
-  z-index: 1000;             /* 常に最前面に表示 */
+  gap: 20px;
+  z-index: 1000;
 }
 
-/* 各アイコンボタン */
 .floating-btn {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;        
-  background-color: rgba(200, 200, 200, 0.7); /* 🔹 薄い半透明グレー背景 */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: rgba(240, 240, 240, 0.7);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -91,17 +87,82 @@ body {
   transition: all 0.3s ease;
 }
 
-/* アイコン自体のスタイル */
 .floating-btn i {
-  font-size: 40px;
-  color: #000; /* ブラックアイコン */
+  font-size: 36px;
+  color: #000;
 }
 
-/* ホバー時の軽いエフェクト */
 .floating-btn:hover {
   transform: scale(1.1);
-  background-color: rgba(230, 230, 230, 0.9); /* 🔹 ホバー時はやや明るいグレー */
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
-/* 投稿画面のカスタマイズ */
+/* === スマホ対応 === */
+@media (max-width: 768px) {
+  .floating-btn {
+    width: 65px;
+    height: 65px;
+  }
+  .floating-btn i {
+    font-size: 28px;
+  }
+  .header {
+    padding: 0 15px;
+  }
+  .logo {
+    width: 80px;
+  }
+}
+
+/* === サウナ詳細ページ専用 === */
+.sauna-show {
+  color: #333;
+}
+
+.sauna-info-card {
+  background-color: rgba(255, 255, 255, 0.92);
+  border-radius: 15px;
+  padding: 25px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.post-card {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.sauna-show h3 {
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* === カード共通デザイン === */
+.card {
+  margin: 20px auto;
+  max-width: 600px;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding: 25px;
+}
+
+/* === 静的ページ専用：中央寄せ＋余白広め === */
+.page-centered {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* ✅ 中央よりやや上に */
+  padding-top: 80px;
+  padding-bottom: 150px;
+}
+
+/* === 投稿ページなど個別調整 === */
 @import "posts";
+@import "devise_custom";

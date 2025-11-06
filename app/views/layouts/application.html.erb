@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SaunaApp</title>
+    <title>sauna</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -18,28 +18,28 @@
 
   <body>
     <% if user_signed_in? %>
+      <!-- ✅ 上部ナビバー -->
       <nav class="navbar navbar-dark bg-dark px-3">
         <div class="container-fluid d-flex align-items-center justify-content-between">
 
-        <!-- ✅ 左上：プロフィールアイコン -->
-        <div class="d-flex align-items-center">
-          <% if current_user.profile_image.attached? %>
-            <%= link_to user_path(current_user), class: "text-decoration-none" do %>
-              <%= image_tag url_for(current_user.profile_image),
-                            class: "rounded-circle",
-                            style: "width:40px; height:40px; object-fit:cover;" %>
+          <!-- ✅ 左上：プロフィールアイコン -->
+          <div class="d-flex align-items-center">
+            <% if current_user.profile_image.attached? %>
+              <%= link_to profile_user_path(current_user), class: "text-decoration-none" do %>
+                <%= image_tag url_for(current_user.profile_image),
+                              class: "rounded-circle",
+                              style: "width:40px; height:40px; object-fit:cover;" %>
+              <% end %>
+            <% else %>
+              <%= link_to user_path(current_user), class: "text-decoration-none" do %>
+                <div class="rounded-circle bg-secondary text-white d-flex justify-content-center align-items-center"
+                     style="width:40px; height:40px; font-size:12px;">
+                  P
+                </div>
+              <% end %>
             <% end %>
-          <% else %>
-            <%= link_to user_path(current_user), class: "text-decoration-none" do %>
-              <div class="rounded-circle bg-secondary text-white d-flex justify-content-center align-items-center"
-                   style="width:40px; height:40px; font-size:12px;">
-                P
-              </div>
-            <% end %>
-          <% end %>
-        </div>
-        
-
+          </div>
+          
           <!-- ✅ 右側 -->
           <div class="d-flex align-items-center">
             <!-- ログアウトボタン -->
@@ -65,41 +65,62 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <span class="nav-link text-white">フォロー中</span>
+              <%= link_to "フォロー中", followings_user_path(current_user), class: "nav-link text-white" %>
             </li>
             <li class="nav-item">
-              <span class="nav-link text-white">フォロワー</span>
+              <%= link_to "フォロワー", followers_user_path(current_user), class: "nav-link text-white" %>
             </li>
             <li class="nav-item">
               <%= link_to "プロフィール", profile_user_path(current_user), class: "nav-link text-white" %>
             </li>
             <li class="nav-item">
-  　　　　　　 <%= link_to "投稿一覧", my_posts_posts_path, class: "nav-link text-white" %>
+              <%= link_to "投稿一覧", my_posts_posts_path, class: "nav-link text-white" %>
             </li>
             <li class="nav-item">
-  　　　　　　 <%= link_to "お気に入り一覧", favorites_path, class: "nav-link text-white" %>
+              <%= link_to "お気に入り一覧", favorites_path, class: "nav-link text-white" %>
             </li>
             <li class="nav-item">
               <%= link_to "下書き一覧", drafts_posts_path, class: "nav-link text-white" %>
             </li>
-            </li>
             <li class="nav-item">
-              <span class="nav-link text-white">How to Sauna</span>
+              <%= link_to "How to Sauna", how_to_sauna_path, class: "nav-link text-white" %>
             </li>
             <li class="nav-item">
               <span class="nav-link text-white">モラル</span>
             </li>
             <li class="nav-item">
-             <%= link_to "マイページ", user_path(current_user), class: "nav-link text-white" %>
+              <%= link_to "マイページ", user_path(current_user), class: "nav-link text-white" %>
             </li>
           </ul>
         </div>
       </div>
     <% end %>
 
+    <!-- ✅ メインコンテンツ -->
     <div class="container mt-4">
       <%= yield %>
     </div>
+
+    <!-- ✅ フローティングボタン（全ページ共通） -->
+    <% if user_signed_in? %>
+      <div class="floating-nav">
+        <%= link_to user_path(current_user), class: "floating-btn" do %>
+          <i class="bi bi-house-door-fill"></i> <!-- ホーム -->
+        <% end %>
+
+        <%= link_to favorites_path, class: "floating-btn" do %>
+          <i class="bi bi-heart-fill"></i> <!-- お気に入り -->
+        <% end %>
+
+        <%= link_to saunas_path, class: "floating-btn" do %>
+          <i class="bi bi-search"></i> <!-- サウナ検索 -->
+        <% end %>
+
+        <%= link_to (Sauna.exists? ? new_sauna_post_path(Sauna.first) : "#"), class: "floating-btn" do %>
+          <i class="bi bi-plus-circle-fill"></i> <!-- 投稿 -->
+        <% end %>
+      </div>
+    <% end %>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>

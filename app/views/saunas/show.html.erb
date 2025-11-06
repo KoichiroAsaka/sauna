@@ -1,45 +1,43 @@
-<div class="container mt-5">
-  <!-- サウナ情報 -->
-  <h2><%= @sauna.name %></h2>
-  <p>住所：<%= @sauna.address %></p>
+<div class="container mt-5 sauna-show">
+  <!-- 🔹 サウナ情報カード -->
+  <div class="card sauna-info-card shadow-lg mb-5 text-center">
+    <div class="card-body">
+      <h2 class="fw-bold mb-3 sauna-title"><%= @sauna.name %></h2>
+      <p class="mb-3 sauna-address"><i class="bi bi-geo-alt"></i> <%= @sauna.address %></p>
 
-  <!-- ⭐ お気に入り登録／解除ボタン -->
-  <div class="mb-3">
-    <% if current_user.favorites.exists?(sauna_id: @sauna.id) %>
-      <%= button_to "★ お気に入り解除",
-                    favorite_path(sauna_id: @sauna.id),
-                    method: :delete,
-                    class: "btn btn-warning" %>
-    <% else %>
-      <%= button_to "☆ お気に入り登録",
-                    favorites_path(sauna_id: @sauna.id),
-                    method: :post,
-                    class: "btn btn-outline-warning" %>
-    <% end %>
+      <!-- お気に入り登録／解除ボタン -->
+      <div class="mb-3">
+        <% if current_user.favorites.exists?(sauna_id: @sauna.id) %>
+          <%= button_to "★ お気に入り解除",
+                        favorite_path(sauna_id: @sauna.id),
+                        method: :delete,
+                        class: "btn btn-warning w-50" %>
+        <% else %>
+          <%= button_to "☆ お気に入り登録",
+                        favorites_path(sauna_id: @sauna.id),
+                        method: :post,
+                        class: "btn btn-outline-warning w-50" %>
+        <% end %>
+      </div>
+
+      <%= link_to "このサウナに投稿する", new_sauna_post_path(@sauna), class: "btn btn-primary w-50" %>
+    </div>
   </div>
 
-  <!-- 新規投稿リンク -->
-  <p>
-    <%= link_to "このサウナに投稿する", new_sauna_post_path(@sauna), class: "btn btn-primary" %>
-  </p>
-
-  <hr>
-
-  <!-- 投稿一覧 -->
-  <h3 class="mt-4">このサウナの投稿一覧</h3>
+  <!-- 🔹 投稿一覧 -->
+  <h3 class="text-center mb-4 text-light">このサウナの投稿一覧</h3>
 
   <% if @posts.any? %>
     <div class="row">
       <% @posts.each do |post| %>
         <div class="col-md-4 mb-4">
-          <div class="card shadow-sm h-100">
+          <div class="card post-card shadow-sm h-100">
             <% if post.image.attached? %>
               <%= link_to image_tag(post.image, class: "card-img-top", style: "height: 180px; object-fit: cover;"), sauna_post_path(post.sauna, post) %>
             <% end %>
 
-            <div class="card-body">
-              <!-- 投稿者 -->
-              <p class="text-muted mb-1">
+            <div class="card-body d-flex flex-column">
+              <p class="text-muted small mb-2">
                 投稿者：
                 <% if defined?(user_path) %>
                   <%= link_to(post.user.name.presence || post.user.email, user_path(post.user)) %>
@@ -49,29 +47,25 @@
                 <% if post.user == current_user %>（あなた）<% end %>
               </p>
 
-              <!-- 投稿内容 -->
-              <p><%= truncate(post.post.presence || "（本文なし）", length: 60) %></p>
+              <p class="flex-grow-1"><%= truncate(post.post.presence || "（本文なし）", length: 60) %></p>
 
-              <!-- 混雑情報など -->
-              <ul class="list-unstyled small mb-2">
+              <ul class="list-unstyled small text-secondary mb-3">
                 <li>混雑度：<%= I18n.t("enums.post.congestion_level.#{post.congestion_level}") if post.congestion_level.present? %></li>
                 <li>曜日：<%= I18n.t("enums.post.day_of_week.#{post.day_of_week}") if post.day_of_week.present? %></li>
                 <li>時間帯：<%= I18n.t("enums.post.time_zone.#{post.time_zone}") if post.time_zone.present? %></li>
               </ul>
 
-              <!-- 詳細ボタン -->
-              <%= link_to "詳細を見る", sauna_post_path(post.sauna, post), class: "btn btn-outline-primary btn-sm w-100" %>
+              <%= link_to "詳細を見る", sauna_post_path(post.sauna, post), class: "btn btn-outline-primary btn-sm mt-auto w-100" %>
             </div>
           </div>
         </div>
       <% end %>
     </div>
 
-    <!-- ページネーション -->
     <div class="d-flex justify-content-center mt-4 mb-5">
       <%= paginate @posts %>
     </div>
   <% else %>
-    <p>まだ投稿はありません。</p>
+    <p class="text-center text-light mt-5">まだ投稿はありません。</p>
   <% end %>
 </div>

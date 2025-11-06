@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'pages/how_to_sauna'
   devise_for :users
   root "homes#top"
 
@@ -15,16 +16,25 @@ Rails.application.routes.draw do
     end
   end
 
-  # ✅ 自分のお気に入り一覧（ネスト外）
+  # お気に入り一覧（ネスト外）
   resources :favorites, only: [:index, :create, :destroy]
 
-  # ✅ マイページ／プロフィール
+  # フォロー／フォロワー関係
+  resources :relationships, only: [:create, :destroy]
+
+  # マイページ／プロフィール
   resources :users, only: [:show] do
     member do
       get 'profile'
       get 'profile/edit', to: 'users#edit_profile', as: 'edit_profile'
       patch 'profile', to: 'users#update_profile'
       delete 'profile', to: 'users#destroy_profile'
+      get 'followers'
+      get 'followings'
     end
   end
+
+  #静的ページ（How to sauna）
+  get 'how_to_sauna', to: 'pages#how_to_sauna'
+
 end
