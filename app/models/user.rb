@@ -32,6 +32,8 @@ def following?(user)
   followings.include?(user)
 end
 
+  has_many :evaluations, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_one_attached :profile_image
   validates :name, presence: true
 end

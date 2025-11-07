@@ -24,3 +24,8 @@ ja:
         evening1: "17時〜19時"
         evening2: "19時〜21時"
         night: "21時〜23時"
+
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M"
+      short: "%m/%d %H:%M"

@@ -22,11 +22,14 @@
     <h4 class="mt-3 mb-2">名前</h4>
     <p class="fw-semibold"><%= @user.name.presence || "名前未設定" %></p>
 
-    <!-- ✅ 自己紹介 -->
+    <!-- 自己紹介 -->
     <h4 class="mt-3 mb-2">自己紹介</h4>
     <p><%= @user.profile.presence || "自己紹介がまだありません。" %></p>
 
-    <!-- ✅ フォロー／フォロー解除ボタン（他ユーザーの場合のみ） -->
+    <!-- 投稿一覧 -->
+    <%= link_to "#{@user.name} さんの投稿一覧", posts_user_path(@user), class: "btn btn-outline-primary mt-3" %>
+
+    <!-- フォロー／フォロー解除ボタン（他ユーザーの場合のみ） -->
     <% if current_user != @user %>
       <% if current_user.following?(@user) %>
         <%= button_to "フォロー解除",

@@ -48,6 +48,11 @@ class UsersController < ApplicationController
     @users = user.followers
   end
 
+  def posts
+    @user = User.find(params[:id])
+    @posts = @user.posts.includes(:sauna).order(created_at: :desc)
+  end
+  
   private
 
   def set_user

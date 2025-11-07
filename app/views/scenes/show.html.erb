@@ -1,0 +1,41 @@
+<div class="container mt-5">
+  <div class="card shadow-lg p-4 border-0" style="background: rgba(255, 255, 255, 0.9); border-radius: 1rem;">
+    <h3 class="text-center mb-4 text-primary">🧘 みんなの意見</h3>
+
+    <!-- シーン内容 -->
+    <p class="fs-5 fw-bold text-dark"><%= simple_format(@scene.description) %></p>
+
+    <hr>
+
+    <!-- 評価集計 -->
+    <div class="mb-3">
+      <h5 class="text-secondary">🗳️ 評価集計</h5>
+      <p class="fs-6">
+        <span class="text-success">Good 👍：<%= @good_count %>件</span>　
+        <span class="text-danger">Bad 👎：<%= @bad_count %>件</span>
+      </p>
+    </div>
+
+    <hr>
+
+    <!-- コメント一覧 -->
+    <div class="mt-4">
+      <h5 class="text-secondary mb-3">💬 コメント一覧</h5>
+
+      <% if @comments.any? %>
+        <% @comments.each do |comment| %>
+          <div class="border rounded p-3 mb-2" style="background: rgba(245, 245, 245, 0.8);">
+            <p class="mb-1"><strong><%= comment.user.name %></strong></p>
+            <p class="mb-0 text-dark"><%= simple_format(comment.content) %></p>
+          </div>
+        <% end %>
+      <% else %>
+        <p class="text-muted">まだコメントはありません。</p>
+      <% end %>
+    </div>
+
+    <div class="text-end mt-4">
+      <%= link_to "戻る", scenes_path, class: "btn btn-outline-secondary" %>
+    </div>
+  </div>
+</div>

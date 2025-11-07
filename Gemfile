@@ -33,9 +33,7 @@ gem 'devise'
 #ページネーション
 gem 'kaminari'
 
-#プロフィール画像サイズ変更
-# gem 'mini_magick'
-# gem 'image_processing', '~> 1.2'
+
 
 
 

@@ -4,6 +4,7 @@ html, body {
   margin: 0;
 }
 
+/* === デフォルト背景（トップ＆その他ページ） === */
 body {
   background-image: image-url("background.jpg");
   background-size: cover;
@@ -13,8 +14,25 @@ body {
   color: white;
   font-family: "Helvetica", "Arial", sans-serif;
   min-height: 100vh;
-  padding-bottom: 150px; /* ✅ フッターとの余白確保（固定でOK） */
+  padding-bottom: 150px;
+  transition: background-image 0.6s ease-in-out;
 }
+
+/* ✅ お気に入りページ */
+body.favorites-index {
+  background-image: image-url("favorites_bg.jpg");
+}
+
+/* ✅ 検索ページ */
+body.saunas-index {
+  background-image: image-url("search_bg.jpg");
+}
+
+/* 投稿ページ */
+body.posts-new {
+  background-image: image-url("posts_bg.jpg");
+}
+
 
 /* === ヘッダー === */
 .header {

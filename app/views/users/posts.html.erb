@@ -1,0 +1,19 @@
+<div class="container mt-4">
+  <h2><%= @user.name %> さんの投稿一覧</h2>
+
+  <% if @posts.any? %>
+    <% @posts.each do |post| %>
+      <div class="card mt-3 shadow-sm">
+        <div class="card-body">
+          <p class="card-text"><%= simple_format(post.post) %></p>
+          <p class="text-muted small">
+            サウナ名：<%= link_to post.sauna.name, sauna_path(post.sauna) %><br>
+            投稿日：<%= l(post.created_at, format: :short) %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>まだ投稿がありません。</p>
+  <% end %>
+</div>

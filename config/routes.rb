@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'comments/create'
+  get 'evaluations/create'
+  get 'scenes/index'
+  get 'scenes/show'
   get 'pages/how_to_sauna'
   devise_for :users
   root "homes#top"
@@ -31,8 +35,16 @@ Rails.application.routes.draw do
       delete 'profile', to: 'users#destroy_profile'
       get 'followers'
       get 'followings'
+      get 'posts',to: 'users#posts'
     end
   end
+
+  #モラル画面
+  resources :scenes, only: [:index, :show] do
+    resources :evaluations, only: [:create]
+    resources :comments, only: [:create]
+  end
+  
 
   #静的ページ（How to sauna）
   get 'how_to_sauna', to: 'pages#how_to_sauna'
