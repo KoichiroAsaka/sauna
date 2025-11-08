@@ -1,21 +1,23 @@
 <div class="container mt-5">
   <h2 class="text-center mb-4">投稿一覧</h2>
-  <pre><%= @posts.inspect %></pre>    
+
   <div class="row">
     <% @posts.each do |post| %>
       <div class="col-md-4 mb-4">
         <div class="card shadow-sm p-3 h-100">
-          <h4><%= post.sauna.name %></h4>
+          <h4>
+            <%= link_to post.sauna.name, sauna_path(post.sauna), class: "text-decoration-none text-primary fw-bold" %>
+          </h4>
 
-          <!-- 投稿者情報 -->
           <p class="text-muted mb-1">
-            投稿者：<%= post.user.name %>
+            投稿者：
+            <%= link_to post.user.name, user_path(post.user), class: "text-decoration-none text-dark fw-semibold" %>
             <% if post.user == current_user %>
-              （あなた / <%= current_user.email %>）
+              （あなた）
             <% end %>
           </p>
 
-          <p><%= post[:post] %></p>   
+          <p><%= post[:post] %></p>
 
           <ul class="list-unstyled">
             <li>混雑度：<%= I18n.t("enums.post.congestion_level.#{post.congestion_level}") %></li>
@@ -30,7 +32,7 @@
           <% end %>
 
           <div class="text-end mt-2">
-            <%= link_to "詳細", sauna_post_path(post.sauna, post) %>
+            <%= link_to "詳細", sauna_post_path(post.sauna, post), class: "btn btn-outline-primary btn-sm" %>
           </div>
         </div>
       </div>

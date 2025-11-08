@@ -1,7 +1,8 @@
 /* === 全体設定 === */
 html, body {
-  height: 100%;
+  min-height: 100%;
   margin: 0;
+  padding: 0;
 }
 
 /* === デフォルト背景（トップ＆その他ページ） === */
@@ -14,25 +15,15 @@ body {
   color: white;
   font-family: "Helvetica", "Arial", sans-serif;
   min-height: 100vh;
-  padding-bottom: 150px;
+  padding-bottom: 200px; /* ✅ フローティングボタン分＋余裕を確保 */
   transition: background-image 0.6s ease-in-out;
+  box-sizing: border-box; /* ✅ 内側余白を含める指定 */
 }
 
-/* ✅ お気に入りページ */
-body.favorites-index {
-  background-image: image-url("favorites_bg.jpg");
-}
-
-/* ✅ 検索ページ */
-body.saunas-index {
-  background-image: image-url("search_bg.jpg");
-}
-
-/* 投稿ページ */
-body.posts-new {
-  background-image: image-url("posts_bg.jpg");
-}
-
+/* ✅ 各ページ専用背景 */
+body.favorites-index { background-image: image-url("favorites_bg.jpg"); }
+body.saunas-index { background-image: image-url("search_bg.jpg"); }
+body.posts-new { background-image: image-url("posts_bg.jpg"); }
 
 /* === ヘッダー === */
 .header {
@@ -43,7 +34,7 @@ body.posts-new {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 30px;
+  padding: 20px 50px;
   box-sizing: border-box;
 }
 
@@ -64,7 +55,6 @@ body.posts-new {
   display: flex;
   gap: 15px;
 }
-
 .nav-buttons a {
   color: white;
   border: 2px solid white;
@@ -80,40 +70,45 @@ body.posts-new {
   color: black;
 }
 
-/* === フローティングメニュー === */
+/* === フローティングボタン === */
 .floating-nav {
   position: fixed;
-  bottom: 30px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  justify-content: center;
+  flex-direction: row;
   gap: 20px;
   z-index: 1000;
+
+  /* ✅ 背景を半透明グレーにして丸み＋ぼかし効果 */
+  background-color: rgba(60, 60, 60, 0.4); /* グレー系＋透過 */
+  padding: 15px 25px;
+  border-radius: 40px;
+  backdrop-filter: blur(8px); /* 背景ぼかし（対応ブラウザで有効） */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .floating-btn {
-  width: 80px;
-  height: 80px;
+  background-color: rgba(255, 255, 255, 0.15); /* 少し透過した白で浮かせ感 */
+  color: white;
   border-radius: 50%;
-  background-color: rgba(240, 240, 240, 0.7);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  width: 55px;
+  height: 55px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  font-size: 24px;
   text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.floating-btn i {
-  font-size: 36px;
-  color: #000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
 .floating-btn:hover {
   transform: scale(1.1);
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.25); /* hover時に明るく */
 }
+
 
 /* === スマホ対応 === */
 @media (max-width: 768px) {
@@ -150,7 +145,6 @@ body.posts-new {
   border-radius: 12px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
 .post-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
@@ -170,15 +164,16 @@ body.posts-new {
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   padding: 25px;
+  margin-bottom: 120px; /* ✅ 下余白を確保 */
 }
 
 /* === 静的ページ専用：中央寄せ＋余白広め === */
 .page-centered {
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* ✅ 中央よりやや上に */
+  align-items: flex-start;
   padding-top: 80px;
-  padding-bottom: 150px;
+  padding-bottom: 180px; /* ✅ 被らないよう追加 */
 }
 
 /* === 投稿ページなど個別調整 === */
