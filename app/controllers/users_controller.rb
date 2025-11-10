@@ -1,25 +1,40 @@
 class UsersController < ApplicationController
+  # --------------------------------------------
+  # ✅ フィルタ設定
+  # ログイン必須 & ユーザー情報の取得
+  # --------------------------------------------
   before_action :authenticate_user!
   before_action :set_user
 
-  # /users/:id → 自分のマイページ（非公開）
-  # /users/:id/profile → 他人も閲覧OK
+  # --------------------------------------------
+  # 🏠 マイページ（本人のみ閲覧可）
+  # /users/:id → 自分以外がアクセスしたらプロフィールへリダイレクト
+  # --------------------------------------------
   def show
-   redirect_to profile_user_path(@user) unless @user == current_user
+    redirect_to profile_user_path(@user) unless @user == current_user
   end
 
-  # プロフィールページ（他人も閲覧可）
+  # --------------------------------------------
+  # 🌐 プロフィールページ（他人も閲覧可）
+  # /users/:id/profile
+  # --------------------------------------------
   def profile
   end
 
-  # プロフィール編集ページ（自分のみ）
+  # --------------------------------------------
+  # ✏️ プロフィール編集ページ（本人のみ）
+  # --------------------------------------------
   def edit_profile
     redirect_to root_path, alert: "アクセスできません" unless @user == current_user
   end
 
-  # プロフィール更新処理
+  # --------------------------------------------
+  # 💾 プロフィール更新処理
+  # --------------------------------------------
   def update_profile
-    redirect_to root_path, alert: "アクセスできません" and return unless @user == current_user
+    unless @user == current_user
+      redirect_to root_path, alert: "アクセスできません" and return
+    end
 
     if @user.update(user_params)
       redirect_to profile_user_path(@user), notice: "プロフィールを更新しました。"
@@ -28,37 +43,55 @@ class UsersController < ApplicationController
     end
   end
 
-  # ✅ プロフィール削除
+  # --------------------------------------------
+  # 🗑️ プロフィール削除（本人のみ）
+  # --------------------------------------------
   def destroy_profile
-    redirect_to root_path, alert: "アクセスできません" and return unless @user == current_user
+    unless @user == current_user
+      redirect_to root_path, alert: "アクセスできません" and return
+    end
 
     @user.update(profile: nil, profile_image: nil)
     redirect_to root_path, notice: "プロフィールを削除しました。"
   end
 
-  # フォロー一覧
+  # --------------------------------------------
+  # 🤝 フォロー一覧
+  # /users/:id/followings
+  # --------------------------------------------
   def followings
-    user = User.find(params[:id])
-    @users = user.followings
+    @users = @user.followings
   end
 
-  # フォロワー一覧
+  # --------------------------------------------
+  # 👀 フォロワー一覧
+  # /users/:id/followers
+  # --------------------------------------------
   def followers
-    user = User.find(params[:id])
-    @users = user.followers
+    @users = @user.followers
   end
 
+  # --------------------------------------------
+  # 📝 投稿一覧（そのユーザーの投稿）
+  # --------------------------------------------
   def posts
-    @user = User.find(params[:id])
-    @posts = @user.posts.includes(:sauna).order(created_at: :desc)
+    @posts = @user.posts
+                  .includes(:sauna)
+                  .order(created_at: :desc)
   end
-  
+
   private
 
+  # --------------------------------------------
+  # 🧩 共通処理: ユーザー取得
+  # --------------------------------------------
   def set_user
     @user = User.find(params[:id])
   end
 
+  # --------------------------------------------
+  # ✅ ストロングパラメータ
+  # --------------------------------------------
   def user_params
     params.require(:user).permit(:name, :profile, :profile_image)
   end

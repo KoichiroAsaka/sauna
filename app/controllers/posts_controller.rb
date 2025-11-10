@@ -110,10 +110,12 @@ class PostsController < ApplicationController
     end
   end
 
+  # アクセス制御：投稿者以外の編集禁止
   def authorize_user!
     redirect_to root_path, alert: "権限がありません。" unless @post.user == current_user
   end
 
+  # ストロングパラメータ
   def post_params
     params.require(:post).permit(:sauna_id, :post, :status, :congestion_level, :day_of_week, :time_zone, :image)
   end

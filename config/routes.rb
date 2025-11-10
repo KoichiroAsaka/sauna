@@ -1,18 +1,17 @@
 Rails.application.routes.draw do
-  get 'comments/create'
-  get 'evaluations/create'
-  get 'scenes/index'
-  get 'scenes/show'
-  get 'pages/how_to_sauna'
   devise_for :users
   root "homes#top"
 
-  # ✅ サウナごとの投稿
+  # 静的ページ
+  get 'how_to_sauna', to: 'pages#how_to_sauna'
+  get 'what_is_totonou', to: 'pages#what_is_totonou'
+
+  # サウナ（投稿をネスト）
   resources :saunas, only: [:index, :show] do
-    resources :posts, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+    resources :posts, except: [:destroy] 
   end
 
-  # ✅ 下書き一覧、自分の投稿一覧（ネスト外）
+  # 投稿（下書き・自分の投稿※ネスト外）
   resources :posts, only: [] do
     collection do
       get :drafts
@@ -20,33 +19,28 @@ Rails.application.routes.draw do
     end
   end
 
-  # お気に入り一覧（ネスト外）
+  # お気に入り
   resources :favorites, only: [:index, :create, :destroy]
 
-  # フォロー／フォロワー関係
+  # フォロー関係
   resources :relationships, only: [:create, :destroy]
 
-  # マイページ／プロフィール
+  # ユーザー関連
   resources :users, only: [:show] do
     member do
-      get 'profile'
+      get :profile
       get 'profile/edit', to: 'users#edit_profile', as: 'edit_profile'
-      patch 'profile', to: 'users#update_profile'
-      delete 'profile', to: 'users#destroy_profile'
-      get 'followers'
-      get 'followings'
-      get 'posts',to: 'users#posts'
+      patch :profile, to: 'users#update_profile'
+      delete :profile, to: 'users#destroy_profile'
+      get :followers
+      get :followings
+      get :posts, to: 'users#posts'
     end
   end
 
-  #モラル画面
+  # モラルページ（シーン）
   resources :scenes, only: [:index, :show] do
     resources :evaluations, only: [:create]
     resources :comments, only: [:create]
   end
-  
-
-  #静的ページ（How to sauna）
-  get 'how_to_sauna', to: 'pages#how_to_sauna'
-
 end

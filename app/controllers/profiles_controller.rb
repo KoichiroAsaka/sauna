@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
-  before_action :set_user
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
-  before_action :authorize_user!, only: [:edit, :update, :destroy]
+  before_action :set_user
+  before_action :authorize_user!, only: [:edit, :update, :destroy]  
 
   def show
   end
@@ -26,4 +26,9 @@ class ProfilesController < ApplicationController
   def authorize_user!
     redirect_to profile_path(@user), alert: "権限がありません" unless @user == current_user
   end
+
+  def user_params
+    params.require(:user).permit(:name, :profile, :profile_image)
+  end
+  
 end

@@ -1,10 +1,19 @@
-<div class="header">
-  <div class="logo-area">
-    <%= image_tag "app_logo.png", alt: "SaunaApp ロゴ", class: "logo" %>
+<div class="top-background">
+  <div class="header">
+    <!-- 🔹 左上ロゴ -->
+    <div class="logo-area">
+      <%= image_tag "app_logo.png", alt: "SaunaApp ロゴ", class: "logo" %>
+    </div>
+
+    <!-- 🔹 右上ナビボタン（ログイン・新規登録） -->
+    <div class="nav-buttons">
+      <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-light" %>
+      <%= link_to "新規登録", new_user_registration_path, class: "btn btn-light ms-2" %>
+    </div>
   </div>
 
-  <div class="nav-buttons">
-    <%= link_to "ログイン", new_user_session_path %>
-    <%= link_to "新規登録", new_user_registration_path %>
+  <!-- 🔹 中央下部「整うとは？」ボタン -->
+  <div class="relax-btn-container">
+    <%= link_to "整うとは？", what_is_totonou_path, class: "relax-btn" %>
   </div>
 </div>

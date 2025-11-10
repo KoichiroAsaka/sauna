@@ -1,7 +1,8 @@
 class Sauna < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :favorites,dependent: :destroy
-  has_many :favorite_saunas, through: :favorites, source: :sauna
+  has_many :favorited_users, through: :favorites, source: :user
+   # ↑ 「このサウナをお気に入り登録したユーザー」
 
   enum prefecture: {
     shizuoka: 0,

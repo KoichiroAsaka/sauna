@@ -1,20 +1,26 @@
 class ApplicationController < ActionController::Base
-  # Deviseログイン後の遷移先
+  # --------------------------------------------
+  # ✅ Devise関連: ログイン・登録後の遷移先設定
+  # --------------------------------------------
   def after_sign_in_path_for(resource)
     user_path(resource)
   end
 
-  # Devise新規登録後の遷移先
   def after_sign_up_path_for(resource)
     user_path(resource)
   end
 
-  # ✅ Deviseコントローラのときだけパラメータ許可設定を呼ぶ
+  # --------------------------------------------
+  # ✅ Deviseパラメータ許可設定
+  # deviseコントローラのみ呼び出される
+  # --------------------------------------------
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
 
-  # ✅ nameを許可（sign_up, account_update）
+  # --------------------------------------------
+  # ✅ サインアップ・アカウント更新時にnameを許可
+  # --------------------------------------------
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])

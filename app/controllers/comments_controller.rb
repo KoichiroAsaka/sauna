@@ -2,10 +2,10 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    # ✅ 投稿対象のシーンを特定
+    # 投稿対象のシーンを特定
     @scene = Scene.find(params[:scene_id])
 
-    # ✅ current_userとsceneを紐づけてコメント作成
+    # current_userとsceneを紐づけてコメント作成
     @comment = @scene.comments.build(comment_params)
     @comment.user = current_user
 
