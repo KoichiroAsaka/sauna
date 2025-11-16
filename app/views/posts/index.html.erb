@@ -1,10 +1,10 @@
-<div class="container mt-5">
-  <h2 class="text-center mb-4">投稿一覧</h2>
+<div class="container mt-5 posts-index">
+  <h2 class="posts-title text-center mb-4">投稿一覧</h2>
 
   <div class="row">
     <% @posts.each do |post| %>
       <div class="col-md-4 mb-4">
-        <div class="card shadow-sm p-3 h-100">
+        <div class="post-card shadow-sm p-3 h-100">
           <h4>
             <%= link_to post.sauna.name, sauna_path(post.sauna), class: "text-decoration-none text-primary fw-bold" %>
           </h4>
@@ -17,7 +17,7 @@
             <% end %>
           </p>
 
-          <p><%= post[:post] %></p>
+          <p><%= post.post %></p>
 
           <ul class="list-unstyled">
             <li>混雑度：<%= I18n.t("enums.post.congestion_level.#{post.congestion_level}") %></li>
@@ -26,7 +26,7 @@
           </ul>
 
           <% if post.image.attached? %>
-            <div class="mt-2">
+            <div class="mt-2 text-center">
               <%= image_tag post.image, class: "img-fluid rounded" %>
             </div>
           <% end %>

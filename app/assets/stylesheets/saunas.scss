@@ -1,0 +1,171 @@
+/* === サウナ詳細ページ（saunas#show）専用デザイン === */
+
+/* 上部のサウナ情報カード */
+body.saunas-show .sauna-info-card {
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.40) !important;
+  border-radius: 20px;
+  padding: 35px 40px;
+  margin: 60px auto 80px auto !important;
+  max-width: 900px;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.25);
+}
+
+/* お気に入り登録ボタン */
+body.saunas-show .btn-outline-warning {
+  background: rgba(255, 255, 255, 0.25) !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #f0c400 !important;
+  border: 1px solid #f0c400 !important;
+}
+
+
+/* 投稿カード（※投稿ページ専用に限定） */
+body.saunas-show .post-card {
+  background: rgba(255, 255, 255, 0.55) !important;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  margin-bottom: 30px;
+}
+
+/* タイトル、住所 */
+body.saunas-show .sauna-title {
+  font-size: 2.2rem;
+  color: #222;
+  font-weight: 700;
+}
+
+body.saunas-show .sauna-address {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 25px;
+}
+
+.sauna-show {
+  text-align: center;
+}
+
+/* 見出し（投稿一覧など） */
+body.saunas-show h3 {
+  margin-top: 45px;
+  margin-bottom: 25px;
+  color: #222 !important;
+  font-weight: bold;
+  text-shadow:
+    0 0 4px rgba(255, 255, 255, 0.7),
+    0 0 8px rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  padding-bottom: 6px;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.35);
+  padding: 8px 20px;
+  border-radius: 8px;
+}
+
+/* 投稿カード左揃え */
+body.saunas-show .post-card,
+body.saunas-show .post-card .card-body {
+  text-align: left !important;
+}
+
+/* 投稿テキストの色補正 */
+body.saunas-show .post-card p,
+body.saunas-show .post-card li {
+  color: #333;
+}
+
+/* muted の色補正 */
+body.saunas-show .post-card .text-muted {
+  color: #555 !important;
+}
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+  body.saunas-show .sauna-info-card {
+    padding: 25px;
+    margin-top: 40px !important;
+  }
+
+  body.saunas-show .post-card .card-img-top {
+    height: 150px !important;
+  }
+}
+
+
+/* === サウナ一覧ページ（saunas#index） 検索フォーム === */
+body.saunas-index .search-container {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  padding: 0;
+  margin-bottom: 30px;
+  border-radius: 0;
+}
+
+body.saunas-index .search-container .row {
+  display: flex;
+  align-items: stretch !important;
+}
+
+body.saunas-index .search-container .col-md-3,
+body.saunas-index .search-container .col-md-5,
+body.saunas-index .search-container .col-md-2 {
+  display: flex;
+  align-items: stretch;
+}
+
+body.saunas-index .search-container .form-control,
+body.saunas-index .search-container .form-select,
+body.saunas-index .search-container .btn {
+  height: 55px;
+  margin: 0;
+  border-radius: 8px;
+}
+
+body.saunas-index .search-container .col-md-2 {
+  justify-content: center;
+}
+
+body.saunas-index .search-container form .row {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* --- ガラス風カード（サウナ一覧） --- */
+body.saunas-index .glass-item {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 16px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  margin-bottom: 0px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+body.saunas-index .glass-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+}
+
+body.saunas-index .glass-item a {
+  text-decoration: none !important;
+  color: white;
+  font-weight: bold;
+}
+
+body.saunas-index .glass-badge {
+  background: rgba(255, 255, 255, 0.25) !important;
+  color: #fff !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 4px 12px;
+}

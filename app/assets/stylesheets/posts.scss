@@ -68,3 +68,132 @@
 }
 
 }
+
+/* ============================
+   🔵 投稿詳細ページ（posts#show）
+   ============================ */
+
+/* 全体の出し方を整える */
+.post-show-wrapper {
+  max-width: 900px;
+  margin: 100px auto; /* 中央寄せ＋上部余白 */
+  padding: 0 20px;
+}
+
+
+/* タイトル（サウナ名）をフローティング＆洗練 */
+.post-title {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 25px;
+
+  background: rgba(255,255,255,0.4);
+  backdrop-filter: blur(10px);
+  padding: 14px 30px;
+  border-radius: 14px;
+}
+
+/* 🔹 サウナ名ヘッダー（横幅いっぱい） */
+.post-show-header {
+  background: rgba(255, 255, 255, 0.6);   /* うっすら白背景 */
+  padding: 20px;
+  backdrop-filter: blur(4px);             /* 透明感 */
+  border-radius: 10px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.post-show-header h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #111;
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.8),
+    0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* カード本体 */
+.post-show-wrapper .post-card {
+  background: rgba(255,255,255, 0.95);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+/* 投稿者リンク */
+.post-author-link {
+  color: #0066cc;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.post-author-link:hover {
+  text-decoration: underline;
+}
+
+.post-card p,
+.post-card ul {
+  padding-left: 6px;
+}
+
+/* 🔹 enum情報 */
+.post-info-list li {
+  margin-bottom: 4px;
+  color: #333;
+}
+
+/* 🔹 画像中央配置＆サイズ */
+.post-image-wrapper {
+  text-align: center;
+}
+
+.post-image {
+  max-width: 80%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* 🔹 戻るボタンの配置 */
+.post-nav-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+/* 編集ボタン行 */
+.edit-buttons a {
+  margin-left: 8px;
+  text-align: right;
+  margin-top: 10px;
+}
+
+/* === 投稿一覧ページ === */
+/* ① カード高さを統一して揺れを軽減 */
+.posts-index .post-card {
+  min-height: 480px;   /* 好みに応じて調整（450〜500推奨） */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 350px; /* 調整 */
+  margin: auto;     /* 中央寄せ */
+
+  /* ② 背景をガラスカード風に */
+  background: rgba(255, 255, 255, 0.88);
+backdrop-filter: blur(4px);
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+border-radius: 12px;
+}
+
+/* ③ タイトル部分の視認性UP */
+.posts-title {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 12px 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  margin: 20px auto;
+}
+

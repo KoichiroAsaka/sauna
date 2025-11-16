@@ -24,6 +24,10 @@ body {
 body.favorites-index { background-image: image-url("favorites_bg.jpg"); }
 body.saunas-index { background-image: image-url("search_bg.jpg"); }
 body.posts-new { background-image: image-url("posts_bg.jpg"); }
+body.saunas-show {
+  background-image: none !important;  /* 既存の背景画像をオフ */
+  background-color: #9F9F9F !important; /* 好きなグレーに変更 */
+}
 
 /* === ヘッダー === */
 .header {
