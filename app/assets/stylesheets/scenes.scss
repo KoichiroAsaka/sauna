@@ -188,3 +188,74 @@ body.scenes-index {
   margin-left: auto;
   margin-right: auto;
 }
+
+
+/* ===============================
+   シーン詳細ページ：カード全体
+================================ */
+/* シーン詳細の外側（カードの親） */
+.scene-detail-container {
+  max-width: 600px;      /* ← 白背景の横幅を縮小（調整可） */
+  margin: 0 auto;
+  padding-bottom: 100px;
+  overflow: auto;
+}
+
+/* 白背景カードのデザイン */
+.scene-detail-container .card {
+  background: rgba(255, 255, 255, 0.7) !important; /* ← 透明度UPで馴染む */
+  backdrop-filter: blur(6px);                      /* ← ガラス風で背景となじむ */
+  border-radius: 20px;
+  padding: 30px;
+  margin-top: 40px;   /* ← 上の余白 */
+  margin-bottom: 120px
+}
+/* ===============================
+   シーン説明（中央寄せ）
+================================ */
+.scene-description {
+  text-align: center !important;
+  margin: 0 auto !important;
+}
+
+/* simple_format の p も中央寄せ */
+.scene-description p {
+  text-align: center !important;
+  margin: 0 auto !important;
+}
+
+/* ===============================
+   コメント一覧（横幅調整）
+================================ */
+/* コメントリストの幅を広げる */
+.comment-list {
+  max-width: 100%;        /* ← コメント領域を広く */
+  margin: 0 auto;
+}
+
+/* コメント1つ1つ */
+.comment-item {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(2px);
+  border-radius: 12px;
+  padding: 15px;
+  border: 1px solid rgba(0,0,0,0.08);
+  margin-bottom: 14px;
+  padding: 5px 12px;
+} 
+
+/* コメントリスト全体の幅を広げる */
+.comment-list {
+  width: 80%;
+  max-width: 800px;   /* 好きな値に変更可：800 / 900 / 1000 など */
+  margin: 0 auto;
+}
+
+
+/* シーン詳細ページに入ったら container の幅を縮める */
+body.scenes-show .container {
+  max-width: 650px !important;   /* ← 好きな幅に調整 */
+  margin: 0 auto !important;
+  padding: 0 15px !important;
+}
