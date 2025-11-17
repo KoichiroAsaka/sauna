@@ -1,0 +1,190 @@
+/* ===============================
+   シーン一覧ページ背景
+================================ */
+body.scenes-index {
+    background-color: #F7E8D9 !important;
+    background-image: none !important;
+    color: #333;
+  }
+  
+  /* ===============================
+     見出し（h3）
+  ================================ */
+  .scenes-container {
+    padding-top: 0 !important;
+  }
+  
+  .scenes-container h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 10px 0 45px;
+    color: #333;
+  }
+  
+  .scenes-container h3::after {
+    content: none !important;
+  }
+  
+  /* ===============================
+     シーンBOX
+  ================================ */
+  .scene-box {
+    background: #fff;
+    border-radius: 12px;
+    padding: 50px 25px 20px;
+    margin: 0 auto 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    position: relative;
+    width: 80%;
+    max-width: 700px;
+  }
+  
+  /* ===============================
+     シーンタイトル（上部ラベル）
+  ================================ */
+  .scene-title {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4BA58A;
+    color: #fff;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    white-space: nowrap;
+    z-index: 10;
+  }
+  
+  /* ===============================
+     シーン説明文
+  ================================ */
+  .scene-description {
+    background: none !important;
+    border-left: none !important;
+    color: #333 !important;
+    font-weight: 800;
+    text-align: center !important;
+    width: 100%;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+  
+  .scene-description p {
+    text-align: center !important;
+    margin: -10px auto 8px !important;
+  }
+  
+  /* ===============================
+     Good / Bad ボタン
+  ================================ */
+  .evaluate-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin: 5px 0 20px !important;
+  }
+  
+  .evaluate-buttons form {
+    margin: 0 !important;
+  }
+  
+  .eval-btn {
+    width: 90px;
+    height: 40px;
+    border: 0.3px solid rgba(0,0,0,0.25) !important;
+    border-radius: 50%;
+    background: #fff;
+    color: #555;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: 0.25s ease;
+  }
+  
+  .eval-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+  }
+  
+  /* 押下済み GOOD */
+  .btn-good-active {
+    background: #F8E39A !important;
+    border: 0 !important;
+    color: #333 !important;
+    box-shadow: 0 0 6px rgba(0,0,0,0.25) !important;
+  }
+  
+  /* 押下済み BAD */
+  .btn-bad-active {
+    background: #F3B4A4 !important;
+    border: 0 !important;
+    color: #333 !important;
+    box-shadow: 0 0 6px rgba(0,0,0,0.25) !important;
+  }
+  
+  /* ===============================
+     コメント・評価エリア
+  ================================ */
+  .evaluation-area {
+    text-align: center;
+    margin-top: 20px !important;
+  }
+  
+  /* コメント欄 */
+  .comment-area {
+    margin-bottom: 12px;
+    border-radius: 10px !important;
+    padding: 12px;
+    width: 50% !important;
+    max-width: 700px;
+  }
+  
+  /* コメント投稿ボタン */
+  .btn-comment {
+    background: linear-gradient(135deg, #444, #222);
+    border: none;
+    border-radius: 10px;
+    padding: 6px 20px;
+    color: #fff;
+  }
+  
+  .btn-comment:hover {
+    background: linear-gradient(135deg, #666, #333);
+    transform: translateY(-2px);
+  }
+  
+  /* コメント操作（みんなの意見ボタン含む） */
+  .comment-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 5px;
+  }
+  
+  .btn-view {
+    margin-top: 0 !important;
+    color: #f1f1f1;
+    border-radius: 10px;
+    padding: 6px 12px;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  
+  .btn-view:hover {
+    background: rgba(255,255,255,0.18);
+  }
+  
+  /* Good / Bad の旧テキストを非表示 */
+  .evaluate-label {
+    display: none !important;
+  }
+
+  .evaluation-area form,
+.evaluation-area textarea {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

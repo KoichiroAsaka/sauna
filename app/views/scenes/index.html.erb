@@ -1,41 +1,58 @@
-<div class="container text-center mt-5">
-  <h3>モラルチェック</h3>
+<div class="container scenes-container mt-5">
+  <h3 class="text-center">モラルチェック✅</h3>
 
   <% @scenes.each do |scene| %>
-    <div class="card mt-4 p-3">
+    <div class="scene-box mb-5">
+
+      <!-- シーンタイトル（上部のラベル） -->
+      <div class="scene-title">シーン <%= scene.id %></div>
+
       <!-- シーン内容 -->
-      <p class="fs-5"><%= simple_format(scene.description) %></p>
+      <div class="scene-description">
+        <%= simple_format(scene.description) %>
+      </div>
 
       <% user_eval = @user_evaluations[scene.id] %>
 
-      <!-- ✅ 評価ボタン（Good/Bad） -->
-      <div class="d-flex mb-2">
-        <%= button_to "Good 👍", scene_evaluations_path(scene, result: "Good"),
+      <!-- Good / Bad -->
+      <div class="evaluate-buttons">
+        <%= button_to "Good👍", scene_evaluations_path(scene, result: "Good"),
               method: :post,
-              class: "btn me-2 #{user_eval&.result == 'Good' ? 'btn-success' : 'btn-outline-success'}",
+              class: "btn eval-btn #{user_eval&.result == 'Good' ? 'btn-good-active' : 'btn-good'}",
               data: { turbo: false } %>
 
-        <%= button_to "Bad 👎", scene_evaluations_path(scene, result: "Bad"),
+        <%= button_to "Bad👎", scene_evaluations_path(scene, result: "Bad"),
               method: :post,
-              class: "btn #{user_eval&.result == 'Bad' ? 'btn-danger' : 'btn-outline-danger'}",
+              class: "btn eval-btn #{user_eval&.result == 'Bad' ? 'btn-bad-active' : 'btn-bad'}",
               data: { turbo: false } %>
       </div>
 
-      <% if user_eval&.result.present? %>
-        <p>あなたの評価：<strong><%= user_eval.result %></strong></p>
-      <% end %>
+      <!-- ▼▼▼ 評価・コメントエリア ▼▼▼ -->
+      <div class="evaluation-area">
 
-      <!-- ✅ コメント投稿フォーム -->
-      <h6 class="mt-3">💬 コメントを投稿する</h6>
-      <%= form_with model: Comment.new, url: scene_comments_path(scene), local: true do |f| %>
-        <div class="mb-2">
-          <%= f.text_area :content, rows: 2, class: "form-control", placeholder: "コメントを入力..." %>
-        </div>
-        <%= f.submit "投稿する", class: "btn btn-primary btn-sm" %>
-      <% end %>
+        <% if user_eval&.result.present? %>
+          <p class="your-eval">
+            あなたの評価：<strong><%= user_eval.result %></strong>
+          </p>
+        <% end %>
 
-      <!-- ✅ 詳細ページリンク -->
-      <%= link_to "みんなの意見", scene_path(scene), class: "btn btn-outline-secondary btn-sm mt-3" %>
+        <!-- コメントフォーム -->
+        <%= form_with model: Comment.new, url: scene_comments_path(scene), local: true do |f| %>
+          <%= f.text_area :content, rows: 2,
+                class: "form-control comment-area",
+                placeholder: "コメントを入力..." %>
+
+          <!-- コメント + みんなの意見 を横並びにする部分 -->
+          <div class="comment-actions">
+            <%= f.submit "投稿する", class: "btn btn-primary btn-comment" %>
+            <%= link_to "みんなの意見", scene_path(scene),
+                  class: "btn btn-outline-secondary btn-view" %>
+          </div>
+        <% end %>
+
+      </div>
+      <!-- ▲▲▲ 評価・コメントエリアここまで ▲▲▲ -->
+
     </div>
   <% end %>
 </div>
