@@ -1,0 +1,63 @@
+/* フォロー中 + フォロワー画面 両方に適用 */
+body.users-followings,
+body.users-followers {
+    background-image: none !important;
+    background-color: #1E1B18 !important; 
+    color: #f2f2f2 !important;
+}
+
+/* 外側カード（修正：.card.outer-wrapper に変更して強度UP） */
+body.users-followings .card.outer-wrapper,
+body.users-followers .card.outer-wrapper {
+    background-color: #272421 !important;
+    border-radius: 26px;
+    padding: 40px 30px;
+    max-width: 960px;
+    margin: 50px auto;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.4);
+}
+
+/* タイトル */
+body.users-followings h2,
+body.users-followers h2 {
+    color: #fff !important;
+}
+
+/* 個別カード */
+body.users-followings .card.user-card,
+body.users-followers .card.user-card {
+    background-color: #211E1C !important;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 18px;
+    padding: 20px 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}
+
+/* ユーザー名・投稿数 */
+body.users-followings .card.user-card .card-title,
+body.users-followers .card.user-card .card-title,
+body.users-followings .card.user-card .post-count,
+body.users-followers .card.user-card .post-count {
+    color: #f5f5f5 !important;
+}
+
+/* ボタン */
+body.users-followings .btn-outline-primary,
+body.users-followers .btn-outline-primary {
+    color: #D9534F !important;
+    border-color: #D9534F !important;
+}
+
+body.users-followings .btn-outline-primary:hover,
+body.users-followers .btn-outline-primary:hover {
+    background-color: #D9534F !important;
+    color: #fff !important;
+}
+
+/* bottom-nav */
+body.users-followings .bottom-nav,
+body.users-followers .bottom-nav {
+    background-color: rgba(39,36,33,0.85) !important;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.4) !important;
+    backdrop-filter: blur(8px);
+}
