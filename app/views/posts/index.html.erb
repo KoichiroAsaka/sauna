@@ -1,45 +1,47 @@
-<div class="container mt-5 posts-index">
-  <h2 class="posts-title text-center mb-4">投稿一覧</h2>
+<div class="posts-index-page mt-5">
+  <div class="container">
+    <h2 class="posts-title text-center mb-4">投稿一覧</h2>
 
-  <div class="row">
-    <% @posts.each do |post| %>
-      <div class="col-md-4 mb-4">
-        <div class="post-card shadow-sm p-3 h-100">
-          <h4>
-            <%= link_to post.sauna.name, sauna_path(post.sauna), class: "text-decoration-none text-primary fw-bold" %>
-          </h4>
+    <div class="posts-index row">
+      <% @posts.each do |post| %>
+        <div class="col-md-4 mb-4">
+          <div class="post-card shadow-sm p-3 h-100">
+            <h4>
+              <%= link_to post.sauna.name, sauna_path(post.sauna), class: "text-decoration-none text-primary fw-bold" %>
+            </h4>
 
-          <p class="text-muted mb-1">
-            投稿者：
-            <%= link_to post.user.name, user_path(post.user), class: "text-decoration-none text-dark fw-semibold" %>
-            <% if post.user == current_user %>
-              （あなた）
+            <p class="mb-1">
+              投稿者：
+              <%= link_to post.user.name, user_path(post.user), class: "text-decoration-none text-white fw-semibold" %>
+              <% if post.user == current_user %>
+                （あなた）
+              <% end %>
+            </p>
+
+            <p><%= post.post %></p>
+
+            <ul class="list-unstyled">
+              <li>混雑度：<%= I18n.t("enums.post.congestion_level.#{post.congestion_level}") %></li>
+              <li>曜日：<%= I18n.t("enums.post.day_of_week.#{post.day_of_week}") %></li>
+              <li>時間帯：<%= I18n.t("enums.post.time_zone.#{post.time_zone}") %></li>
+            </ul>
+
+            <% if post.image.attached? %>
+              <div class="mt-2 text-center">
+                <%= image_tag post.image, class: "img-fluid rounded" %>
+              </div>
             <% end %>
-          </p>
 
-          <p><%= post.post %></p>
-
-          <ul class="list-unstyled">
-            <li>混雑度：<%= I18n.t("enums.post.congestion_level.#{post.congestion_level}") %></li>
-            <li>曜日：<%= I18n.t("enums.post.day_of_week.#{post.day_of_week}") %></li>
-            <li>時間帯：<%= I18n.t("enums.post.time_zone.#{post.time_zone}") %></li>
-          </ul>
-
-          <% if post.image.attached? %>
-            <div class="mt-2 text-center">
-              <%= image_tag post.image, class: "img-fluid rounded" %>
+            <div class="text-end mt-2">
+              <%= link_to "詳細", sauna_post_path(post.sauna, post), class: "btn btn-outline-primary btn-sm" %>
             </div>
-          <% end %>
-
-          <div class="text-end mt-2">
-            <%= link_to "詳細", sauna_post_path(post.sauna, post), class: "btn btn-outline-primary btn-sm" %>
           </div>
         </div>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
 
-  <div class="d-flex justify-content-center mt-4">
-    <%= paginate @posts %>
+    <div class="d-flex justify-content-center mt-4">
+      <%= paginate @posts %>
+    </div>
   </div>
 </div>

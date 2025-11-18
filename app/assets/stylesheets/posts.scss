@@ -1,199 +1,315 @@
-/* === 投稿フォーム専用 === */
-.post-form {
-  display: flex;
-  justify-content: center; /* 中央寄せ */
-  align-items: center;
-  min-height: 90vh; /* 画面中央寄せ用 */
+/* ================================
+   🔵 投稿系ページ 共通デザイン
+   対象：
+   posts#index / posts#show / posts#new
+   posts#edit / posts#confirm / drafts
+   my_posts
+================================ */
 
-  .card {
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
-    padding: 40px 30px 80px;
-    max-width: 600px;
-    width: 100%;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    position: relative;
-  }
-
-  h2 {
-    font-weight: 600;
-    color: #333;
-    text-align: center;
-    margin-bottom: 30px;
-  }
-
-  .form-label {
-    font-weight: 500;
-    color: #444;
-  }
-
-  .form-control,
-  .form-select {
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 20px;
-  }
-
-  /* === 投稿フォーム ボタン位置調整 === */
-.button-group {
-  position: absolute;
-  bottom: 5px;
-  right: 20px;
-  display: flex;
-  gap: 15px; /* ✅ ボタンの間隔を確保 */
+/* ===== 背景統一（暗め＋ノイズ感） ===== */
+.posts-my_posts,
+.posts-drafts,
+.posts-index,
+.posts-show,
+.posts-new,
+.posts-edit,
+.posts-confirm {
+  background: #1E1B18 !important;
+  background-image: none !important;
+  color: #f2f2f2 !important;
 }
 
-.button-group .btn {
-  padding: 10px 25px;
-  border-radius: 8px;
+
+/* ===== 共通カード（ガラスカード） ===== */
+.unified-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px) saturate(140%);
+  border-radius: 18px;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 3px 12px rgba(0, 0, 0, 0.35),
+    0 8px 28px rgba(0, 0, 0, 0.45);
+  margin: 40px auto;
+  max-width: 800px;
 }
 
-.button-group .btn-primary {
-  background-color: #007bff !important;
-  border: none;
+/* ===== ページタイトル（統一） ===== */
+.page-title {
+  background: rgba(255, 255, 255, 0.28);
+  padding: 12px 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  margin: 35px auto 20px;
+  text-align: center;
+  display: inline-block;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #fff;
+  text-shadow: 0 0 6px rgba(0,0,0,0.4);
 }
 
-.button-group .btn-secondary {
-  background-color: #6c757d !important;
-  border: none;
+/* ===== 投稿フォーム ===== */
+.post-form .card {
+  @extend .unified-card;
+  padding-bottom: 80px !important;
 }
 
-.button-group .btn-primary:hover {
-  background-color: #0056b3 !important;
+.post-form .form-control,
+.post-form .form-select {
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255,255,255,0.15);
+  color: #fff;
 }
 
-.button-group .btn-secondary:hover {
-  background-color: #5a6268 !important;
+/* ===== ボタン統一 ===== */
+.btn-primary,
+.post-submit-btn {
+  background: linear-gradient(135deg, #FF8E3C, #FF7A2E) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(255,125,60,0.35);
 }
 
+.btn-secondary {
+  background: rgba(255,255,255,0.05) !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+  color: #eee !important;
+  border-radius: 10px;
 }
 
-/* ============================
-   🔵 投稿詳細ページ（posts#show）
-   ============================ */
+.btn-primary:hover,
+.post-submit-btn:hover {
+  background: linear-gradient(135deg, #FF9F57, #FF8A45) !important;
+  transform: translateY(-2px);
+}
 
-/* 全体の出し方を整える */
+/* ===== 投稿詳細ページ ===== */
 .post-show-wrapper {
   max-width: 900px;
-  margin: 100px auto; /* 中央寄せ＋上部余白 */
-  padding: 0 20px;
+  margin: 80px auto;
 }
 
-
-/* タイトル（サウナ名）をフローティング＆洗練 */
-.post-title {
-  margin-top: 40px;
-  text-align: center;
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 25px;
-
-  background: rgba(255,255,255,0.4);
-  backdrop-filter: blur(10px);
-  padding: 14px 30px;
-  border-radius: 14px;
-}
-
-/* 🔹 サウナ名ヘッダー（横幅いっぱい） */
-.post-show-header {
-  background: rgba(255, 255, 255, 0.6);   /* うっすら白背景 */
-  padding: 20px;
-  backdrop-filter: blur(4px);             /* 透明感 */
-  border-radius: 10px;
-  margin-bottom: 25px;
-  text-align: center;
-}
-
-.post-show-header h2 {
-  margin: 0;
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #111;
-  text-shadow:
-    0 0 6px rgba(255, 255, 255, 0.8),
-    0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-/* カード本体 */
-.post-show-wrapper .post-card {
-  background: rgba(255,255,255, 0.95);
-  border-radius: 12px;
-  padding: 30px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-}
-/* 投稿者リンク */
-.post-author-link {
-  color: #0066cc;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.post-author-link:hover {
-  text-decoration: underline;
-}
-
-.post-card p,
-.post-card ul {
-  padding-left: 6px;
-}
-
-/* 🔹 enum情報 */
-.post-info-list li {
-  margin-bottom: 4px;
-  color: #333;
-}
-
-/* 🔹 画像中央配置＆サイズ */
-.post-image-wrapper {
-  text-align: center;
+.post-card {
+  @extend .unified-card;
 }
 
 .post-image {
   max-width: 80%;
-  height: auto;
-  border-radius: 10px;
+  border-radius: 14px;
+  margin: 20px 0;
 }
 
-/* 🔹 戻るボタンの配置 */
-.post-nav-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 25px;
-}
-
-/* 編集ボタン行 */
-.edit-buttons a {
-  margin-left: 8px;
-  text-align: right;
-  margin-top: 10px;
-}
-
-/* === 投稿一覧ページ === */
-/* ① カード高さを統一して揺れを軽減 */
-.posts-index .post-card {
-  min-height: 480px;   /* 好みに応じて調整（450〜500推奨） */
+/* ===== 投稿一覧カード（index, my_posts, drafts） ===== */
+.posts-index .post-card,
+.posts-drafts .post-card,
+.posts-my_posts .post-card {
+  @extend .unified-card;
+  min-height: 480px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-width: 350px; /* 調整 */
-  margin: auto;     /* 中央寄せ */
-
-  /* ② 背景をガラスカード風に */
-  background: rgba(255, 255, 255, 0.88);
-backdrop-filter: blur(4px);
-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-border-radius: 12px;
 }
 
-/* ③ タイトル部分の視認性UP */
+.posts-index .posts-title,
+.my_posts .posts-title {
+  @extend .page-title;
+}
+
+/* ========= 共通カードデザインを強制適用 ========= */
+.card {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: none !important;
+  border-radius: 16px !important;
+  padding: 25px !important;
+  color: #222 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+}
+
+body.saunas-show {
+  background-image: none !important;
+  background-color: #f7f7f7 !important;
+}
+
+/* saunas#show 内の投稿一覧カードも統一 */
+body.saunas-show .post-card {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(10px) saturate(140%) !important;
+  border-radius: 18px !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  box-shadow:
+    0 3px 12px rgba(0,0,0,0.35) !important,
+    0 8px 28px rgba(0,0,0,0.45) !important;
+  padding: 30px !important;
+  color: #fff !important;
+}
+
+body.saunas-show {
+  background: #1E1B18 !important;
+  color: #f2f2f2 !important;
+}
+
+/* ==================================
+   🔶 統一デザイン：ボタンをすべてオレンジ系に統一
+   （B案：黒 × オレンジ × 白）
+================================== */
+
+/* ========== Primary（主ボタン）========== */
+.btn-primary,
+.post-submit-btn,
+.favorite-btn,                /* ★お気に入り登録 / 解除 */
+.sauna-post-btn,             /* このサウナに投稿する */
+.posts-show .action-btn {
+  background: linear-gradient(135deg, #FF8E3C, #FF7A2E) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-weight: 600;
+  box-shadow: 0 3px 10px rgba(255,120,50,0.35);
+  transition: 0.2s ease-in-out;
+}
+
+.btn-primary:hover,
+.post-submit-btn:hover,
+.favorite-btn:hover,
+.sauna-post-btn:hover {
+  background: linear-gradient(135deg, #FF9F57, #FF8A45) !important;
+  transform: translateY(-2px);
+}
+
+/* ========== Secondary（補助ボタン）========== */
+.btn-secondary,
+.back-btn,
+.cancel-btn {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255,255,255,0.18) !important;
+  color: #fff !important;
+  border-radius: 10px;
+  padding: 10px 22px;
+  font-weight: 500;
+  transition: 0.2s ease-in-out;
+}
+
+.btn-secondary:hover,
+.back-btn:hover,
+.cancel-btn:hover {
+  background: rgba(255,255,255,0.12) !important;
+}
+
+/* ========== ★お気に入りの星アイコンだけ少し黄色 ========== */
+.favorite-btn i,
+.favorite-btn svg {
+  color: #FFD85D !important;
+}
+
+/* ============================================
+   ★ お気に入りボタンを完全オレンジに統一する強制上書き
+============================================ */
+
+/* Bootstrapのbtn-outline-warning を上書き */
+.btn-outline-warning,
+.btn-outline-warning:hover,
+.btn-outline-warning:active,
+.btn-outline-warning:focus {
+  background: linear-gradient(135deg, #FF8E3C, #FF7A2E) !important;
+  color: #fff !important;
+  border: none !important;
+  box-shadow: 0 3px 10px rgba(255,120,50,0.35) !important;
+  border-radius: 12px !important;
+}
+
+/* 星アイコンだけ黄色 */
+.btn-outline-warning i,
+.btn-outline-warning svg {
+  color: #FFD85D !important;
+}
+
+/* ===========================
+   saunas#show：お気に入りボタン用
+   Bootstrap の warning 系を強制上書き
+=========================== */
+
+/* 共通（登録/解除 どちらも） */
+body.saunas-show .btn-warning,
+body.saunas-show .btn-outline-warning {
+  background: linear-gradient(135deg, #FF8E3C, #FF7A2E) !important;
+  border: none !important;
+  color: #fff !important;
+  border-radius: 12px !important;
+  padding: 12px 24px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 3px 10px rgba(255, 120, 50, 0.35) !important;
+  transition: 0.2s ease-in-out;
+}
+
+/* hover */
+body.saunas-show .btn-warning:hover,
+body.saunas-show .btn-outline-warning:hover {
+  background: linear-gradient(135deg, #FF9F57, #FF8A45) !important;
+  transform: translateY(-2px);
+}
+
+/* ===============================
+   投稿編集ページ：文字色を黒に戻す
+   （白背景カードに白文字が当たる問題を修正）
+================================ */
+
+body.posts-edit .post-form,
+body.posts-new .post-form,
+body.posts-confirm .post-form {
+  color: #222 !important;
+}
+
+/* ラベル・説明文 */
+body.posts-edit label,
+body.posts-new label,
+body.posts-confirm label {
+  color: #222 !important;
+}
+
+/* 入力欄（セレクト、フォームコントロール） */
+body.posts-edit .form-control,
+body.posts-edit .form-select,
+body.posts-new .form-control,
+body.posts-new .form-select,
+body.posts-confirm .form-control,
+body.posts-confirm .form-select {
+  color: #222 !important;
+  background: #fff !important;
+}
+
+/* プレースホルダーも黒に */
+body.posts-edit ::placeholder,
+body.posts-new ::placeholder,
+body.posts-confirm ::placeholder {
+  color: #777 !important;
+}
+
+/* 下書き保存ボタン（disabledでも文字を黒に） */
+button:disabled,
+input[type="submit"]:disabled {
+    color: #000 !important;
+    background-color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+
+.posts-index-page {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;      /* 完全中央揃え */
+}
+
+.posts-index-page .posts-title {
+  text-align: center !important;
+}
+
 .posts-title {
-  background: rgba(255, 255, 255, 0.5);
-  padding: 12px 40px;
-  border-radius: 20px;
-  backdrop-filter: blur(8px);
-  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
-  margin: 20px auto;
+  display: block;
+  width: 100%;
+  text-align: center !important;
+  margin: 0 auto !important;
 }
-
