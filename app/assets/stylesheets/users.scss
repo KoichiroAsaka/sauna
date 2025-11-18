@@ -61,3 +61,174 @@ body.users-followers .bottom-nav {
     box-shadow: 0 2px 15px rgba(0,0,0,0.4) !important;
     backdrop-filter: blur(8px);
 }
+
+/* ===== プロフィール全体：背景 ===== */
+.profile-sauna-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 80px;
+  }
+  
+  /* ===== カード：サウナの木×ガラス風 ===== */
+  .profile-sauna-card {
+    max-width: 450px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.08);  /* ガラス感 */
+    backdrop-filter: blur(10px) saturate(140%);
+    border-radius: 16px;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  
+    box-shadow:
+      0 0 10px rgba(255, 165, 0, 0.15),
+      0 8px 25px rgba(0, 0, 0, 0.4);        /* サウナ室の薄暗い影 */
+  }
+  
+  /* ===== タイトル ===== */
+  .sauna-title {
+    color: #f8e1c4;        /* サウナの温かい光 */
+    font-weight: bold;
+  }
+  
+  /* ===== 木のぬくもりを感じる見出し ===== */
+  .sauna-heading {
+    color: #ffe8c0;
+    font-weight: 600;
+  }
+  
+  /* ===== 通常テキスト ===== */
+  .sauna-text {
+    color: #f1f1f1;
+  }
+  
+  /* ===== グレー補足 ===== */
+  .sauna-muted {
+    color: #ccc !important;
+  }
+  
+  /* ===== アバター：円＋光 ===== */
+  .sauna-avatar {
+    border-radius: 50%;
+    box-shadow:
+      0 0 10px rgba(255, 180, 100, 0.4),
+      0 0 20px rgba(255, 150, 50, 0.2);
+  }
+  
+  /* ===== ボタン：蒸気風の淡い光 ===== */
+  .sauna-btn {
+    background: linear-gradient(135deg, #ff9b42, #ff7f2a);
+    color: white;
+    border: none;
+    transition: 0.3s;
+  }
+  
+  .sauna-btn:hover {
+    background: linear-gradient(135deg, #ffa857, #ff8f3f);
+    transform: translateY(-2px);
+  }
+  
+  /* ===== アウトラインボタン（透明×光） ===== */
+  .sauna-btn-outline {
+    border: 1px solid #ffb26b !important;
+    color: #ffb26b !important;
+    background: transparent !important;
+    transition: 0.3s;
+  }
+  
+  .sauna-btn-outline:hover {
+    background: rgba(255, 175, 100, 0.1) !important;
+    transform: translateY(-2px);
+  }
+  
+  /* ===== 危険操作ボタン ===== */
+  .sauna-btn-danger {
+    border: 1px solid #ff6b6b !important;
+    color: #ff6b6b !important;
+    background: transparent !important;
+  }
+  
+  .sauna-btn-danger:hover {
+    background: rgba(255, 100, 100, 0.1) !important;
+    transform: translateY(-2px);
+  }
+
+/* プロフィールページ専用：背景（ダーク基調へ統一） */
+body.users-profile {
+    background-color: #1E1B18 !important;         /* フォロー画面と同じ */
+    background-image: none !important;            /* 明るいサウナ画像を無効化 */
+    color: #f2f2f2 !important;
+}
+
+/* プロフィールカード（明るすぎるため少し暗めに） */
+body.users-profile .profile-sauna-card {
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(10px) saturate(130%) !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow:
+        0 0 10px rgba(0, 0, 0, 0.4),
+        0 8px 25px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 文字色もダーク背景に合わせて統一 */
+body.users-profile .sauna-title,
+body.users-profile .sauna-heading,
+body.users-profile .sauna-text {
+    color: #f5f5f5 !important;
+}
+
+/* アバターの光量を少し下げる（背景が暗いので整える） */
+body.users-profile .sauna-avatar {
+    box-shadow:
+        0 0 8px rgba(255, 180, 100, 0.2),
+        0 0 12px rgba(255, 150, 50, 0.15);
+}
+
+.profile-edit-btn {
+    background: linear-gradient(135deg, #FF8E3C, #FF7A2E);
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(255, 140, 60, 0.35);
+  }
+  
+
+  /* プロフィール編集ページ専用デザイン */
+body.users-edit_profile {
+    background-color: #1E1B18 !important;
+    background-image: none !important;
+    color: #f2f2f2 !important;
+}
+
+/* プロフィール編集ページのカードをプロフィール表示ページと統一 */
+body.users-edit_profile .profile-sauna-card {
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(10px) saturate(130%) !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 16px !important; /* ← 表示ページと同じ値に統一 */
+
+    box-shadow:
+        0 0 10px rgba(0, 0, 0, 0.4),
+        0 8px 25px rgba(0, 0, 0, 0.5) !important;
+
+    padding: 30px !important;  /* ← 表示ページと同じ（30px） */
+    max-width: 450px !important; /* ← 表示ページと同じ幅 */
+    margin: 50px auto !important;
+}
+
+body.users-edit_profile .sauna-title,
+body.users-edit_profile .sauna-heading,
+body.users-edit_profile .sauna-text {
+    color: #f5f5f5 !important;
+}
+
+body.users-edit_profile .sauna-avatar {
+    box-shadow:
+        0 0 8px rgba(255, 180, 100, 0.2),
+        0 0 12px rgba(255, 150, 50, 0.15) !important;
+}
+
+
+
+  
