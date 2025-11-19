@@ -1,7 +1,7 @@
-<div class="container mt-5 scene-detail-container">
-  <div class="card shadow-lg p-4 border-0">
+<div class="container mt-5 scene-detail-container no-bg">
+  <div class="card scene-card shadow-lg p-4 border-0">
 
-    <h3 class="text-center mb-4 text-primary">🧘 みんなの意見</h3>
+    <h3 class="text-center mb-4">🧘 みんなの意見</h3>
 
     <!-- シーン内容 -->
     <div class="scene-description text-center">
@@ -27,9 +27,9 @@
 
       <% if @comments.any? %>
         <% @comments.each do |comment| %>
-          <div class="comment-item">
-            <p><strong><%= comment.user.name %></strong></p>
-            <p class="text-dark"><%= simple_format(comment.content) %></p>
+          <div class="comment-item p-3 mb-3 rounded">
+            <p class="fw-bold mb-1 text-dark"><%= comment.user.name %></p>
+            <p class="text-dark mb-0"><%= simple_format(comment.content) %></p>
           </div>
         <% end %>
       <% else %>

@@ -1,0 +1,92 @@
+/* ================================
+   How to Sauna（pages#how_to_sauna）
+================================ */
+
+/* 背景：サウナ一覧ページと同系統（暗め＋背景画像） */
+body.pages-how_to_sauna {
+    background: url("how_to_sauna_background.jpg") center center / cover no-repeat fixed;
+    color: #f2f2f2;
+  }
+  
+  /* 外側のホワイト透明カード */
+  .howto-wrapper {
+    background: rgba(255, 255, 255, 0.45);   /* ガラス感 */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 60px 40px;
+    margin: 40px auto;
+    max-width: 1100px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  
+  /* タイトル */
+  .howto-title {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    color: #222;
+  }
+  
+  /* サブタイトル */
+  .howto-subtitle {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #444;
+    font-size: 1.2rem;
+  }
+  
+  /* セクション区切り線 */
+  .howto-divider {
+    width: 100%;
+    margin: 35px 0;
+    border-top: 1px solid rgba(0,0,0,0.2);
+  }
+  
+  /* 左右の説明ブロック */
+  .howto-sections {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    flex-wrap: wrap;
+  }
+  
+  .howto-box {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .howto-box h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #222;
+  }
+  
+  /* 番号付き説明 */
+  .howto-step {
+    font-size: 1.1rem;
+    margin: 12px 0;
+    color: #333;
+  }
+  
+  /* 数字のスタイル */
+  .howto-step span {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  /* レスポンシブ */
+  @media (max-width: 768px) {
+    .howto-wrapper {
+      padding: 40px 20px;
+    }
+    .howto-title {
+      font-size: 2.2rem;
+    }
+    .howto-box h3 {
+      font-size: 1.6rem;
+    }
+  }
+  

@@ -1,5 +1,5 @@
 <div class="container scenes-container mt-5">
-  <h3 class="text-center">モラルチェック✅</h3>
+  <h3 class="text-center">モラルチェック<i class="bi bi-check-circle text-white"></i> </h3>
 
   <% @scenes.each do |scene| %>
     <div class="scene-box mb-5">
@@ -16,12 +16,12 @@
 
       <!-- Good / Bad -->
       <div class="evaluate-buttons">
-        <%= button_to "Good👍", scene_evaluations_path(scene, result: "Good"),
+        <%= button_to "Good", scene_evaluations_path(scene, result: "Good"),
               method: :post,
               class: "btn eval-btn #{user_eval&.result == 'Good' ? 'btn-good-active' : 'btn-good'}",
               data: { turbo: false } %>
 
-        <%= button_to "Bad👎", scene_evaluations_path(scene, result: "Bad"),
+        <%= button_to "Bad", scene_evaluations_path(scene, result: "Bad"),
               method: :post,
               class: "btn eval-btn #{user_eval&.result == 'Bad' ? 'btn-bad-active' : 'btn-bad'}",
               data: { turbo: false } %>

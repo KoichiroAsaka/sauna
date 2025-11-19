@@ -2,260 +2,278 @@
    シーン一覧ページ背景
 ================================ */
 body.scenes-index {
-    background-color: #F7E8D9 !important;
-    background-image: none !important;
-    color: #333;
-  }
-  
-  /* ===============================
-     見出し（h3）
-  ================================ */
-  .scenes-container {
-    padding-top: 0 !important;
-  }
-  
-  .scenes-container h3 {
-    font-size: 2rem;
-    font-weight: 700;
-    text-align: center;
-    margin: 10px 0 45px;
-    color: #333;
-  }
-  
-  .scenes-container h3::after {
-    content: none !important;
-  }
-  
-  /* ===============================
-     シーンBOX
-  ================================ */
-  .scene-box {
-    background: #fff;
-    border-radius: 12px;
-    padding: 50px 25px 20px;
-    margin: 0 auto 30px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    position: relative;
-    width: 80%;
-    max-width: 700px;
-  }
-  
-  /* ===============================
-     シーンタイトル（上部ラベル）
-  ================================ */
-  .scene-title {
-    position: absolute;
-    top: -18px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #4BA58A;
-    color: #fff;
-    padding: 6px 18px;
-    border-radius: 20px;
-    font-size: 1.2rem;
-    font-weight: 700;
-    white-space: nowrap;
-    z-index: 10;
-  }
-  
-  /* ===============================
-     シーン説明文
-  ================================ */
-  .scene-description {
-    background: none !important;
-    border-left: none !important;
-    color: #333 !important;
-    font-weight: 800;
-    text-align: center !important;
-    width: 100%;
-    margin: 0 auto !important;
-    display: block !important;
-  }
-  
-  .scene-description p {
-    text-align: center !important;
-    margin: -10px auto 8px !important;
-  }
-  
-  /* ===============================
-     Good / Bad ボタン
-  ================================ */
-  .evaluate-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    margin: 5px 0 20px !important;
-  }
-  
-  .evaluate-buttons form {
-    margin: 0 !important;
-  }
-  
-  .eval-btn {
-    width: 90px;
-    height: 40px;
-    border: 0.3px solid rgba(0,0,0,0.25) !important;
-    border-radius: 50%;
-    background: #fff;
-    color: #555;
-    font-weight: 700;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: 0.25s ease;
-  }
-  
-  .eval-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.18);
-  }
-  
-  /* 押下済み GOOD */
-  .btn-good-active {
-    background: #F8E39A !important;
-    border: 0 !important;
-    color: #333 !important;
-    box-shadow: 0 0 6px rgba(0,0,0,0.25) !important;
-  }
-  
-  /* 押下済み BAD */
-  .btn-bad-active {
-    background: #F3B4A4 !important;
-    border: 0 !important;
-    color: #333 !important;
-    box-shadow: 0 0 6px rgba(0,0,0,0.25) !important;
-  }
-  
-  /* ===============================
-     コメント・評価エリア
-  ================================ */
-  .evaluation-area {
-    text-align: center;
-    margin-top: 20px !important;
-  }
-  
-  /* コメント欄 */
-  .comment-area {
-    margin-bottom: 12px;
-    border-radius: 10px !important;
-    padding: 12px;
-    width: 50% !important;
-    max-width: 700px;
-  }
-  
-  /* コメント投稿ボタン */
-  .btn-comment {
-    background: linear-gradient(135deg, #444, #222);
-    border: none;
-    border-radius: 10px;
-    padding: 6px 20px;
-    color: #fff;
-  }
-  
-  .btn-comment:hover {
-    background: linear-gradient(135deg, #666, #333);
-    transform: translateY(-2px);
-  }
-  
-  /* コメント操作（みんなの意見ボタン含む） */
-  .comment-actions {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin-top: 5px;
-  }
-  
-  .btn-view {
-    margin-top: 0 !important;
-    color: #f1f1f1;
-    border-radius: 10px;
-    padding: 6px 12px;
-    border: 1px solid rgba(255,255,255,0.2);
-  }
-  
-  .btn-view:hover {
-    background: rgba(255,255,255,0.18);
-  }
-  
-  /* Good / Bad の旧テキストを非表示 */
-  .evaluate-label {
-    display: none !important;
-  }
+  background-color: #1E1B18 !important;
+  background-image: none !important;
+  color: #f2f2f2 !important;
+}
 
-  .evaluation-area form,
+.scenes-container h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 20px 0 45px;
+  color: #f2f2f2 !important;
+}
+.scenes-container h3::after {
+  content: none !important;
+}
+
+/* ===============================
+   シーンBOX
+================================ */
+.scene-box {
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  padding: 50px 25px 25px;
+  margin: 0 auto 40px;
+  width: 80%;
+  max-width: 700px;
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+
+/* ===============================
+   シーンタイトル（上部ラベル）
+================================ */
+.scene-title {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(12px);
+  color: #1E1B18;
+  padding: 6px 20px;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  white-space: nowrap;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* ===============================
+   シーン説明文
+================================ */
+.scene-description,
+.scene-description p {
+  text-align: center !important;
+  margin: 0 auto !important;
+  color: #f2f2f2 !important;
+  font-weight: 700;
+}
+
+/* ===============================
+   Good / Bad ボタン（最終統一版）
+================================ */
+.evaluate-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 10px 0 25px !important;
+}
+
+.eval-btn {
+  width: 95px;
+  height: 45px;
+  border-radius: 12px;
+  border: none !important;
+  font-weight: bold;
+  color: #1E1B18;
+  transition: 0.25s ease-in-out;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+
+.eval-btn:hover {
+  transform: translateY(-3px);
+  opacity: 0.9;
+}
+
+/* Good */
+.btn-good {
+  background: #ffcf5c !important;
+}
+.btn-good-active {
+  background: #ffcf5c !important;
+  box-shadow: 0 0 10px rgba(255, 207, 92, 0.6);
+}
+
+/* Bad */
+.btn-bad {
+  background: #e48a7c !important;
+  color: #1E1B18 !important;
+}
+.btn-bad-active {
+  background: #ff7c6d !important;
+  box-shadow: 0 0 10px rgba(255, 124, 109, 0.6);
+  color: #1E1B18 !important;
+}
+
+/* テキスト非表示 */
+.evaluate-label {
+  display: none !important;
+}
+
+/* ===============================
+   コメント・評価エリア
+================================ */
+.evaluation-area {
+  text-align: center;
+  margin-top: 20px !important;
+}
+.evaluation-area form,
 .evaluation-area textarea {
-  display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
+/* コメント欄 */
+.comment-area {
+  width: 60% !important;
+  max-width: 600px;
+  margin: 0 auto 12px;
+  padding: 14px;
+  border-radius: 10px !important;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #111;
+}
+
+/* コメント投稿ボタン */
+.btn-comment {
+  background: #ff914d !important;
+  border: none !important;
+  color: #fff !important;
+  border-radius: 12px;
+  padding: 8px 22px;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: 0.25s;
+}
+.btn-comment:hover {
+  background: #ff7f30 !important;
+  transform: translateY(-2px);
+}
+
+/* みんなの意見ボタン */
+.btn-view {
+  color: #fff !important;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  padding: 6px 16px;
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(12px);
+  transition: 0.2s;
+}
+.btn-view:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-2px);
+}
 
 /* ===============================
-   シーン詳細ページ：カード全体
+   コメント一覧
 ================================ */
-/* シーン詳細の外側（カードの親） */
-.scene-detail-container {
-  max-width: 600px;      /* ← 白背景の横幅を縮小（調整可） */
-  margin: 0 auto;
-  padding-bottom: 100px;
-  overflow: auto;
-}
-
-/* 白背景カードのデザイン */
-.scene-detail-container .card {
-  background: rgba(255, 255, 255, 0.7) !important; /* ← 透明度UPで馴染む */
-  backdrop-filter: blur(6px);                      /* ← ガラス風で背景となじむ */
-  border-radius: 20px;
-  padding: 30px;
-  margin-top: 40px;   /* ← 上の余白 */
-  margin-bottom: 120px
-}
-/* ===============================
-   シーン説明（中央寄せ）
-================================ */
-.scene-description {
-  text-align: center !important;
-  margin: 0 auto !important;
-}
-
-/* simple_format の p も中央寄せ */
-.scene-description p {
-  text-align: center !important;
-  margin: 0 auto !important;
-}
-
-/* ===============================
-   コメント一覧（横幅調整）
-================================ */
-/* コメントリストの幅を広げる */
 .comment-list {
-  max-width: 100%;        /* ← コメント領域を広く */
+  width: 80%;
+  max-width: 800px;
   margin: 0 auto;
 }
-
-/* コメント1つ1つ */
 .comment-item {
-  width: 100%;
   background: rgba(255, 255, 255, 0.65);
   backdrop-filter: blur(2px);
   border-radius: 12px;
-  padding: 15px;
   border: 1px solid rgba(0,0,0,0.08);
+  padding: 12px;
   margin-bottom: 14px;
-  padding: 5px 12px;
-} 
+}
 
-/* コメントリスト全体の幅を広げる */
+/* ===============================
+   シーン詳細ページ背景（一覧と統一）
+================================ */
+body.scenes-show {
+  background-color: #1E1B18 !important;
+  background-image: none !important;
+  color: #f2f2f2 !important;
+}
+
+/* レイアウト側に白背景がある場合の強制オフ */
+body.scenes-show html,
+body.scenes-show body {
+  background: #1E1B18 !important;
+}
+
+/* ===============================
+   シーン詳細：外側コンテナ
+================================ */
+body.scenes-show .container {
+  max-width: 650px !important;
+  margin: 0 auto !important;
+  padding: 0 15px !important;
+}
+
+.scene-detail-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding-bottom: 100px;
+}
+
+/* ===============================
+   シーン詳細：カード（一覧と質感統一）
+================================ */
+.scene-detail-container .card {
+  background: rgba(255, 255, 255, 0.12) !important;  /* ← 白ベタから透明感へ */
+  backdrop-filter: blur(18px) !important;             /* ← 一覧同様の強めのガラス感 */
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 35px;
+  margin: 40px 0 120px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+  color: #f2f2f2 !important;
+}
+
+/* ===============================
+   コメント一覧のカード（一覧と統一）
+================================ */
 .comment-list {
   width: 80%;
-  max-width: 800px;   /* 好きな値に変更可：800 / 900 / 1000 など */
+  max-width: 800px;
   margin: 0 auto;
 }
 
+.comment-item {
+  background: rgba(255, 255, 255, 0.12) !important;  /* 一覧と同じ透明度へ統一 */
+  backdrop-filter: blur(14px);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 16px 20px;
+  margin-bottom: 18px;
+  color: #f2f2f2 !important;
+}
 
-/* シーン詳細ページに入ったら container の幅を縮める */
-body.scenes-show .container {
-  max-width: 650px !important;   /* ← 好きな幅に調整 */
-  margin: 0 auto !important;
-  padding: 0 15px !important;
+.scene-detail-container hr {
+  border-color: rgba(255, 255, 255, 0.10);
+  margin: 20px 0;
+}
+
+.rating-summary {
+  text-align: center;
+  opacity: 0.85;
+  margin-bottom: 20px;
+}
+.rating-summary i,
+.rating-summary span {
+  vertical-align: middle;
+}
+
+.comment-item {
+  border-radius: 18px !important;
+}
+
+.scene-detail-container .card-header-area {
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
