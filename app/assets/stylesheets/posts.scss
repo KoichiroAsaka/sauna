@@ -313,3 +313,61 @@ input[type="submit"]:disabled {
   text-align: center !important;
   margin: 0 auto !important;
 }
+
+
+/* posts-my_posts は card を白くしない（ガラス風で統一） */
+body.posts-my_posts .card {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: 18px !important;
+  padding: 25px !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.18) !important;
+  box-shadow:
+    0 3px 12px rgba(0,0,0,0.35),
+    0 8px 28px rgba(0,0,0,0.45) !important;
+}
+
+body.posts-my_posts .card-body > div {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 20px;
+  color: #fff !important;
+}
+
+/* 自分の投稿一覧ページ（posts#my_posts）専用 */
+body.posts-my_posts .post-list-wrapper {
+  max-width: 1000px;   /* ← 横幅をここで調整（例：600px〜900px） */
+  margin: 0 auto;     /* 中央寄せ */
+}
+
+/* ============================
+   🔶 自分の投稿一覧：各投稿カード
+============================ */
+
+/* 各投稿のカード（post-item-card） */
+body.posts-my_posts .post-item-card {
+  background: rgba(255, 255, 255, 0.10);   /* ← 透明度UP：境界がはっきり */
+  border: 1px solid rgba(255, 255, 255, 0.28);  /* ← 枠を強めにする */
+  border-radius: 16px;
+  padding: 20px 22px;
+  color: #fff;
+
+  box-shadow:
+    0 4px 14px rgba(0,0,0,0.35),
+    0 10px 28px rgba(0,0,0,0.45);
+
+  transition: 0.2s ease;
+}
+
+/* ホバーしたとき */
+body.posts-my_posts .post-item-card:hover {
+  background: rgba(255, 255, 255, 0.16); /* 少しだけ明るくして浮かせる */
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: translateY(-4px);
+  box-shadow:
+    0 8px 24px rgba(0,0,0,0.45),
+    0 14px 36px rgba(0,0,0,0.55);
+}

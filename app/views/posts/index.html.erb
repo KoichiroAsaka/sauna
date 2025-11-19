@@ -7,23 +7,24 @@
         <div class="col-md-4 mb-4">
           <div class="post-card shadow-sm p-3 h-100">
             <h4>
-              <%= link_to post.sauna.name, sauna_path(post.sauna), class: "text-decoration-none text-primary fw-bold" %>
+              <%= link_to post.sauna.name, sauna_path(post.sauna), class: "text-decoration-none text-white fw-semibold" %>
             </h4>
 
             <p class="mb-1">
-              投稿者：
+             <i class="bi bi-person"></i>
               <%= link_to post.user.name, user_path(post.user), class: "text-decoration-none text-white fw-semibold" %>
               <% if post.user == current_user %>
                 （あなた）
               <% end %>
+            <p class="mb-1">
+             <i class="bi bi-journal-text"></i>
+             <%= post.post %>
             </p>
 
-            <p><%= post.post %></p>
-
             <ul class="list-unstyled">
-              <li>混雑度：<%= I18n.t("enums.post.congestion_level.#{post.congestion_level}") %></li>
-              <li>曜日：<%= I18n.t("enums.post.day_of_week.#{post.day_of_week}") %></li>
-              <li>時間帯：<%= I18n.t("enums.post.time_zone.#{post.time_zone}") %></li>
+              <li><i class="bi bi-people-fill"></i> <%= I18n.t("enums.post.congestion_level.#{post.congestion_level}") %> 
+              <li><i class="bi bi-calendar-event"></i> <%= I18n.t("enums.post.day_of_week.#{post.day_of_week}") %>
+              <li><i class="bi bi-clock"></i> <%= I18n.t("enums.post.time_zone.#{post.time_zone}") %>
             </ul>
 
             <% if post.image.attached? %>

@@ -4,17 +4,17 @@
   <div class="post-card">
     
     <p>
-      <strong>投稿者：</strong>
+      <i class="bi bi-person"></i>
       <%= link_to @post.user.name, user_path(@post.user),
-                  class: "text-decoration-none fw-bold text-primary" %>
+                  class: "text-decoration-none text-white fw-semibold" %>
     </p>
 
-    <p><strong>内容：</strong> <%= @post.post %></p>
+    <p><i class="bi bi-journal-text"></i> <%= @post.post %></p>
 
     <ul class="list-unstyled mt-3">
-      <li><strong>混雑度：</strong> <%= I18n.t("enums.post.congestion_level.#{@post.congestion_level}") %></li>
-      <li><strong>曜日：</strong> <%= I18n.t("enums.post.day_of_week.#{@post.day_of_week}") %></li>
-      <li><strong>時間帯：</strong> <%= I18n.t("enums.post.time_zone.#{@post.time_zone}") %></li>
+      <li><i class="bi bi-people-fill"></i> <%= I18n.t("enums.post.congestion_level.#{@post.congestion_level}") %></li>
+      <li><i class="bi bi-calendar-event"></i> <%= I18n.t("enums.post.day_of_week.#{@post.day_of_week}") %></li>
+      <li><i class="bi bi-clock"></i> <%= I18n.t("enums.post.time_zone.#{@post.time_zone}") %></li>
     </ul>
 
     <% if @post.image.attached? %>

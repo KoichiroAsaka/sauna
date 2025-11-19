@@ -229,98 +229,69 @@ body.users-edit_profile .sauna-avatar {
         0 0 12px rgba(255, 150, 50, 0.15) !important;
 }
 
-/* ユーザーの投稿一覧デザイン*/
-.users-posts{
-  background: #1E1B18 !important;
-  background-image: none !important;
-  color: #f2f2f2 !important;
-}
+/* ===============================
+   🔶 users#posts（ユーザー投稿一覧）
+   posts-my_posts とデザイン統一
+================================ */
 
-.users-posts .post-card {
-  background: #f7f8fa;
-  color: #000;
-  border-radius: 20px;
-  padding: 30px;
-  margin-bottom: 30px;
-
-  /* カードの横幅を調整（広がりすぎ防止） */
-  max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
-
-  /* スペース確保 */
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-}
-
-/* 親 container の余白調整 */
-.users-posts .container {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-/* ページタイトルを中央寄せ */
-.users-posts h1,
-.users-posts h2 {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-/* ユーザー投稿一覧：カードの余白を縮める */
-.users-posts .post-card {
-  padding: 20px 25px !important;   /* ← 今より余白を小さく */
-}
-
-/* 投稿文の行間も少しだけ引き締める */
-.users-posts .post-card p {
-  margin-bottom: 10px !important;
-  line-height: 1.4;
-}
-
-/* ======== ユーザー投稿一覧ページ（users#posts） ======== */
-
-/* 背景 */
+/* ユーザーの投稿一覧（users#posts）*/
 body.users-posts {
   background: #1E1B18 !important;
   background-image: none !important;
   color: #f2f2f2 !important;
 }
 
-/* 中央に寄せるコンテナ */
-body.users-posts .container {
-  max-width: 650px;     /* ちょうど見やすい幅 */
-  margin: 0 auto;
+/* 投稿カード（ガラス風デザイン） */
+body.users-posts .post-item-card {
+  background: rgba(255, 255, 255, 0.22) !important;
+  backdrop-filter: blur(12px) !important;
+  border-radius: 18px !important;
+  padding: 24px !important;
+  margin-bottom: 25px;
+
+  /* 目立つ枠線 */
+  border: 1px solid rgba(255, 255, 255, 0.30) !important;
+
+  /* 影で背景との差をつける */
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.55),
+    0 12px 32px rgba(0, 0, 0, 0.55) !important;
+
+  color: #fff !important;
+}
+
+/* 投稿カード内の文字 */
+body.users-posts .post-item-card p {
+  margin-bottom: 12px !important;
+  line-height: 1.45;
+  color: #f2f2f2 !important;
+}
+
+/* リンク色（白） */
+body.users-posts a {
+  color: #f2f2f2 !important;
+  text-decoration: none;
+}
+
+body.users-posts a:hover {
+  color: #ffbb6e !important; /* 温かいサウナ系の色 */
+  text-decoration: none;
+}
+
+/* カードを3列横並びにしたときの余白感を最適化 */
+body.users-posts .row {
+  margin-top: 20px;
 }
 
 /* タイトル */
-body.users-posts h1,
 body.users-posts h2 {
   text-align: center;
-  margin-bottom: 28px;
+  margin-bottom: 35px;
+  color: #fff !important;
 }
 
-/* Bootstrapカード外側の余白 */
-body.users-posts .card {
-  margin-top: 18px !important;  
-  border-radius: 18px !important;
-  background: #f7f8fa !important;
-  color: #000 !important;
-  box-shadow: 0 0 12px rgba(0,0,0,0.2);
+/* コンテナの最大幅調整 */
+body.users-posts .container {
+  max-width: 1200px !important;
+  margin: 0 auto;
 }
-
-/* カード内側の余白 */
-body.users-posts .card-body {
-  padding: 18px 22px !important;
-}
-
-/* 投稿本文 */
-body.users-posts .card-text {
-  margin-bottom: 10px !important;
-  line-height: 1.4;
-}
-
-/* サウナ名・日時 */
-body.users-posts .text-muted {
-  margin-bottom: 0 !important;
-  line-height: 1.3;
-}
-
