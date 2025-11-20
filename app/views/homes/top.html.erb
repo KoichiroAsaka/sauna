@@ -5,15 +5,18 @@
       <%= image_tag "app_logo.png", alt: "SaunaApp ロゴ", class: "logo" %>
     </div>
 
-    <!-- 🔹 右上ナビボタン（ログイン・新規登録） -->
+    <!-- 🔹 右上ボタン -->
     <div class="nav-buttons">
       <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-light" %>
       <%= link_to "新規登録", new_user_registration_path, class: "btn btn-light ms-2" %>
     </div>
   </div>
 
-  <!-- 🔹 中央下部「整うとは？」ボタン -->
-  <div class="relax-btn-container">
-    <%= link_to "整うとは？", what_is_totonou_path, class: "relax-btn" %>
+  <!-- 🔹 中央 -->
+  <div class="hero-catch">
+    <h1 class="catch-title">「整う」で心を穏やかに。</h1>
   </div>
+    <div class="relax-btn-container">
+      <%= link_to "整うとは？", what_is_totonou_path, class: "relax-btn" %>
+    </div>
 </div>

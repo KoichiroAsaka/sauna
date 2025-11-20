@@ -48,7 +48,12 @@ body.saunas-show {
   width: 80px; /* 🔽 小さく */
   height: auto;
   opacity: 0.9;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;  
+  border-radius: 50%;   /* 🔥 丸くする */
+  object-fit: cover;    /* 🔥 中身をきれいにトリミング */
+  background: rgba(0, 0, 0, 0.35);
+  padding: 8px;
+  backdrop-filter: blur(4px);
 }
 
 
@@ -75,14 +80,16 @@ body.saunas-show {
   height: 38px; /* ← ログインボタンと統一感のある高さに */
   min-width: 100px; /* ← 幅をある程度確保して横長に */
   white-space: nowrap; /* ← 文字折返し防止 */
-  transition: all 0.3s ease;
+  transition: 0.25s;
+  backdrop-filter: blur(6px);
 }
 
 /* 共通ホバー効果（統一） */
 .nav-buttons .btn:hover {
   background-color: #fff;
+  background: rgba(255,255,255,0.25);
   color: #000;
-  transform: scale(1.05);
+  transform: translateY(-2px);
 }
 
 /* Bootstrapデフォルト干渉をリセット */
@@ -150,10 +157,10 @@ body.saunas-show {
 /* === 「整うとは？」ボタン（トップページ中央下） === */
 .relax-btn-container {
   position: fixed;
-  bottom: 60px;
+  bottom: 70px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1000;
+  z-index: 10;
 }
 
 .relax-btn {
@@ -167,7 +174,6 @@ body.saunas-show {
   border-radius: 50px;           /* 丸みを維持 */
   text-decoration: none;
   transition: all 0.3s ease;
-  border: 2px dashed #ffffff; 
 }
 
 /* ホバー時の効果 */
@@ -195,4 +201,37 @@ body.pages-what_is_totonou .custom-btn:hover {
   padding-bottom: 100px;
 }
 
+/* --- トップページ メインキャッチコピー --- */
+.hero-catch {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  z-index: 10;
+}
 
+.catch-title {
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
+  font-weight: bold;
+  color: white;
+  line-height: 1.35;
+  text-shadow: 0 3px 12px rgba(0,0,0,0.55);
+}
+
+
+.catch-sub {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* スマホ調整 */
+@media (max-width: 576px) {
+  .catch-title {
+    font-size: 1.8rem;
+  }
+  .catch-sub {
+    font-size: 1rem;
+  }
+}

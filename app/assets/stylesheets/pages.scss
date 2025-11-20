@@ -90,3 +90,51 @@ body.pages-how_to_sauna {
     }
   }
   
+  /* ================================
+   What is totonou?
+================================ */
+body.pages-what_is_totonou h1,
+body.pages-what_is_totonou h2,
+body.pages-what_is_totonou p {
+  color: #fff;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+.what_is_totonou-overlay {
+  background: linear-gradient(
+    rgba(0,0,0,0.05) 0%,
+    rgba(0,0,0,0.45) 40%,
+    rgba(0,0,0,0.55) 70%
+  );
+  max-width: 900px; /* ← 追加 */
+  margin: 0 auto;   /* ← 中央寄せ */
+  padding: 80px 20px;
+}
+
+.what_is_totonou-page p {
+  line-height: 1.9;
+  letter-spacing: 0.2px;
+  font-size: 1.1rem;
+}
+
+.what_is_totonou-page h2 {
+  font-size: 1.6rem;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 6px rgba(0,0,0,0.7);
+}
+
+.what_is_totonou-overlay h1 {
+  margin-bottom: 40px;
+}
+
+.what_is_totonou-overlay h2 {
+  margin: 70px 0 30px;
+    font-weight: 700;
+  text-shadow: 0 0 10px rgba(0,0,0,0.9);
+}
+
+.cta-buttons .custom-btn {
+  padding: 10px 35px; /* 少し大きく */
+  font-size: 1.1rem;
+}

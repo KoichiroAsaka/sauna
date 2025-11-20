@@ -1,42 +1,61 @@
+/* --- ① Devise ページだけ背景を適用 --- */
+body.sessions-new,
+body.sessions-create,
+body.registrations-new,
+body.registrations-create,
+body.passwords-new,
+body.passwords-edit {
+  background-image: image-url("background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: "Helvetica", "Arial", sans-serif;
+}
+
+/* --- ② 全画面中央寄せ --- */
 .auth-container {
-    width: 350px;
-    margin: 100px auto;
-    padding: 40px;
-    background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 15px;
-    color: white;
-    text-align: center;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-  }
-  
-  .auth-container h2 {
-    margin-bottom: 25px;
-    font-weight: bold;
-  }
-  
-  .form-control {
-    background-color: rgba(255, 255, 255, 0.9);
-    border: none;
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .btn-outline-light {
-    border: 2px solid white;
-    border-radius: 25px;
-    padding: 10px;
-    width: 100%;
-    color: white;
-    background-color: transparent;
-  }
-  
-  .btn-outline-light:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-  }
-  
-  .auth-links {
-    margin-top: 20px;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* --- ③ フォームの箱（認証ページ専用） --- */
+.auth-box {
+  width: 350px;
+  padding: 40px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 15px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+/* --- ④ Devise 内だけのフォーム制御（Bootstrapを壊さない） --- */
+.auth-box .form-control {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* --- ⑤ ボタン（ログインはこちら等） --- */
+.auth-box .btn-outline-light {
+  border: 2px solid white;
+  border-radius: 25px;
+  padding: 10px;
+  width: 100%;
+  color: white;
+  background-color: transparent;
+}
+
+.auth-box .btn-outline-light:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.auth-links {
+  margin-top: 20px;
+}

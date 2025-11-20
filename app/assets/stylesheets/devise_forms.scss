@@ -1,13 +1,20 @@
 /* devise用フォームデザイン */
 
-body {
-    background-image: image-url("background.jpg"); /* トップページと同じ背景 */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    font-family: "Helvetica", "Arial", sans-serif;
-  }
+/* Devise ページ専用 body */
+body.sessions-new,
+body.sessions-create,
+body.registrations-new,
+body.registrations-create,
+body.passwords-new,
+body.passwords-edit {
+  background-image: image-url("background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: "Helvetica", "Arial", sans-serif;
+}
+
   
   /* 中央配置のコンテナ */
   .auth-container {
@@ -17,25 +24,30 @@ body {
     height: 100vh;
   }
   
-  /* 半透明のカード風フォーム */
-  .auth-box {
-    background-color: rgba(0, 0, 0, 0.6); /* 黒を60%透過 */
-    padding: 40px;
-    border-radius: 15px;
-    width: 400px;
-    color: white;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-  }
   
-  /* 入力欄 */
-  .auth-box .form-control {
-    background-color: rgba(255, 255, 255, 0.9);
-    border: none;
-    color: #333;
-  }
+ /* フォームの箱（装飾はここ） */
+.auth-box {
+  width: 350px;
+  padding: 40px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 15px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
   
+/* Devise 専用フォーム（Bootstrapは壊さない） */
+.auth-box .form-control {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
   /* ボタン */
-  .auth-box .btn {
+  .auth-box .btn {  
     width: 100%;
     background-color: #007bff;
     border: none;
