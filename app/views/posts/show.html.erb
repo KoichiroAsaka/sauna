@@ -1,12 +1,11 @@
 <div class="post-show-wrapper">
-  <h2 class="post-title"><%= @sauna.name %></h2>
+  <h2 class="post-title text-center"><%= @sauna.name %></h2>
 
   <div class="post-card">
-    
     <p>
       <i class="bi bi-person"></i>
       <%= link_to @post.user.name, user_path(@post.user),
-                  class: "text-decoration-none text-white fw-semibold" %>
+            class: "text-decoration-none text-white fw-semibold" %>
     </p>
 
     <p><i class="bi bi-journal-text"></i> <%= @post.post %></p>
@@ -20,19 +19,21 @@
     <% if @post.image.attached? %>
       <div class="text-center mt-4">
         <%= image_tag @post.image,
-                      class: "img-fluid rounded shadow-sm",
-                      style: "max-width: 100%; height: auto;" %>
+              class: "img-fluid rounded shadow-sm",
+              style: "max-width: 100%; height: auto;" %>
       </div>
     <% end %>
 
     <% if @post.user == current_user %>
       <div class="text-end mt-4 edit-buttons">
-        <%= link_to "編集する", edit_sauna_post_path(@sauna, @post),
-                    class: "btn btn-outline-primary btn-sm" %>
+        <%= link_to "編集する",
+              edit_sauna_post_path(@sauna, @post),
+              class: "btn btn-outline-primary btn-sm" %>
+
         <%= link_to "削除する",
-                    sauna_post_path(@sauna, @post),
-                    data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
-                    class: "btn btn-outline-danger btn-sm" %>
+              sauna_post_path(@sauna, @post),
+              data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
+              class: "btn btn-outline-danger btn-sm" %>
       </div>
     <% end %>
 

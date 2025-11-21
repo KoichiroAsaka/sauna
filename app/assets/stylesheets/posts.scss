@@ -184,8 +184,8 @@ body.saunas-show {
 .btn-secondary,
 .back-btn,
 .cancel-btn {
-  background: rgba(255, 255, 255, 0.05) !important;
-  border: 1px solid rgba(255,255,255,0.18) !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border: 1px solid rgba(255,255,255,0.35) !important;
   color: #fff !important;
   border-radius: 10px;
   padding: 10px 22px;
@@ -426,3 +426,13 @@ body.posts-drafts .btn-outline-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 5px 14px rgba(255, 120, 50, 0.4);
 }
+
+body.posts-new .btn-secondary,
+body.posts-edit .btn-secondary,
+body.posts-drafts .btn-secondary,
+body.posts-confirm .btn-secondary {
+  background: #ddd !important;
+  color: #222 !important;
+  border: 1px solid #ccc !important;
+}
+
