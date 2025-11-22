@@ -73,15 +73,65 @@
         </div>
         <div class="offcanvas-body">
           <ul class="navbar-nav">
-            <li class="nav-item"><%= link_to "フォロー中", followings_user_path(current_user), class: "nav-link text-white" %></li>
-            <li class="nav-item"><%= link_to "フォロワー", followers_user_path(current_user), class: "nav-link text-white" %></li>
-            <li class="nav-item"><%= link_to "プロフィール", profile_user_path(current_user), class: "nav-link text-white" %></li>
-            <li class="nav-item"><%= link_to "投稿一覧", my_posts_posts_path, class: "nav-link text-white" %></li>
-            <li class="nav-item"><%= link_to "お気に入り一覧", favorites_path, class: "nav-link text-white" %></li>
-            <li class="nav-item"><%= link_to "下書き一覧", drafts_posts_path, class: "nav-link text-white" %></li>
-            <li class="nav-item"><%= link_to "How to Sauna", how_to_sauna_path, class: "nav-link text-white" %></li>
-            <li class="nav-item"><%= link_to "モラル", scenes_path, class: "nav-link text-white" %></li>
-            <li class="nav-item"><%= link_to "マイページ", user_path(current_user), class: "nav-link text-white" %></li>
+          <!-- フォロー中 -->
+          <li class="nav-item mb-2">
+           <%= link_to followings_user_path(current_user), class: "nav-link text-white" do %>
+            <i class="bi bi-person-check me-2"></i> フォロー中
+           <% end %>
+          </li>
+          </li>
+          <!-- フォロワー -->
+          <li class="nav-item mb-2">
+           <%= link_to followers_user_path(current_user), class: "nav-link text-white" do %>
+            <i class="bi bi-people me-2"></i> フォロワー
+           <% end %>
+          </li>
+          <!-- プロフィール -->
+          <li class="nav-item mb-2">
+           <%= link_to profile_user_path(current_user), class: "nav-link text-white" do %>
+             <i class="bi bi-person-circle me-2"></i> プロフィール
+           <% end %>
+          </li>
+          <!-- 投稿一覧 -->
+          <li class="nav-item mb-2">
+            <%= link_to my_posts_posts_path, class: "nav-link text-white" do %>
+              <i class="bi bi-journal-text me-2"></i> 投稿一覧
+            <% end %>
+          </li>
+      <!-- お気に入り -->
+      <li class="nav-item mb-2">
+        <%= link_to favorites_path, class: "nav-link text-white" do %>
+          <i class="bi bi-heart me-2"></i> お気に入り
+        <% end %>
+      </li>
+
+      <!-- 下書き -->
+      <li class="nav-item mb-2">
+        <%= link_to drafts_posts_path, class: "nav-link text-white" do %>
+          <i class="bi bi-file-earmark-text me-2"></i> 下書き
+        <% end %>
+      </li>
+
+      <!-- How to Sauna -->
+      <li class="nav-item mb-2">
+        <%= link_to how_to_sauna_path, class: "nav-link text-white" do %>
+          <i class="bi bi-fire me-2"></i> How to Sauna
+        <% end %>
+      </li>
+
+      <!-- モラル -->
+      <li class="nav-item mb-2">
+        <%= link_to scenes_path, class: "nav-link text-white" do %>
+          <i class="bi bi-exclamation-triangle me-2"></i> モラル
+        <% end %>
+      </li>
+
+      <!-- マイページ -->
+      <li class="nav-item mb-2">
+        <%= link_to user_path(current_user), class: "nav-link text-white" do %>
+          <i class="bi bi-house me-2"></i> マイページ
+        <% end %>
+      </li>
           </ul>
         </div>
       </div>

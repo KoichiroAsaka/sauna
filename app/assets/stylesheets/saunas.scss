@@ -8,10 +8,18 @@ body.saunas-show a:hover {
   transform: translateY(-3px);
 }
 
+/* サウナ名タイトルだけはオレンジ専用 */
+body.saunas-show .sauna-title {
+  color: #222 !important;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.55);
+  transition: none !important;   /* タイトルは浮かせない */
+}
+
 /* === 投稿カード（ガラス風）=== */
 body.saunas-show .post-card {
-  background: rgba(255, 255, 255, 0.14) !important;
-  border: 1px solid rgba(255, 255, 255, 0.20);
+  background: rgba(255, 255, 255, 0.18) !important;  /* 少し濃くして視認性UP */
+  border: 1px solid rgba(255, 255, 255, 0.22);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-radius: 16px;
@@ -19,10 +27,11 @@ body.saunas-show .post-card {
   margin-bottom: 30px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
   text-align: left !important;
-  color: #efefef !important;
+  color: #f5f5f5 !important;
 }
+
 body.saunas-show .post-card * {
-  color: #efefef !important;
+  color: #f5f5f5 !important;
 }
 
 /* タイトル・見出し */
@@ -57,7 +66,8 @@ body.saunas-show .post-card i {
 /* === ボタン === */
 
 /* オレンジ主体ボタン（btn-primary） */
-body.saunas-show .btn-primary {
+body.saunas-show .btn-primary,
+body.saunas-show .btn.btn-primary {
   background: linear-gradient(180deg, #FF8A2A, #FF741A) !important;
   color: #000 !important;
   border: none !important;
@@ -65,7 +75,13 @@ body.saunas-show .btn-primary {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* アウトライン（白 → オレンジへ変更可能） */
+body.saunas-show .btn-primary:hover,
+body.saunas-show .btn.btn-primary:hover {
+  background: linear-gradient(180deg, #FFA24A, #FF7F22) !important;
+  color: #000 !important;
+}
+
+/* 白アウトライン */
 body.saunas-show .btn-outline-primary {
   color: #ffffff !important;
   border-color: #ffffff !important;
@@ -75,7 +91,7 @@ body.saunas-show .btn-outline-primary:hover {
   color: #1E1B18 !important;
 }
 
-/* アウトライン警告ボタン（※投稿削除など） */
+/* アウトライン警告ボタン（削除など） */
 body.saunas-show .btn-outline-warning {
   background: rgba(255, 255, 255, 0.15) !important;
   border: 1px solid rgba(255, 255, 255, 0.25) !important;
@@ -84,33 +100,20 @@ body.saunas-show .btn-outline-warning {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-body.saunas-show .btn.btn-primary {
-  background: linear-gradient(180deg, #FF8A2A, #FF741A) !important;
-  color: #000 !important;
-  border: none !important;
-  border-radius: 12px !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-body.saunas-show .btn.btn-primary:hover {
-  background: linear-gradient(180deg, #FFA24A, #FF7F22) !important;
-  color: #000 !important;
-}
-
+/* Bootstrapの基本アウトライン（競合回避用） */
 .btn.btn-outline-primary {
   border-color: #ddd !important;
   color: #eee !important;
 }
-
 .btn.btn-outline-primary:hover {
   background-color: #eee !important;
   color: #222 !important;
 }
 
-
-
-
-
+body.saunas-show .sauna-address-link:hover {
+  opacity: 0.75;
+  transform: translateY(-2px);
+}
 
 
 /* === サウナ一覧ページ（saunas#index） 背景の完全制御 === */

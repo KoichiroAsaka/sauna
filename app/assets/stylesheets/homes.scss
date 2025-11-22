@@ -45,7 +45,7 @@ body.saunas-show {
 
 /* === ロゴ === */
 .logo {
-  width: 80px; /* 🔽 小さく */
+  width: 70px; /* 🔽 小さく */
   height: auto;
   opacity: 0.9;
   transition: opacity 0.3s ease, transform 0.3s ease;  
@@ -89,7 +89,7 @@ body.saunas-show {
   background-color: #fff;
   background: rgba(255,255,255,0.25);
   color: #000;
-  transform: translateY(-2px);
+  transform: scale(1.05);
 }
 
 /* Bootstrapデフォルト干渉をリセット */
@@ -174,6 +174,7 @@ body.saunas-show {
   border-radius: 50px;           /* 丸みを維持 */
   text-decoration: none;
   transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.35);
 }
 
 /* ホバー時の効果 */

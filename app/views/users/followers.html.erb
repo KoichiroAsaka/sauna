@@ -1,6 +1,6 @@
 <div class="container mt-5">
   <div class="card outer-wrapper shadow-lg p-4">
-    <h2 class="text-center mb-4">フォロワー一覧</h2>
+    <h2 class="text-center mb-4">フォロワー</h2>
 
     <% if @users.any? %>
       <div class="row">
@@ -16,7 +16,7 @@
 
               <div class="card-body">
                 <h5 class="card-title">
-                  <%= link_to user.name, profile_user_path(user), class: "text-decoration-none" %>
+                  <%= link_to user.name, profile_user_path(user), class: "text-decoration-none text-dark" %>
                 </h5>
 
                 <p class="post-count mb-2">

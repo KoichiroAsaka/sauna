@@ -3,7 +3,14 @@
   <div class="card sauna-info-card shadow-lg mb-5 text-center">
     <div class="card-body">
       <h2 class="fw-bold mb-3 sauna-title"><%= @sauna.name %></h2>
-      <p class="mb-3 sauna-address"><i class="bi bi-geo-alt"></i> <%= @sauna.address %></p>
+      <p class="mb-3 sauna-address">
+        <i class="bi bi-geo-alt"></i>
+        <%= link_to @sauna.address,
+          "https://www.google.com/maps/search/?api=1&query=#{@sauna.address}",
+          target: "_blank",
+          rel: "noopener noreferrer",
+          class: "sauna-address-link" %>
+      </p>
 
       <!-- お気に入り登録／解除ボタン -->
       <div class="mb-3">

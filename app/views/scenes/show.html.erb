@@ -12,17 +12,17 @@
 
     <!-- 評価集計 -->
     <div class="mb-3 text-center">
-      <h5 class="text-secondary">🗳️ 評価集計</h5>
+      <h5 class="text-secondary"> 評価集計</h5>
       <p class="fs-6">
-        <span class="text-success">Good 👍：<%= @good_count %>件</span>
-        <span class="text-danger">Bad 👎：<%= @bad_count %>件</span>
+        <span class="text-success">Good：<%= @good_count %>件</span>
+        <span class="text-danger">Bad：<%= @bad_count %>件</span>
       </p>
     </div>
 
     <hr>
 
     <!-- コメント一覧 -->
-    <div class="mt-4 comment-list mx-auto">
+    <div class="mt-1 comment-list mx-auto">
       <h5 class="text-secondary mb-3 text-center">💬 コメント一覧</h5>
 
       <% if @comments.any? %>

@@ -1,10 +1,13 @@
 <div class="container scenes-container mt-5">
-  <h3 class="text-center">モラルチェック<i class="bi bi-check-circle text-white"></i> </h3>
+  <h3 class="text-center">
+    モラルチェック
+    <i class="bi bi-check-circle text-white"></i>
+  </h3>
 
   <% @scenes.each do |scene| %>
     <div class="scene-box mb-5">
 
-      <!-- シーンタイトル（上部のラベル） -->
+      <!-- シーンタイトル（上部ラベル） -->
       <div class="scene-title">シーン <%= scene.id %></div>
 
       <!-- シーン内容 -->
@@ -16,12 +19,14 @@
 
       <!-- Good / Bad -->
       <div class="evaluate-buttons">
-        <%= button_to "Good", scene_evaluations_path(scene, result: "Good"),
+        <%= button_to "Good",
+              scene_evaluations_path(scene, result: "Good"),
               method: :post,
               class: "btn eval-btn #{user_eval&.result == 'Good' ? 'btn-good-active' : 'btn-good'}",
               data: { turbo: false } %>
 
-        <%= button_to "Bad", scene_evaluations_path(scene, result: "Bad"),
+        <%= button_to "Bad",
+              scene_evaluations_path(scene, result: "Bad"),
               method: :post,
               class: "btn eval-btn #{user_eval&.result == 'Bad' ? 'btn-bad-active' : 'btn-bad'}",
               data: { turbo: false } %>
@@ -32,22 +37,29 @@
 
         <% if user_eval&.result.present? %>
           <p class="your-eval">
-            あなたの評価：<strong><%= user_eval.result %></strong>
+            あなたの評価：
+            <strong><%= user_eval.result %></strong>
           </p>
         <% end %>
 
         <!-- コメントフォーム -->
-        <%= form_with model: Comment.new, url: scene_comments_path(scene), local: true do |f| %>
-          <%= f.text_area :content, rows: 2,
+        <%= form_with model: Comment.new,
+                      url: scene_comments_path(scene),
+                      local: true do |f| %>
+
+          <%= f.text_area :content,
+                rows: 2,
                 class: "form-control comment-area",
                 placeholder: "コメントを入力..." %>
 
-          <!-- コメント + みんなの意見 を横並びにする部分 -->
-          <div class="comment-actions">
-            <%= f.submit "投稿する", class: "btn btn-primary btn-comment" %>
-            <%= link_to "みんなの意見", scene_path(scene),
-                  class: "btn btn-outline-secondary btn-view" %>
+          <!-- コメント + みんなの意見 を横並び -->
+          <div class="action-buttons">
+            <%= f.submit "投稿する", class: "btn-comment" %>
+            <%= link_to "みんなの意見",
+                        scene_path(scene),
+                        class: "btn-view" %>
           </div>
+
         <% end %>
 
       </div>

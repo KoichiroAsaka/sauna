@@ -14,3 +14,15 @@
 @import "pages";
 
 
+
+  /* オフキャンバス内の nav-link 用 */
+.offcanvas .nav-link {
+    padding: 0.6rem 0.8rem !important; /* ← 左右を少し詰める */
+    border-radius: 10px;               /* ← ホバーの角丸を自然に */
+  }
+  
+  /* ホバー時 */
+  .offcanvas .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.12) !important;
+  }
+  
