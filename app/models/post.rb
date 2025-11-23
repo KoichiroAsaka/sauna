@@ -3,14 +3,7 @@ class Post < ApplicationRecord
   belongs_to :sauna
   has_one_attached :image
 
-  enum congestion_level: {
-    level1: 1, # 空いている
-    level2: 2,
-    level3: 3,
-    level4: 4,
-    level5: 5  # 非常に混雑
-  }
-
+  enum congestion_level: { level1: 1, level2: 2, level3: 3, level4: 4, level5: 5 }
   enum day_of_week: {
     sunday: 0, monday: 1, tuesday: 2, wednesday: 3,
     thursday: 4, friday: 5, saturday: 6
@@ -21,7 +14,8 @@ class Post < ApplicationRecord
   }
   enum status: { draft: 0, published: 1 }
 
-  # バリデーション（下書き以外では必須）  validates :sauna_id, presence: true, unless: :draft?
+  # 下書き以外では必須
+  validates :sauna_id, presence: true, unless: :draft?
   validates :congestion_level, :day_of_week, :time_zone, presence: true, unless: :draft?
   validates :post, presence: true, unless: :draft?
 end

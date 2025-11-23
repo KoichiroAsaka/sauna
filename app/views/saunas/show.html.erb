@@ -14,9 +14,12 @@
 
       <!-- お気に入り登録／解除ボタン -->
       <div class="mb-3">
-        <% if current_user.favorites.exists?(sauna_id: @sauna.id) %>
+      
+        <% favorite = current_user.favorites.find_by(sauna_id: @sauna.id) %>
+      
+        <% if favorite %>
           <%= button_to "★ お気に入り解除",
-                        favorite_path(sauna_id: @sauna.id),
+                        favorite_path(favorite),
                         method: :delete,
                         class: "btn btn-warning w-50" %>
         <% else %>
@@ -25,7 +28,9 @@
                         method: :post,
                         class: "btn btn-outline-warning w-50" %>
         <% end %>
+      
       </div>
+      
 
       <%= link_to "このサウナに投稿する", new_sauna_post_path(@sauna), class: "btn btn-primary w-50" %>
     </div>
@@ -67,7 +72,7 @@
               <li><i class="bi bi-clock"></i> <%= I18n.t("enums.post.time_zone.#{post.time_zone}") if post.time_zone.present? %>
               </ul>
 
-              <%= link_to "詳細を見る", sauna_post_path(post.sauna, post), class: "btn btn-outline-primary btn-sm mt-auto w-100" %>
+              <%= link_to "投稿詳細", sauna_post_path(post.sauna, post), class: "btn btn-outline-primary btn-sm mt-auto w-100" %>
             </div>
           </div>
         </div>

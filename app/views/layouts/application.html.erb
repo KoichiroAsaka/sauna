@@ -32,7 +32,7 @@
           <div class="d-flex align-items-center">
             <% if current_user.profile_image.attached? %>
               <%= link_to profile_user_path(current_user), class: "text-decoration-none" do %>
-                <%= image_tag current_user.profile_image,  # ✅ url_for は不要
+                <%= image_tag current_user.profile_image, 
                               class: "rounded-circle",
                               style: "width:40px; height:40px; object-fit:cover;" %>
               <% end %>
@@ -161,6 +161,7 @@
         <%= link_to (Sauna.first ? new_sauna_post_path(Sauna.first) : "#"), class: "floating-btn" do %>
           <i class="bi bi-plus-circle-fill"></i>
         <% end %>
+ 
       </div>
     <% end %>
 

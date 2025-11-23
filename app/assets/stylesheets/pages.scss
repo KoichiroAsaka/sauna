@@ -1,106 +1,112 @@
-/* ================================
+/* ===============================================
    How to Sauna（pages#how_to_sauna）
-================================ */
+   =============================================== */
 
-/* 背景：サウナ一覧ページと同系統（暗め＋背景画像） */
+/* 背景：暗め＋背景画像 */
 body.pages-how_to_sauna {
-    background: url("how_to_sauna_background.jpg") center center / cover no-repeat fixed;
-    color: #f2f2f2;
-  }
-  
-  /* 外側のホワイト透明カード */
+  background: url("how_to_sauna_background.jpg") center/cover no-repeat fixed;
+  color: #f2f2f2;
+}
+
+/* 外側のホワイト透明カード */
+.howto-wrapper {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 20px;
+  padding: 60px 40px;
+  margin: 40px auto;
+  max-width: 1100px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+/* タイトル */
+.howto-title {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  color: #222;
+  margin-top: 60px;
+}
+
+/* サブタイトル */
+.howto-subtitle {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #444;
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+/* 区切り線 */
+.howto-divider {
+  width: 100%;
+  margin: 35px 0;
+  border-top: 1px solid rgba(0,0,0,0.2);
+}
+
+/* セクション（左右配置） */
+.howto-sections {
+  max-width: 1200px;
+  margin: 50px auto 0;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+/* セクションボックス */
+.howto-box {
+  flex: 1;
+  min-width: 300px;
+  max-width: 450px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 25px;
+}
+
+.howto-box h3 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+/* 番号付き説明 */
+.howto-step {
+  font-size: 1.3rem;
+  margin: 12px 0;
+  color: #333;
+}
+.howto-step span {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
   .howto-wrapper {
-    background: rgba(255, 255, 255, 0.25);   /* ガラス感 */
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: 20px;
-    padding: 60px 40px;
-    margin: 40px auto;
-    max-width: 1100px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    padding: 40px 20px;
   }
-  
-  /* タイトル */
   .howto-title {
-    font-size: 3rem;
-    font-weight: 700;
-    text-align: center;
-    color: #222;
-    margin-top: 60px;
+    font-size: 2.2rem;
   }
-  
-  
-  /* サブタイトル */
-  .howto-subtitle {
-    text-align: center;
-    margin-bottom: 40px;
-    color: #444;
-    font-size: 1.2rem;
-    opacity: 0.8;
-  }
-  
-  /* セクション区切り線 */
-  .howto-divider {
-    width: 100%;
-    margin: 35px 0;
-    border-top: 1px solid rgba(0,0,0,0.2);
-  }
-  
-  /* 左右の説明ブロック */
-  .howto-sections {
-    display: flex;
-    justify-content: space-between;
-    gap: 50px;
-    flex-wrap: wrap;
-  }
-  
-  .howto-box {
-    flex: 1;
-    min-width: 300px;
-    max-width: 450px;
-    background: rgba(255,255,255,0.7);
-    backdrop-filter: blur(10px);
-    padding: 25px;
-    border-radius: 20px;
-  }
-  
   .howto-box h3 {
-    font-size: 2rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 20px;
-    color: #222;
+    font-size: 1.6rem;
   }
-  
-  /* 番号付き説明 */
-  .howto-step {
-    font-size: 1.3rem;
-    margin: 12px 0;
-    color: #333;
+  .howto-sections {
+    gap: 20px;
   }
-  
-  /* 数字のスタイル */
-  .howto-step span {
-    font-weight: bold;
-    margin-right: 5px;
-  }
-  
-  /* レスポンシブ */
-  @media (max-width: 768px) {
-    .howto-wrapper {
-      padding: 40px 20px;
-    }
-    .howto-title {
-      font-size: 2.2rem;
-    }
-    .howto-box h3 {
-      font-size: 1.6rem;
-    }
-  }
-  
-  /* ================================
-   What is totonou?
-================================ */
+}
+
+
+/* ===============================================
+   What is Totonou ?（pages#what_is_totonou）
+   =============================================== */
+
 body.pages-what_is_totonou h1,
 body.pages-what_is_totonou h2,
 body.pages-what_is_totonou p {
@@ -108,17 +114,19 @@ body.pages-what_is_totonou p {
   text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
 }
 
+/* 透明グラデーション背景（中心コンテンツ） */
 .what_is_totonou-overlay {
   background: linear-gradient(
     rgba(0,0,0,0.05) 0%,
     rgba(0,0,0,0.45) 40%,
     rgba(0,0,0,0.55) 70%
   );
-  max-width: 900px; /* ← 追加 */
-  margin: 0 auto;   /* ← 中央寄せ */
+  max-width: 900px;
+  margin: 0 auto;
   padding: 80px 20px;
 }
 
+/* テキストデザイン */
 .what_is_totonou-page p {
   line-height: 1.9;
   letter-spacing: 0.2px;
@@ -127,8 +135,8 @@ body.pages-what_is_totonou p {
 
 .what_is_totonou-page h2 {
   font-size: 1.6rem;
-  margin-top: 50px;
-  margin-bottom: 20px;
+  margin: 50px 0 20px;
+  font-weight: 700;
   text-shadow: 0 0 6px rgba(0,0,0,0.7);
 }
 
@@ -138,28 +146,11 @@ body.pages-what_is_totonou p {
 
 .what_is_totonou-overlay h2 {
   margin: 70px 0 30px;
-    font-weight: 700;
   text-shadow: 0 0 10px rgba(0,0,0,0.9);
 }
 
+/* CTAボタン */
 .cta-buttons .custom-btn {
-  padding: 10px 35px; /* 少し大きく */
+  padding: 10px 35px;
   font-size: 1.1rem;
-}
-
-.howto-sections {
-  max-width: 1200px; /* ← 横幅を絞る */
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-top: 50px;
-  align-items: stretch; /* ← 高さが揃う */
-}
-
-@media (max-width: 768px) {
-  .howto-section {
-    flex-direction: column;
-    gap: 20px;
-  }
 }

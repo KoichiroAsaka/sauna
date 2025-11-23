@@ -46,14 +46,14 @@ class UsersController < ApplicationController
   # --------------------------------------------
   # 🗑️ プロフィール削除（本人のみ）
   # --------------------------------------------
-  def destroy_profile
-    unless @user == current_user
-      redirect_to root_path, alert: "アクセスできません" and return
-    end
-
-    @user.update(profile: nil, profile_image: nil)
-    redirect_to root_path, notice: "プロフィールを削除しました。"
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    reset_session # ログアウト
+    redirect_to root_path, notice: "アカウントを削除しました。"
   end
+  
+  
 
   # --------------------------------------------
   # 🤝 フォロー一覧

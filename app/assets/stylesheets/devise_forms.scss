@@ -7,38 +7,32 @@ body.registrations-new,
 body.registrations-create,
 body.passwords-new,
 body.passwords-edit {
-  background-image: image-url("background.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background: image-url("background.jpg") center/cover no-repeat fixed;
   font-family: "Helvetica", "Arial", sans-serif;
 }
 
-  
-  /* 中央配置のコンテナ */
-  .auth-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  
- /* フォームの箱（装飾はここ） */
+/* 中央配置のコンテナ */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* フォームの箱（装飾はここ） */
 .auth-box {
   width: 350px;
   padding: 40px;
-  background-color: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.6);
   border-radius: 15px;
   color: white;
   text-align: center;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 }
-  
+
 /* Devise 専用フォーム（Bootstrapは壊さない） */
 .auth-box .form-control {
-  background-color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.9);
   border: none;
   border-radius: 10px;
   padding: 10px;
@@ -46,15 +40,14 @@ body.passwords-edit {
   color: #333;
 }
 
-  /* ボタン */
-  .auth-box .btn {  
-    width: 100%;
-    background-color: #007bff;
-    border: none;
-    font-weight: bold;
-  }
-  
-  .auth-box .btn:hover {
-    background-color: #0056b3;
-  }
-  
+/* ボタン */
+.auth-box .btn {
+  width: 100%;
+  background: #007bff;
+  border: none;
+  font-weight: bold;
+}
+
+.auth-box .btn:hover {
+  background: #0056b3;
+}

@@ -1,33 +1,30 @@
-/* フォロー中 + フォロワー画面 両方に適用 */
+/* ===============================
+   フォロー中 / フォロワー 共通
+   =============================== */
+
+/* 背景・文字色 */
 body.users-followings,
 body.users-followers {
-    background-image: none !important;
-    background-color: #1E1B18 !important; 
-    color: #f2f2f2 !important;
+  background: #1E1B18 !important;
+  background-image: none !important;
+  color: #f2f2f2 !important;
 }
 
-/* 外側カード（修正：.card.outer-wrapper に変更して強度UP） */
+/* 外側カード（強度UP） */
 body.users-followings .card.outer-wrapper,
 body.users-followers .card.outer-wrapper {
-    background-color: #272421 !important;
-    border-radius: 26px;
-    padding: 40px 30px;
-    max-width: 960px;
-    margin: 50px auto;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.4);
+  background: #272421 !important;
+  border-radius: 26px;
+  padding: 40px 30px;
+  max-width: 960px;
+  margin: 50px auto;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.4);
 }
 
 /* タイトル */
 body.users-followings h2,
 body.users-followers h2 {
-    color: #fff !important;
-}
-
-/* 個別カード */
-/* 個別カード */
-body.users-followings .card.user-card,
-body.users-followers .card.user-card {
-    /* ← ここが空なので、Bootstrapの薄グレーのまま */
+  color: #fff !important;
 }
 
 /* ユーザー名・投稿数 */
@@ -35,225 +32,203 @@ body.users-followings .card.user-card .card-title,
 body.users-followers .card.user-card .card-title,
 body.users-followings .card.user-card .post-count,
 body.users-followers .card.user-card .post-count {
-    color: #f5f5f5 !important;
+  color: #f5f5f5 !important;
 }
 
-/* ボタン */
+/* ボタン（アウトライン色）*/
 body.users-followings .btn-outline-primary,
 body.users-followers .btn-outline-primary {
-    color: #D9534F !important;
-    border-color: #D9534F !important;
+  color: #D9534F !important;
+  border-color: #D9534F !important;
 }
-
 body.users-followings .btn-outline-primary:hover,
 body.users-followers .btn-outline-primary:hover {
-    background-color: #D9534F !important;
-    color: #fff !important;
+  background: #D9534F !important;
+  color: #fff !important;
 }
 
 /* bottom-nav */
 body.users-followings .bottom-nav,
 body.users-followers .bottom-nav {
-    background-color: rgba(39,36,33,0.85) !important;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.4) !important;
-    backdrop-filter: blur(8px);
+  background: rgba(39,36,33,0.85) !important;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.4) !important;
+  backdrop-filter: blur(8px);
 }
 
-/* ===== プロフィール全体：背景 ===== */
+
+/* ===============================
+   プロフィール（共通）
+   =============================== */
+
+/* 全体ラッパー */
 .profile-sauna-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 80px;
-  }
-  
-  /* ===== カード：サウナの木×ガラス風 ===== */
-  .profile-sauna-card {
-    max-width: 450px;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.08);  /* ガラス感 */
-    backdrop-filter: blur(10px) saturate(140%);
-    border-radius: 16px;
-    padding: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  
-    box-shadow:
-      0 0 10px rgba(255, 165, 0, 0.15),
-      0 8px 25px rgba(0, 0, 0, 0.4);        /* サウナ室の薄暗い影 */
-  }
-  
-  /* ===== タイトル ===== */
-  .sauna-title {
-    color: #f8e1c4;        /* サウナの温かい光 */
-    font-weight: bold;
-  }
-  
-  /* ===== 木のぬくもりを感じる見出し ===== */
-  .sauna-heading {
-    color: #ffe8c0;
-    font-weight: 600;
-  }
-  
-  /* ===== 通常テキスト ===== */
-  .sauna-text {
-    color: #f1f1f1;
-  }
-  
-  /* ===== グレー補足 ===== */
-  .sauna-muted {
-    color: #ccc !important;
-  }
-  
-  /* ===== アバター：円＋光 ===== */
-  .sauna-avatar {
-    border-radius: 50%;
-    box-shadow:
-      0 0 10px rgba(255, 180, 100, 0.4),
-      0 0 20px rgba(255, 150, 50, 0.2);
-  }
-  
-  /* ===== ボタン：蒸気風の淡い光 ===== */
-  .sauna-btn {
-    background: linear-gradient(135deg, #ff9b42, #ff7f2a);
-    color: white;
-    border: none;
-    transition: 0.3s;
-  }
-  
-  .sauna-btn:hover {
-    background: linear-gradient(135deg, #ffa857, #ff8f3f);
-    transform: translateY(-2px);
-  }
-  
-  /* ===== アウトラインボタン（透明×光） ===== */
-  .sauna-btn-outline {
-    border: 1px solid #ffb26b !important;
-    color: #ffb26b !important;
-    background: transparent !important;
-    transition: 0.3s;
-  }
-  
-  .sauna-btn-outline:hover {
-    background: rgba(255, 175, 100, 0.1) !important;
-    transform: translateY(-2px);
-  }
-  
-  /* ===== 危険操作ボタン ===== */
-  .sauna-btn-danger {
-    border: 1px solid #ff6b6b !important;
-    color: #ff6b6b !important;
-    background: transparent !important;
-  }
-  
-  .sauna-btn-danger:hover {
-    background: rgba(255, 100, 100, 0.1) !important;
-    transform: translateY(-2px);
-  }
+  display: flex;
+  justify-content: center;
+  margin-bottom: 80px;
+}
 
-/* プロフィールページ専用：背景（ダーク基調へ統一） */
+/* 共通カードデザイン（ガラス風） */
+.profile-sauna-card {
+  max-width: 450px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px) saturate(140%);
+  border-radius: 16px;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 0 10px rgba(255, 165, 0, 0.15),
+    0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* 各種テキスト */
+.sauna-title { color: #f8e1c4; font-weight: bold; }
+.sauna-heading { color: #ffe8c0; font-weight: 600; }
+.sauna-text { color: #f1f1f1; }
+.sauna-muted { color: #ccc !important; }
+
+/* アバター */
+.sauna-avatar {
+  border-radius: 50%;
+  box-shadow:
+    0 0 10px rgba(255, 180, 100, 0.4),
+    0 0 20px rgba(255, 150, 50, 0.2);
+}
+
+/* メインボタン / アウトライン / 危険ボタン */
+.sauna-btn {
+  background: linear-gradient(135deg, #ff9b42, #ff7f2a);
+  color: #fff;
+  border: none;
+  transition: 0.3s;
+}
+.sauna-btn:hover {
+  background: linear-gradient(135deg, #ffa857, #ff8f3f);
+  transform: translateY(-2px);
+}
+
+.sauna-btn-outline {
+  border: 1px solid #ffb26b !important;
+  color: #ffb26b !important;
+  background: transparent !important;
+  transition: 0.3s;
+}
+.sauna-btn-outline:hover {
+  background: rgba(255, 175, 100, 0.1) !important;
+  transform: translateY(-2px);
+}
+
+.sauna-btn-danger {
+  border: 1px solid #ff6b6b !important;
+  color: #ff6b6b !important;
+  background: transparent !important;
+}
+.sauna-btn-danger:hover {
+  background: rgba(255, 100, 100, 0.1) !important;
+  transform: translateY(-2px);
+}
+
+/* プロフィール編集ボタン */
+.profile-edit-btn {
+  background: linear-gradient(135deg, #FF8E3C, #FF7A2E);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(255, 140, 60, 0.35);
+}
+
+
+/* ===============================
+   プロフィールページ（users#profile）
+   =============================== */
+
 body.users-profile {
-    background-color: #1E1B18 !important;         /* フォロー画面と同じ */
-    background-image: none !important;            /* 明るいサウナ画像を無効化 */
-    color: #f2f2f2 !important;
+  background: #1E1B18 !important;
+  background-image: none !important;
+  color: #f2f2f2 !important;
 }
 
-/* プロフィールカード（明るすぎるため少し暗めに） */
 body.users-profile .profile-sauna-card {
-    background: rgba(255, 255, 255, 0.1) !important;
-    backdrop-filter: blur(10px) saturate(130%) !important;
-
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
-    box-shadow:
-        0 0 20px rgba(255, 200, 100, 0.15),
-        0 8px 25px rgba(0, 0, 0, 0.5) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) saturate(130%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow:
+    0 0 20px rgba(255, 200, 100, 0.15),
+    0 8px 25px rgba(0, 0, 0, 0.5) !important;
 }
 
-/* 文字色もダーク背景に合わせて統一 */
+/* 文字色統一 */
 body.users-profile .sauna-title,
 body.users-profile .sauna-heading,
 body.users-profile .sauna-text {
-    color: #f5f5f5 !important;
+  color: #f5f5f5 !important;
 }
 
-/* アバターの光量を少し下げる（背景が暗いので整える） */
+/* アバターの光量調整 */
 body.users-profile .sauna-avatar {
-    box-shadow:
-        0 0 8px rgba(255, 180, 100, 0.2),
-        0 0 12px rgba(255, 150, 50, 0.15);
+  box-shadow:
+    0 0 8px rgba(255, 180, 100, 0.2),
+    0 0 12px rgba(255, 150, 50, 0.15);
 }
 
-.profile-edit-btn {
-    background: linear-gradient(135deg, #FF8E3C, #FF7A2E);
-    border: none;
-    color: #fff;
-    font-weight: 600;
-    box-shadow: 0 4px 12px rgba(255, 140, 60, 0.35);
-  }
-  
 
-  /* プロフィール編集ページ専用デザイン */
+/* ===============================
+   プロフィール編集ページ（users#edit_profile）
+   =============================== */
+
 body.users-edit_profile {
-    background-color: #1E1B18 !important;
-    background-image: none !important;
-    color: #f2f2f2 !important;
+  background: #1E1B18 !important;
+  background-image: none !important;
+  color: #f2f2f2 !important;
 }
 
-/* プロフィール編集ページのカードをプロフィール表示ページと統一 */
 body.users-edit_profile .profile-sauna-card {
-    background: rgba(255, 255, 255, 0.03) !important;
-    backdrop-filter: blur(10px) saturate(130%) !important;
-
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
-    border-radius: 16px !important; /* ← 表示ページと同じ値に統一 */
-
-    box-shadow:
-        0 0 10px rgba(0, 0, 0, 0.4),
-        0 8px 25px rgba(0, 0, 0, 0.5) !important;
-
-    padding: 30px !important;  /* ← 表示ページと同じ（30px） */
-    max-width: 450px !important; /* ← 表示ページと同じ幅 */
-    margin: 50px auto !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(10px) saturate(130%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 16px !important;
+  padding: 30px !important;
+  max-width: 450px !important;
+  margin: 50px auto !important;
+  box-shadow:
+    0 0 10px rgba(0, 0, 0, 0.4),
+    0 8px 25px rgba(0, 0, 0, 0.5) !important;
 }
 
 body.users-edit_profile .sauna-title,
 body.users-edit_profile .sauna-heading,
 body.users-edit_profile .sauna-text {
-    color: #f5f5f5 !important;
+  color: #f5f5f5 !important;
 }
 
 body.users-edit_profile .sauna-avatar {
-    box-shadow:
-        0 0 8px rgba(255, 180, 100, 0.2),
-        0 0 12px rgba(255, 150, 50, 0.15) !important;
+  box-shadow:
+    0 0 8px rgba(255, 180, 100, 0.2),
+    0 0 12px rgba(255, 150, 50, 0.15) !important;
 }
 
-/* ===============================
-   🔶 users#posts（ユーザー投稿一覧）
-   posts-my_posts とデザイン統一
-================================ */
 
-/* ユーザーの投稿一覧（users#posts）*/
+/* ===============================
+   ユーザー投稿一覧（users#posts）
+   =============================== */
+
 body.users-posts {
   background: #1E1B18 !important;
   background-image: none !important;
   color: #f2f2f2 !important;
 }
 
-/* 投稿カード（ガラス風デザイン） */
+/* 投稿カード */
 body.users-posts .post-item-card {
   background: rgba(255, 255, 255, 0.22) !important;
   backdrop-filter: blur(12px) !important;
   border-radius: 18px !important;
   padding: 24px !important;
   margin-bottom: 25px;
-
-  /* 目立つ枠線 */
   border: 1px solid rgba(255, 255, 255, 0.30) !important;
-
-  /* 影で背景との差をつける */
   box-shadow:
     0 6px 20px rgba(0, 0, 0, 0.55),
     0 12px 32px rgba(0, 0, 0, 0.55) !important;
-
   color: #fff !important;
 }
 
@@ -264,18 +239,17 @@ body.users-posts .post-item-card p {
   color: #f2f2f2 !important;
 }
 
-/* リンク色（白） */
+/* リンク色（白／ホバーでサウナ色） */
 body.users-posts a {
   color: #f2f2f2 !important;
   text-decoration: none;
 }
-
 body.users-posts a:hover {
-  color: #ffbb6e !important; /* 温かいサウナ系の色 */
+  color: #ffbb6e !important;
   text-decoration: none;
 }
 
-/* カードを3列横並びにしたときの余白感を最適化 */
+/* カードレイアウト調整 */
 body.users-posts .row {
   margin-top: 20px;
 }
@@ -287,7 +261,7 @@ body.users-posts h2 {
   color: #fff !important;
 }
 
-/* コンテナの最大幅調整 */
+/* コンテナの最大幅 */
 body.users-posts .container {
   max-width: 1200px !important;
   margin: 0 auto;

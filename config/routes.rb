@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   # サウナ（投稿をネスト）
   resources :saunas, only: [:index, :show] do
-    resources :posts, except: [:destroy] 
+    resources :posts
   end
 
   # 投稿（下書き・自分の投稿※ネスト外）
@@ -25,13 +25,13 @@ Rails.application.routes.draw do
   # フォロー関係
   resources :relationships, only: [:create, :destroy]
 
-  # ユーザー関連
-  resources :users, only: [:show] do
+  # ユーザー関連 
+  resources :users, only: [:show, :destroy] do
     member do
       get :profile
       get 'profile/edit', to: 'users#edit_profile', as: 'edit_profile'
       patch :profile, to: 'users#update_profile'
-      delete :profile, to: 'users#destroy_profile'
+
       get :followers
       get :followings
       get :posts, to: 'users#posts'

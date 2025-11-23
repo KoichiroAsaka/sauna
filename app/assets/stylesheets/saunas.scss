@@ -13,12 +13,12 @@ body.saunas-show .sauna-title {
   color: #222 !important;
   font-weight: 700;
   text-shadow: 0 2px 4px rgba(0,0,0,0.55);
-  transition: none !important;   /* タイトルは浮かせない */
+  transition: none !important;
 }
 
 /* === 投稿カード（ガラス風）=== */
 body.saunas-show .post-card {
-  background: rgba(255, 255, 255, 0.18) !important;  /* 少し濃くして視認性UP */
+  background: rgba(255, 255, 255, 0.18) !important;
   border: 1px solid rgba(255, 255, 255, 0.22);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -58,36 +58,32 @@ body.saunas-show .post-card .text-muted {
 
 /* アイコン */
 body.saunas-show .post-card i {
-  color: #ffffff !important;
   opacity: 0.95;
   margin-right: 6px;
+  color: #fff !important;
 }
 
 /* === ボタン === */
 
 /* オレンジ主体ボタン（btn-primary） */
-body.saunas-show .btn-primary,
-body.saunas-show .btn.btn-primary {
+body.saunas-show .btn-primary {
   background: linear-gradient(180deg, #FF8A2A, #FF741A) !important;
   color: #000 !important;
   border: none !important;
   border-radius: 12px !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
-
-body.saunas-show .btn-primary:hover,
-body.saunas-show .btn.btn-primary:hover {
+body.saunas-show .btn-primary:hover {
   background: linear-gradient(180deg, #FFA24A, #FF7F22) !important;
-  color: #000 !important;
 }
 
 /* 白アウトライン */
 body.saunas-show .btn-outline-primary {
-  color: #ffffff !important;
-  border-color: #ffffff !important;
+  color: #fff !important;
+  border-color: #fff !important;
 }
 body.saunas-show .btn-outline-primary:hover {
-  background-color: #ffffff !important;
+  background-color: #fff !important;
   color: #1E1B18 !important;
 }
 
@@ -110,19 +106,18 @@ body.saunas-show .btn-outline-warning {
   color: #222 !important;
 }
 
+/* 住所リンク */
 body.saunas-show .sauna-address-link:hover {
   opacity: 0.75;
   transform: translateY(-2px);
 }
 
-
 /* === サウナ一覧ページ（saunas#index） 背景の完全制御 === */
 body.saunas-index {
   background: linear-gradient(180deg, #1c1b19 0%, #272522 100%) !important;
   background-image: none !important;
-  background-color: #1c1b19 !important; /* ← これが超重要 */
+  background-color: #1c1b19 !important;
 }
-
 
 body.saunas-index .search-container {
   background: transparent !important;
@@ -161,34 +156,25 @@ body.saunas-index .search-container form .row {
   margin: 0 auto;
 }
 
-/* --- ガラス風カード（サウナ一覧：温かみ＆差別化） --- */
+/* --- ガラス風カード（サウナ一覧） --- */
 body.saunas-index .glass-item {
-  /* 透明ガラス → 少し暖色寄り（琥珀フィルム） */
   background: #ffb4781a;
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-
   border-radius: 18px;
   padding: 16px 20px;
-
-  /* 枠線もほんのり暖色に（お気に入りとの差別化ポイント） */
   border: 1px solid rgba(255, 180, 120, 0.25);
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  /* 影も少し暖かい */
-  box-shadow: 0 8px 24px rgba(255, 150, 80, 0.12),
-              0 6px 18px rgba(0, 0, 0, 0.3);
-
+  box-shadow: 
+    0 8px 24px rgba(255, 150, 80, 0.12),
+    0 6px 18px rgba(0, 0, 0, 0.3);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 body.saunas-index .glass-item:hover {
   transform: translateY(-4px);
-
-  /* ホバー時：暖色光が少し広がる感じ */
   box-shadow: 
     0 12px 40px rgba(255, 170, 100, 0.22),
     0 10px 24px rgba(0, 0, 0, 0.35);
@@ -202,7 +188,6 @@ body.saunas-index .glass-item a {
 
 /* --- 都道府県バッジ --- */
 body.saunas-index .glass-badge {
-  /* 冬のガラス → 夏のガラスっぽい暖かフィルムに変更 */
   background: rgba(255, 200, 150, 0.30) !important;
   color: #fff !important;
   backdrop-filter: blur(6px);
@@ -210,4 +195,3 @@ body.saunas-index .glass-badge {
   border-radius: 12px;
   padding: 4px 12px;
 }
-

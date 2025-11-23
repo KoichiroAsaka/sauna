@@ -31,7 +31,7 @@ class PostsController < ApplicationController
   def create
     @post = @sauna.posts.build(post_params)
     @post.user = current_user
-
+  
     if params[:back]
       render :new
     elsif params[:draft]
@@ -39,17 +39,18 @@ class PostsController < ApplicationController
       if @post.save
         redirect_to drafts_posts_path, notice: "下書きとして保存しました。"
       else
-        render :new, status: :unprocessable_entity
+        render :new, status: :unprocessable_entity 
       end
     else
       @post.status = :published
       if @post.save
         redirect_to sauna_post_path(@sauna, @post), notice: "投稿を作成しました。"
       else
-        render :new, status: :unprocessable_entity
+        render :new, status: :unprocessable_entity  # ← 変更なし
       end
     end
   end
+  
 
   # 編集
   def edit; end

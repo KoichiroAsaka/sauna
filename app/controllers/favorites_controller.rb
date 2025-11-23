@@ -12,8 +12,10 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    favorite = current_user.favorites.find_by(sauna_id: params[:sauna_id])
-    favorite&.destroy
-    redirect_to sauna_path(params[:sauna_id]), notice: "お気に入りを解除しました"
+    favorite = current_user.favorites.find(params[:id]) 
+    sauna = favorite.sauna                               
+    favorite.destroy
+    redirect_to favorites_path, notice: "お気に入りを解除しました"
   end
+  
 end

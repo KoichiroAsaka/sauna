@@ -1,8 +1,5 @@
 // app/assets/stylesheets/application.scss
 
-// Bootstrap（CDNで読み込むためここでは不要）
-// @import "bootstrap";
-
 // ページごとのスタイル
 @import "homes";
 @import "posts";
@@ -13,16 +10,18 @@
 @import "users";
 @import "pages";
 
-
-
-  /* オフキャンバス内の nav-link 用 */
+/* オフキャンバス内の nav-link */
 .offcanvas .nav-link {
-    padding: 0.6rem 0.8rem !important; /* ← 左右を少し詰める */
-    border-radius: 10px;               /* ← ホバーの角丸を自然に */
-  }
-  
-  /* ホバー時 */
-  .offcanvas .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.12) !important;
-  }
-  
+  padding: 0.6rem 0.8rem !important; 
+  border-radius: 10px;
+}
+
+.offcanvas .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* ---- Offcanvas メニューの文字色を白で固定 ---- */
+#offcanvasMenu a,
+#offcanvasMenu i {
+  color: #fff !important;
+}

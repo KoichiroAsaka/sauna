@@ -5,11 +5,7 @@ body.registrations-new,
 body.registrations-create,
 body.passwords-new,
 body.passwords-edit {
-  background-image: image-url("background.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background: image-url("background.jpg") center/cover no-repeat fixed;
   font-family: "Helvetica", "Arial", sans-serif;
 }
 
@@ -25,7 +21,7 @@ body.passwords-edit {
 .auth-box {
   width: 350px;
   padding: 40px;
-  background-color: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.6);
   border-radius: 15px;
   color: white;
   text-align: center;
@@ -34,7 +30,7 @@ body.passwords-edit {
 
 /* --- ④ Devise 内だけのフォーム制御（Bootstrapを壊さない） --- */
 .auth-box .form-control {
-  background-color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.9);
   border: none;
   border-radius: 10px;
   padding: 10px;
@@ -44,12 +40,12 @@ body.passwords-edit {
 
 /* --- ⑤ ボタン（ログインはこちら等） --- */
 .auth-box .btn-outline-light {
+  width: 100%;
+  padding: 10px;
+  color: white;
+  background: transparent;
   border: 2px solid white;
   border-radius: 25px;
-  padding: 10px;
-  width: 100%;
-  color: white;
-  background-color: transparent;
 }
 
 .auth-box .btn-outline-light:hover {
