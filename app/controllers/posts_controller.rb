@@ -46,7 +46,7 @@ class PostsController < ApplicationController
       if @post.save
         redirect_to sauna_post_path(@sauna, @post), notice: "投稿を作成しました。"
       else
-        render :new, status: :unprocessable_entity  # ← 変更なし
+        render :new, status: :unprocessable_entity  
       end
     end
   end

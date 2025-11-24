@@ -4,7 +4,20 @@
       <%= post.persisted? ? "投稿を編集" : "新規投稿" %>
     </h2>
 
+    <!-- 🔽🔽🔽 ここから追記（エラー表示）🔽🔽🔽 -->
+    <% if post.errors.any? %>
+      <div class="alert alert-danger">
+        <ul class="mb-0">
+          <% post.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <!-- 🔼🔼🔼 追記はここまで 🔼🔼🔼 -->
+
     <%= form_with model: [post.sauna, post], local: true do |form| %>
+
       <!-- ✅ 対象サウナ -->
       <div class="mb-3">
         <%= form.label :sauna_id, "対象サウナ", class: "form-label" %>

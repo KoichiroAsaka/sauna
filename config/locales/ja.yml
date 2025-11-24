@@ -29,3 +29,28 @@ ja:
     formats:
       default: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
+
+  activerecord:
+    models:
+      post: 投稿
+    attributes:
+      post:
+        post: 投稿内容
+        congestion_level: 混雑度
+        day_of_week: 曜日
+        time_zone: 時間帯
+        sauna: 対象サウナ
+    errors:
+      models:
+        post:
+          attributes:
+            post:
+              blank: "を入力してください"
+            congestion_level:
+              blank: "を選択してください"
+            day_of_week:
+              blank: "を選択してください"
+            time_zone:
+              blank: "を選択してください"
+            sauna:
+              blank: "を選択してください"

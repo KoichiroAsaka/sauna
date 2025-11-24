@@ -15,7 +15,8 @@ class Post < ApplicationRecord
   enum status: { draft: 0, published: 1 }
 
   # 下書き以外では必須
-  validates :sauna_id, presence: true, unless: :draft?
+  validates :sauna_id, :congestion_level, :day_of_week, :time_zone, :post,
+          presence: true, unless: -> { status == "draft" }
   validates :congestion_level, :day_of_week, :time_zone, presence: true, unless: :draft?
   validates :post, presence: true, unless: :draft?
 end
