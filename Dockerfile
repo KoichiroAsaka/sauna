@@ -39,10 +39,10 @@ RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
 # --------------------------------------------------
 FROM base
 
-# runtime パッケージ
+# runtime パッケージ（←ここに postgresql-client を追加する）
 RUN apt-get update -qq && \
     apt-get install -y --no-install-recommends \
-      libpq5 libvips libyaml-dev && \
+      libpq5 libvips libyaml-dev postgresql-client && \
     rm -rf /var/lib/apt/lists/*
 
 # copy from build stage
@@ -64,8 +64,7 @@ USER rails:rails
 
 EXPOSE 3000
 
-# これで entrypoint が先に動き → migrate → puma 起動
+# entrypoint -> migrate -> puma 起動
 ENTRYPOINT ["docker-entrypoint"]
 
-#Render 用
-CMD ["bundle", "exec", "rails", "db:migrate"]
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]

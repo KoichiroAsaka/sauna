@@ -1,19 +1,22 @@
 #!/bin/bash
 set -e
 
-# DATABASE_URL を解析してホスト名を抽出
+# DATABASE_URL からホスト名取り出し
 DB_HOST=$(echo $DATABASE_URL | sed -E 's|.*://[^@]+@([^/:]+).*|\1|')
-
-# PostgreSQL は Render では基本 5432 固定
 DB_PORT=5432
 
-echo "Waiting for database at $DB_HOST:$DB_PORT ..."
-until nc -z "$DB_HOST" "$DB_PORT"; do
-  sleep 1
+echo "Waiting for Postgres at $DB_HOST:$DB_PORT ..."
+
+# Postgres が ready になるまで待つ
+until pg_isready -h "$DB_HOST" -p "$DB_PORT"; do
+  echo "Postgres is unavailable - waiting..."
+  sleep 2
 done
+
+echo "Postgres is up!"
 
 echo "Running migrations..."
 bundle exec rails db:migrate
 
-# Rails サーバ起動（CMDが渡される）
+echo "Starting app..."
 exec "$@"
