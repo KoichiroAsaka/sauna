@@ -15,7 +15,7 @@ ENV RAILS_ENV=production \
 # --------------------------------------------------
 FROM base AS build
 
-# Node.js + Yarn + 必須パッケージ
+# 必須パッケージ + Node.js (for assets)
 RUN apt-get update -qq && \
     apt-get install -y --no-install-recommends \
       curl gnupg build-essential git libpq-dev pkg-config libvips libyaml-dev && \
@@ -24,12 +24,14 @@ RUN apt-get update -qq && \
     npm install -g yarn && \
     rm -rf /var/lib/apt/lists/*
 
+# Gem install
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
+# full copy
 COPY . .
 
-# master.key 不要で precompile
+# assets precompile (master.keyは不要)
 RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
 
 # --------------------------------------------------
@@ -37,23 +39,22 @@ RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
 # --------------------------------------------------
 FROM base
 
+# runtime に必要なパッケージのみ
 RUN apt-get update -qq && \
     apt-get install -y --no-install-recommends \
-      curl gnupg libpq5 libvips libyaml-dev && \
-    curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-    apt-get install -y nodejs && \
-    npm install -g yarn && \
+      libpq5 libvips libyaml-dev && \
     rm -rf /var/lib/apt/lists/*
 
+# copy from build stage
 COPY --from=build /bundle /bundle
 COPY --from=build /rails /rails
 
+# user
 RUN useradd rails --create-home --shell /bin/bash && \
     chown -R rails:rails /rails
-
 USER rails:rails
 
-ENTRYPOINT ["/rails/bin/docker-entrypoint"]
-
 EXPOSE 3000
+
+# Render 用（ENTRYPOINT は削除）
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
