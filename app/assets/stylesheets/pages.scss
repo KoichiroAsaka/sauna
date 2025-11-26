@@ -4,9 +4,14 @@
 
 /* 背景：暗め＋背景画像 */
 body.pages-how_to_sauna {
-  background: image-url("how_to_sauna_background.jpg") center/cover no-repeat fixed;
+  background-image: image-url("how_to_sauna_background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: #f2f2f2;
 }
+
 
 /* 外側のホワイト透明カード */
 .howto-wrapper {
