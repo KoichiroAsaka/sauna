@@ -67,5 +67,5 @@ EXPOSE 3000
 # これで entrypoint が先に動き → migrate → puma 起動
 ENTRYPOINT ["docker-entrypoint"]
 
-# 最後に puma を起動
-CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
+#Render 用
+CMD ["bundle", "exec", "rails", "db:migrate"]
