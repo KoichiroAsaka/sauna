@@ -17,7 +17,13 @@ FROM base AS build
 
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
-      build-essential git libpq-dev pkg-config libvips
+      build-essential \
+      git \
+      libpq-dev \
+      pkg-config \
+      libvips \
+      nodejs \
+      yarn
 
 COPY Gemfile Gemfile.lock ./
 
@@ -25,6 +31,7 @@ RUN bundle install
 
 COPY . .
 
+# assets precompile（master key不要）
 RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
 
 # --------------------------------------------------
@@ -34,7 +41,11 @@ FROM base
 
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
-      curl libpq5 libvips && \
+      curl \
+      libpq5 \
+      libvips \
+      nodejs \
+      yarn && \
     rm -rf /var/lib/apt/lists/*
 
 COPY --from=build /bundle /bundle
