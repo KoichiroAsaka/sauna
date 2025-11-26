@@ -49,6 +49,10 @@ RUN apt-get update -qq && \
 COPY --from=build /bundle /bundle
 COPY --from=build /rails /rails
 
+# pidsフォルダを作る
+RUN mkdir -p /rails/tmp/pids
+
+
 # user
 RUN useradd rails --create-home --shell /bin/bash && \
     chown -R rails:rails /rails
