@@ -101,9 +101,6 @@ GEM
     connection_pool (2.5.4)
     crass (1.0.6)
     date (3.4.1)
-    debug (1.11.0)
-      irb (~> 1.10)
-      reline (>= 0.3.8)
     devise (4.9.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -154,8 +151,6 @@ GEM
       net-smtp
     marcel (1.1.0)
     matrix (0.4.3)
-    mini_magick (5.3.1)
-      logger
     mini_mime (1.1.5)
     minitest (5.26.0)
     msgpack (1.8.0)
@@ -173,6 +168,7 @@ GEM
     nokogiri (1.18.10-x64-mingw-ucrt)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pg (1.6.2-x64-mingw-ucrt)
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
@@ -298,14 +294,14 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kaminari
-  mini_magick
   nokogiri (~> 1.18.10)
+  pg
   puma (>= 5.0)
   rails (~> 7.1.5, >= 7.1.5.2)
   sassc-rails
   selenium-webdriver
   sprockets-rails
-  sqlite3 (= 1.6.9)
+  sqlite3 (~> 1.4)
   stimulus-rails
   turbo-rails
   tzinfo-data

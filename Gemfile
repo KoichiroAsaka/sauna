@@ -9,7 +9,7 @@ gem "rails", "~> 7.1.5", ">= 7.1.5.2"
 gem "sprockets-rails"
 
 # データベース
-gem "sqlite3", "1.6.9"
+#gem "sqlite3", "1.6.9"
 
 # Webサーバ
 gem "puma", ">= 5.0"
@@ -25,7 +25,8 @@ gem "jbuilder"
 # Windows環境対応
 gem "nokogiri", "~> 1.18.10", platforms: [:ruby, :x64_mingw, :windows]
 gem "sassc-rails"
-gem "tzinfo-data"
+#gem "tzinfo-data"
+gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ] 
 
 #ユーザー登録機能
 gem 'devise'
@@ -41,7 +42,9 @@ gem 'kaminari'
 gem "bootsnap", require: false
 
 group :development, :test do
-  gem "debug", platforms: %i[mri windows]
+  gem 'sqlite3', '~> 1.4'
+  #gem "debug", platforms: %i[ mri windows ]  
+  gem "debug", platforms: %i[ mri mingw ]   
 end
 
 group :development do
@@ -51,4 +54,8 @@ end
 group :test do
   gem "capybara"
   gem "selenium-webdriver"
+end
+
+group :production do
+  gem "pg"
 end
