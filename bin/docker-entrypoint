@@ -1,16 +1,19 @@
 #!/bin/bash
 set -e
 
-# DATABASE_URL からホストとポートを抽出
-DB_HOST=$(echo $DATABASE_URL | sed -e 's|.*://.*:.*@\([^:/]*\).*|\1|')
-DB_PORT=$(echo $DATABASE_URL | sed -e 's|.*://.*:.*@[^:/]*:\([0-9]*\).*|\1|')
+# DATABASE_URL を解析してホスト名を抽出
+DB_HOST=$(echo $DATABASE_URL | sed -E 's|.*://[^@]+@([^/:]+).*|\1|')
+
+# PostgreSQL は Render では基本 5432 固定
+DB_PORT=5432
 
 echo "Waiting for database at $DB_HOST:$DB_PORT ..."
-until nc -z $DB_HOST $DB_PORT; do
+until nc -z "$DB_HOST" "$DB_PORT"; do
   sleep 1
 done
 
 echo "Running migrations..."
 bundle exec rails db:migrate
 
+# Rails サーバ起動（CMDが渡される）
 exec "$@"
