@@ -1,8 +1,22 @@
-#!/bin/bash -e
+#!/bin/bash
+set -e
 
-# If running the rails server then create or migrate existing database
-if [ "${1}" == "./bin/rails" ] && [ "${2}" == "server" ]; then
-  ./bin/rails db:prepare
+# データベースが利用可能になるまで待つ（必須）
+echo "Waiting for database..."
+
+# Render PostgreSQL は DATABASE_URL のみなので HOST と PORT を抽出
+if [ -n "$DATABASE_URL" ]; then
+  export DATABASE_HOST=$(echo $DATABASE_URL | sed -e 's/^postgres:\/\///' -e 's/:.*$//')
+  export DATABASE_PORT=5432
 fi
 
-exec "${@}"
+until nc -z $DATABASE_HOST $DATABASE_PORT; do
+  sleep 1
+done
+
+# マイグレーション実行
+echo "Running migrations..."
+bundle exec rails db:migrate
+
+# 本来の CMD 実行（Puma を起動）
+exec "$@"
