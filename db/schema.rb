@@ -93,10 +93,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_11_07_062638) do
 
   create_table "saunas", force: :cascade do |t|
     t.string "name"
-    t.integer "prefecture"
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "prefecture"
   end
 
   create_table "scenes", force: :cascade do |t|
