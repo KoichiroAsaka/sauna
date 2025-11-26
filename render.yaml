@@ -1,0 +1,24 @@
+databases:
+  - name: sauna-db
+    databaseName: sauna_db_4geq
+    user: asaka
+    region: Oregon
+
+services:
+  - type: web
+    name: sauna-db
+    env: ruby
+    region: Oregon
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    preDeployCommand: ./bin/rails db:migrate
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: sauna-db
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: WEB_CONCURRENCY
+        value: 2
