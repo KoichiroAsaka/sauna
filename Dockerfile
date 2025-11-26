@@ -31,7 +31,7 @@ RUN bundle install
 # full copy
 COPY . .
 
-# assets precompile (master.keyは不要)
+# assets precompile (master.key不要)
 RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
 
 # --------------------------------------------------
@@ -39,7 +39,7 @@ RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
 # --------------------------------------------------
 FROM base
 
-# runtime に必要なパッケージのみ
+# runtime パッケージ
 RUN apt-get update -qq && \
     apt-get install -y --no-install-recommends \
       libpq5 libvips libyaml-dev && \
@@ -49,9 +49,13 @@ RUN apt-get update -qq && \
 COPY --from=build /bundle /bundle
 COPY --from=build /rails /rails
 
-# pidsフォルダを作る
-RUN mkdir -p /rails/tmp/pids
+# pids フォルダ作成（必須）
+RUN mkdir -p /rails/tmp/pids \
+ && rm -f /rails/tmp/pids/server.pid
 
+# entrypoint をコピー
+COPY bin/docker-entrypoint /usr/bin/docker-entrypoint
+RUN chmod +x /usr/bin/docker-entrypoint
 
 # user
 RUN useradd rails --create-home --shell /bin/bash && \
@@ -60,5 +64,8 @@ USER rails:rails
 
 EXPOSE 3000
 
-# Render 用（ENTRYPOINT は削除）
+# これで entrypoint が先に動き → migrate → puma 起動
+ENTRYPOINT ["docker-entrypoint"]
+
+# 最後に puma を起動
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
