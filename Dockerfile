@@ -15,24 +15,21 @@ ENV RAILS_ENV=production \
 # --------------------------------------------------
 FROM base AS build
 
-# Node.js + Yarn を公式リポジトリからインストール
+# Node.js + Yarn + 必須パッケージ
 RUN apt-get update -qq && \
-    apt-get install -y --no-install-recommends curl gnupg && \
+    apt-get install -y --no-install-recommends \
+      curl gnupg build-essential git libpq-dev pkg-config libvips libyaml-dev && \
     curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
     apt-get install -y nodejs && \
     npm install -g yarn && \
-    apt-get install -y --no-install-recommends \
-      build-essential \
-      git \
-      libpq-dev \
-      pkg-config \
-      libvips
+    rm -rf /var/lib/apt/lists/*
 
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
 COPY . .
 
+# master.key 不要で precompile
 RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
 
 # --------------------------------------------------
@@ -40,15 +37,12 @@ RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
 # --------------------------------------------------
 FROM base
 
-# Node.js + Yarn（実行用）
 RUN apt-get update -qq && \
-    apt-get install -y --no-install-recommends curl gnupg && \
+    apt-get install -y --no-install-recommends \
+      curl gnupg libpq5 libvips libyaml-dev && \
     curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
     apt-get install -y nodejs && \
     npm install -g yarn && \
-    apt-get install -y --no-install-recommends \
-      libpq5 \
-      libvips && \
     rm -rf /var/lib/apt/lists/*
 
 COPY --from=build /bundle /bundle
