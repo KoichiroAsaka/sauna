@@ -67,4 +67,7 @@ EXPOSE 3000
 # entrypoint -> migrate -> puma 起動
 ENTRYPOINT ["docker-entrypoint"]
 
+# ☆ 一時的に追加（デプロイ時に seed が実行される）
+RUN bundle exec rails db:seed
+
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
