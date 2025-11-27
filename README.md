@@ -1,4 +1,4 @@
-# sauna
+# sauna　https://sauna-ei34.onrender.com/
 ![サウナのロゴ](readme_images/sauna-story.png)
 ## 概要
 このアプリは、サウナの体験や施設情報を共有できるアプリ。ユーザーは訪れたサウナ施設、感想、写真、混雑状況を投稿し、ユーザー同士で情報交換できる。また、初心者でも分かるサウナの入り方や効能についても掲載。
@@ -55,5 +55,6 @@
 ・フレームワーク：Ruby on Rails  
 ・JSライブラリ：jQuery  
 ・データベース：PostgreSQL
+
 
 
