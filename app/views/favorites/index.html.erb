@@ -7,11 +7,15 @@
         <% @favorites.each do |favorite| %>
           <li class="favorite-item">
             <%= link_to favorite.sauna.name, sauna_path(favorite.sauna) %>
-            <%= link_to "解除",
-             favorite_path(favorite),
-             data: { turbo_method: :delete, turbo_confirm: "本当に解除しますか？" },
-             class: "favorite-remove-btn" %>
 
+            <%= link_to "解除",
+                favorite_path(favorite),
+                method: :delete,
+                data: {
+                  turbo_method: :delete,
+                  turbo_confirm: "本当に解除しますか？"
+                },
+                class: "favorite-remove-btn" %>
           </li>
         <% end %>
       </ul>
