@@ -15,8 +15,31 @@ done
 
 echo "Postgres is up!"
 
-echo "Running migrations..."
+# ----------------------------------------------------------
+# DB migrate
+# ----------------------------------------------------------
+echo "== Running migrations =="
 bundle exec rails db:migrate
 
+# ----------------------------------------------------------
+# 初回だけ seed を実行（seed_done が無いときだけ）
+# ----------------------------------------------------------
+SEED_FLAG="/rails/tmp/seed_done"
+
+if [ ! -f "$SEED_FLAG" ]; then
+  echo "== Running seed =="
+  # seed 実行失敗でもサービス起動は続ける場合は || true
+  bundle exec rails db:seed || true
+
+  # seed が成功したらフラグ作成
+  touch "$SEED_FLAG"
+  echo "== Seed completed =="
+else
+  echo "== Seed already executed. Skip =="
+fi
+
+# ----------------------------------------------------------
+# Rails 起動
+# ----------------------------------------------------------
 echo "Starting app..."
 exec "$@"

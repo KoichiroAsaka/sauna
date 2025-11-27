@@ -27,12 +27,12 @@ Sauna.create!([
   {
     name: "かるまる",
     prefecture: "tokyo",
-    address: "東京都豊島区池袋2丁目7−7 6階"
+    address: "東京都豊島区池袋2丁目7-7 6階"
   },
   {
     name: "KIWAMI SAUNA",
     prefecture: "aichi",
-    address: "愛知県名古屋市西区浅間２丁目14-24"
+    address: "愛知県名古屋市西区浅間2丁目14-24"
   }
 ])
 
