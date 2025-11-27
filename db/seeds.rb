@@ -1,4 +1,5 @@
-Sauna.create!([
+# --- Sauna ---
+[
   {
     name: "サウナしきじ",
     prefecture: :shizuoka,
@@ -11,7 +12,7 @@ Sauna.create!([
   },
   {
     name: "CYCL",
-    prefecture: :yamanashi, 
+    prefecture: :yamanashi,
     address: "山梨県南都留郡山中湖村平野479-107"
   },
   {
@@ -34,12 +35,19 @@ Sauna.create!([
     prefecture: :aichi,
     address: "愛知県名古屋市西区浅間2丁目14-24"
   }
-])
+].each do |data|
+  Sauna.find_or_create_by!(name: data[:name]) do |sauna|
+    sauna.prefecture = data[:prefecture]
+    sauna.address = data[:address]
+  end
+end
 
-Scene.create!([
-  { description: "サウナ室で友達と話す" },
-  { description: "サウナ室でサウナマットを敷かない" },
-  { description: "汗を流さずに水風呂へ入水" },
-  { description: "水風呂に頭から潜水" }
-])
-
+# --- Scenes ---
+[
+  "サウナ室で友達と話す",
+  "サウナ室でサウナマットを敷かない",
+  "汗を流さずに水風呂へ入水",
+  "水風呂に頭から潜水"
+].each do |text|
+  Scene.find_or_create_by!(description: text)
+end
