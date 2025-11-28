@@ -12,16 +12,8 @@ class UsersController < ApplicationController
   # /users/:id → 自分以外がアクセスしたらプロフィールへリダイレクト
   # --------------------------------------------
   def show
-    Rails.logger.info "===== CLOUDINARY DEBUG START ====="
-    Rails.logger.info "CLOUD_NAME=#{ENV['CLOUDINARY_CLOUD_NAME']}"
-    Rails.logger.info "API_KEY=#{ENV['CLOUDINARY_API_KEY']}"
-    Rails.logger.info "API_SECRET_PRESENT=#{ENV['CLOUDINARY_API_SECRET'].present?}"
-    Rails.logger.info "ACTIVE_STORAGE_SERVICE=#{Rails.application.config.active_storage.service}"
-    Rails.logger.info "===== CLOUDINARY DEBUG END ====="
-  
     redirect_to profile_user_path(@user) unless @user == current_user
-  end
-  
+  end  
 
   # --------------------------------------------
   # 🌐 プロフィールページ（他人も閲覧可）
