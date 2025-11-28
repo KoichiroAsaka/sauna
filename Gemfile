@@ -59,3 +59,6 @@ end
 group :production do
   gem "pg"
 end
+
+gem "cloudinary"
+gem "activestorage-cloudinary-service"
