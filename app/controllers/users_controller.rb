@@ -12,7 +12,9 @@ class UsersController < ApplicationController
   # --------------------------------------------
   def show
     redirect_to profile_user_path(@user) unless @user == current_user
+    @latest_posts = Post.order(created_at: :desc).limit(3)
   end
+  
 
   # --------------------------------------------
   # 🌐 プロフィールページ（他人も閲覧可）
